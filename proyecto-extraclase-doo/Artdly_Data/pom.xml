@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.uco.artdly</groupId>
+  <artifactId>Artdly_Data</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Artdly_Data</name>
+  <description>Componente que posee la estrategia de acceso a datos, donde se encuentra toda la instrumentación necesaria para llevar a cabo una operación de consulta o actualización de datos en una fuente de información deteminada.</description>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+  	<dependency>
+    	<groupId>edu.uco.artdly</groupId>
+  		<artifactId>Artdly_Domain</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+    	<groupId>edu.uco.artdly</groupId>
+  		<artifactId>Artdly_Crosscutting</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+</project>
