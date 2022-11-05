@@ -1,4 +1,4 @@
-package domain;
+package edu.uco.artdly.domain;
 
 import java.util.Date;
 import java.util.UUID;
