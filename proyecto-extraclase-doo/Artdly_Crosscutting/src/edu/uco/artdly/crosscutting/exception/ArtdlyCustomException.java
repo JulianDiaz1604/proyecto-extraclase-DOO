@@ -2,6 +2,10 @@ package edu.uco.artdly.crosscutting.exception;
 
 import edu.uco.artdly.crosscutting.enumeration.LayerException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
+
+import static edu.uco.artdly.crosscutting.helper.ObjectHelper.getDefaultIfNull;
+import static edu.uco.artdly.crosscutting.helper.ObjectHelper.isNull;
+import static edu.uco.artdly.crosscutting.helper.StringHelper.applyTrim;
 public class ArtdlyCustomException extends RuntimeException {
 
 	
@@ -24,7 +28,7 @@ public class ArtdlyCustomException extends RuntimeException {
 
 
 	    public void setUserMessage(final String userMessage) {
-	        this.userMessage = applytrim(userMessage);
+	        this.userMessage = applyTrim(userMessage);
 	    }
 
 
@@ -38,7 +42,7 @@ public class ArtdlyCustomException extends RuntimeException {
 	    }
 	    
 	    public final boolean isTechinalException() {
-	        return isnull(getUserMessage());
+	        return isNull(getUserMessage());
 	    }
 
 }
