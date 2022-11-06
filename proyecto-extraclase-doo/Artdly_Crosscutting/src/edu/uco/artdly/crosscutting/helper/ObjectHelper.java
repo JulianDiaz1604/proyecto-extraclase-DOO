@@ -6,12 +6,12 @@ public class ObjectHelper {
 		super();
 	}
 	
-	public static final <T> boolean inNUll(T value) {
+	public static final <T> boolean isNull(T value) {
 		return value == null;
 	}
 	
 	public static final <T> T getDefaultIfNull(T value, T defaultValue) {
-		return (inNUll(value))?defaultValue : value;
+		return (isNull(value))?defaultValue : value;
 	}
 
 }
