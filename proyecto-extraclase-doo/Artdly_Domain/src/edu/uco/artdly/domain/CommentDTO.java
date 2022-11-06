@@ -3,6 +3,11 @@ package edu.uco.artdly.domain;
 import java.util.Date;
 import java.util.UUID;
 
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+
 public class CommentDTO {
     
     private UUID id;
@@ -12,7 +17,7 @@ public class CommentDTO {
     private ArtworkDTO artwork;
 
     public CommentDTO(){
-        super();
+        setId(getNewUUID());
     }
 
     public CommentDTO(final UUID id, final Date realizationDate, final String description, final UserDTO user, 
@@ -29,13 +34,16 @@ public class CommentDTO {
         return new CommentDTO(id, realizationDate, description, user, artwork);
     }
 
-    //TO-DO: public static final CommentDTO create(all parameters, use id as String) 
+    public static final CommentDTO create(final String id, final Date realizationDate, final String description, 
+                                            final UserDTO user, final ArtworkDTO artwork){
+        return new CommentDTO(getUUIDFromString(id), realizationDate, description, user, artwork);
+    }
 
     public UUID getId() {
         return id;
     }
     public void setId(UUID id) {
-        this.id = id;
+        this.id = getDefaultUUID(id);
     }
     public Date getRealizationDate() {
         return realizationDate;
@@ -60,6 +68,9 @@ public class CommentDTO {
     }
     public void setArtwork(ArtworkDTO artwork) {
         this.artwork = artwork;
+    }
+    public final String getIdAsString() {
+        return getUUIDAsString(getId());
     }
 
 }

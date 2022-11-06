@@ -3,6 +3,11 @@ package edu.uco.artdly.domain;
 import java.util.Date;
 import java.util.UUID;
 
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+
 public class UserDTO {
     
     private UUID id;
@@ -16,7 +21,7 @@ public class UserDTO {
     private boolean isPrivate;
 
     public UserDTO(){
-        super();
+        setId(getNewUUID());
     }
 
     public UserDTO(final UUID id, final String name, final String lastName, final String mail, final String username,
@@ -37,14 +42,17 @@ public class UserDTO {
         return new UserDTO(id, name, lastName, mail, username, password, birthDate, description, isPrivate);
     }
 
-    //TO-DO: public static final UserDTO create(all parameters, use id as String) 
+    public static final UserDTO create(final String id, final String name, final String lastName, final String mail, final String username,
+    final String password, final Date birthDate, final String description, final boolean isPrivate){
+        return new UserDTO(getUUIDFromString(id), name, lastName, mail, username, password, birthDate, description, isPrivate);
+    }
 
     public UUID getId() {
         return id;
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.id = getDefaultUUID(id);
     }
 
     public String getName() {
@@ -110,7 +118,9 @@ public class UserDTO {
     public void setPrivate(boolean isPrivate) {
         this.isPrivate = isPrivate;
     }
-
+    public final String getIdAsString() {
+        return getUUIDAsString(getId());
+    }
     
 
 }

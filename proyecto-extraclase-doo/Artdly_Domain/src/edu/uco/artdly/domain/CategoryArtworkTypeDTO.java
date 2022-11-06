@@ -2,6 +2,11 @@ package edu.uco.artdly.domain;
 
 import java.util.UUID;
 
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+
 public class CategoryArtworkTypeDTO {
     
     private UUID id;
@@ -9,7 +14,7 @@ public class CategoryArtworkTypeDTO {
     private CategoryDTO category;
 
     public CategoryArtworkTypeDTO(){
-        super();
+        setId(getNewUUID());
     }
 
     public CategoryArtworkTypeDTO(final UUID id, final ArtworkDTO artwork, final CategoryDTO category){
@@ -22,13 +27,15 @@ public class CategoryArtworkTypeDTO {
         return new CategoryArtworkTypeDTO(id, artwork, category);
     }
 
-    //TO-DO: public static final CategoryArtworkTypeDTO create(all parameters, use id as String) 
+    public static final CategoryArtworkTypeDTO create(final String id, final ArtworkDTO artwork, final CategoryDTO category){
+        return new CategoryArtworkTypeDTO(getUUIDFromString(id), artwork, category);
+    }
 
     public UUID getId() {
         return id;
     }
     public void setId(UUID id) {
-        this.id = id;
+        this.id = getDefaultUUID(id);
     }
     public ArtworkDTO getArtwork() {
         return artwork;
@@ -41,6 +48,9 @@ public class CategoryArtworkTypeDTO {
     }
     public void setCategory(CategoryDTO category) {
         this.category = category;
+    }
+    public final String getIdAsString() {
+        return getUUIDAsString(getId());
     }
 
 }

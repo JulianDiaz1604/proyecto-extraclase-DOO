@@ -2,6 +2,11 @@ package edu.uco.artdly.domain;
 
 import java.util.UUID;
 
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+
 public class CategoryDTO {
     
     private UUID id;
@@ -9,7 +14,7 @@ public class CategoryDTO {
     private String description;
 
     public CategoryDTO(){
-        super();
+        setId(getNewUUID());
     }
 
     public CategoryDTO(final UUID id, final String name, final String description){
@@ -22,13 +27,15 @@ public class CategoryDTO {
         return new CategoryDTO(id, name, description);
     }
 
-    //TO-DO: public static final CategoryDTO create(all parameters, use id as String) 
+    public static final CategoryDTO create(final String id, final String name, final String description){
+        return new CategoryDTO(getUUIDFromString(id), name, description);
+    }
 
     public UUID getId() {
         return id;
     }
     public void setId(UUID id) {
-        this.id = id;
+        this.id = getDefaultUUID(id);
     }
     public String getName() {
         return name;
@@ -41,6 +48,9 @@ public class CategoryDTO {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+    public final String getIdAsString() {
+        return getUUIDAsString(getId());
     }
 
 }

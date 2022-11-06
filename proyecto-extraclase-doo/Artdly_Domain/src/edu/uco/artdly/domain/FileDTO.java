@@ -2,6 +2,11 @@ package edu.uco.artdly.domain;
 
 import java.util.UUID;
 
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+
 public class FileDTO {
     
     private UUID id;
@@ -9,7 +14,7 @@ public class FileDTO {
     private String typeFile;
 
     public FileDTO(){
-        super();
+        setId(getNewUUID());
     }
 
     public FileDTO(final UUID id, final String pathFile, final String typeFile){
@@ -22,13 +27,15 @@ public class FileDTO {
         return new FileDTO(id, pathFile, typeFile);
     }
 
-    //TO-DO: public static final FileDTO create(all parameters, use id as String) 
+    public static final FileDTO create(final String id, final String pathFile, final String typeFile){
+        return new FileDTO(getUUIDFromString(id), pathFile, typeFile);
+    }
 
     public UUID getId() {
         return id;
     }
     public void setId(UUID id) {
-        this.id = id;
+        this.id = getDefaultUUID(id);
     }
     public String getPathFile() {
         return pathFile;
@@ -41,6 +48,9 @@ public class FileDTO {
     }
     public void setTypeFile(String typeFile) {
         this.typeFile = typeFile;
+    }
+    public final String getIdAsString() {
+        return getUUIDAsString(getId());
     }
 
 }
