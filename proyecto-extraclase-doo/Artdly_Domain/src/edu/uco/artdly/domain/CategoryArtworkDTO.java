@@ -7,28 +7,28 @@ import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 
-public class CategoryArtworkTypeDTO {
+public class CategoryArtworkDTO {
     
     private UUID id;
     private ArtworkDTO artwork;
     private CategoryDTO category;
 
-    public CategoryArtworkTypeDTO(){
+    public CategoryArtworkDTO(){
         setId(getNewUUID());
     }
 
-    public CategoryArtworkTypeDTO(final UUID id, final ArtworkDTO artwork, final CategoryDTO category){
+    public CategoryArtworkDTO(final UUID id, final ArtworkDTO artwork, final CategoryDTO category){
         setId(id);
         setArtwork(artwork);
         setCategory(category);
     }
 
-    public static final CategoryArtworkTypeDTO create(final UUID id, final ArtworkDTO artwork, final CategoryDTO category){
-        return new CategoryArtworkTypeDTO(id, artwork, category);
+    public static final CategoryArtworkDTO create(final UUID id, final ArtworkDTO artwork, final CategoryDTO category){
+        return new CategoryArtworkDTO(id, artwork, category);
     }
 
-    public static final CategoryArtworkTypeDTO create(final String id, final ArtworkDTO artwork, final CategoryDTO category){
-        return new CategoryArtworkTypeDTO(getUUIDFromString(id), artwork, category);
+    public static final CategoryArtworkDTO create(final String id, final ArtworkDTO artwork, final CategoryDTO category){
+        return new CategoryArtworkDTO(getUUIDFromString(id), artwork, category);
     }
 
     public UUID getId() {

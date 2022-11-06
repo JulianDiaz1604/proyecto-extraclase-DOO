@@ -3,7 +3,7 @@ package edu.uco.artdly.domain.builder;
 import java.util.UUID;
 
 import edu.uco.artdly.domain.ArtworkDTO;
-import edu.uco.artdly.domain.CategoryArtworkTypeDTO;
+import edu.uco.artdly.domain.CategoryArtworkDTO;
 import edu.uco.artdly.domain.CategoryDTO;
 
 public class CategoryArtworkTypeDTOBuilder {
@@ -16,8 +16,8 @@ public class CategoryArtworkTypeDTOBuilder {
         super();
     }
 
-    public CategoryArtworkTypeDTO build(){
-        return CategoryArtworkTypeDTO.create(id, artwork, category);
+    public CategoryArtworkDTO build(){
+        return CategoryArtworkDTO.create(id, artwork, category);
     }
 
     public final CategoryArtworkTypeDTOBuilder setId(UUID id) {
