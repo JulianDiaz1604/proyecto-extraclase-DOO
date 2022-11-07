@@ -1,4 +1,4 @@
-package edu.uco.artdly.data.dao.relational.sqlserver;
+package edu.uco.artdly.data.dao.relational.postgresql;
 
 import java.sql.Connection;
 import java.util.List;
@@ -8,9 +8,9 @@ import edu.uco.artdly.data.dao.CategoryArtworkDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.CategoryArtworkDTO;
 
-public class CategoryArtworkSqlServerDAO extends DAORelational implements CategoryArtworkDAO {
+public class CategoryArtworkPostgresqlDAO extends DAORelational implements CategoryArtworkDAO {
 
-	protected CategoryArtworkSqlServerDAO(Connection connection) {
+	protected CategoryArtworkPostgresqlDAO(Connection connection) {
 		super(connection);
 
 	}

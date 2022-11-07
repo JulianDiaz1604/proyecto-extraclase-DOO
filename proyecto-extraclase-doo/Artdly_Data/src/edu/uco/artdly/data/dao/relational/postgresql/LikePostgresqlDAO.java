@@ -1,28 +1,28 @@
-package edu.uco.artdly.data.dao.relational.sqlserver;
+package edu.uco.artdly.data.dao.relational.postgresql;
 
 import java.sql.Connection;
 import java.util.List;
 import java.util.UUID;
 
-import edu.uco.artdly.data.dao.CommentDAO;
+import edu.uco.artdly.data.dao.LikeDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
-import edu.uco.artdly.domain.CommentDTO;
+import edu.uco.artdly.domain.LikeDTO;
 
-public class CommentSqlServerDAO extends DAORelational implements CommentDAO {
+public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 
-	protected CommentSqlServerDAO(Connection connection) {
+	protected LikePostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void create(CommentDTO comment) {
+	public void create(LikeDTO like) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<CommentDTO> find(CommentDTO comment) {
+	public List<LikeDTO> find(LikeDTO like) {
 		// TODO Auto-generated method stub
 		return null;
 	}

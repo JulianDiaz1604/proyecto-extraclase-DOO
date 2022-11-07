@@ -1,4 +1,4 @@
-package edu.uco.artdly.data.dao.relational.sqlserver;
+package edu.uco.artdly.data.dao.relational.postgresql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +14,11 @@ import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.data.dao.UserDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.UserDTO;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 
-public class UserSqlServerDAO  extends DAORelational implements UserDAO {
+public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 
-	protected UserSqlServerDAO(Connection connection) {
+	protected UserPostgresqlDAO(Connection connection) {
 		super(connection);
 	
 	}
@@ -40,7 +41,7 @@ public class UserSqlServerDAO  extends DAORelational implements UserDAO {
             preparedStatement.executeUpdate();
 
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(""); //TODO crear excepcion
         } catch (Exception exception) {
             throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
         }
@@ -95,9 +96,9 @@ public class UserSqlServerDAO  extends DAORelational implements UserDAO {
         sqlBuilder.append("       us.mail AS UserMail");
         sqlBuilder.append("       us.username AS UserNickname");
         sqlBuilder.append("       us.password AS UserPassword");
-        sqlBuilder.append("       us.birthDate AS UserBitrh");
+        sqlBuilder.append("       us.birthDate AS UserBirthdate");
         sqlBuilder.append("       us.description AS UserDescription");
-   //     sqlBuilder.append("       us.isPrivate AS ??????????");
+        sqlBuilder.append("       us.isPrivate AS UserIsPrivate");
         sqlBuilder.append("FROM user us"); // revisar si está bien
 }
     private final void createWhere(final StringBuilder sqlBuilder, final UserDTO user, final List<Object> parameters){
@@ -107,56 +108,56 @@ public class UserSqlServerDAO  extends DAORelational implements UserDAO {
         if(!ObjectHelper.isNull(user)){
 
             if (!UUIDHelper.isDefaultUUID(user.getId())){
-                sqlBuilder.append("WHERE id = ? ");
+                sqlBuilder.append("WHERE UserId = ? ");
                 setWhere = false;
                 parameters.add(user.getIdAsString());
             }
 
-            if (!UUIDHelper.isDefaultUUID(user.getName())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
+            if (!ObjectHelper.isNull(user.getName())){
+                sqlBuilder.append(setWhere ? "WHERE UserName" : "AND ").append("name = ? ");
                 setWhere = false;
                 parameters.add(user.getName());
             }
 
-            if (!UUIDHelper.isDefaultUUID(user.getLastName())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("lastName = ? ");
+            if (!ObjectHelper.isNull(user.getLastName())){
+                sqlBuilder.append(setWhere ? "WHERE UserLastName" : "AND ").append("lastName = ? ");
                 parameters.add(user.getLastName());
             }
             
-            if (!UUIDHelper.isDefaultUUID(user.getMail())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("mail = ? ");
+            if (!ObjectHelper.isNull(user.getMail())){
+                sqlBuilder.append(setWhere ? "WHERE UserMail" : "AND ").append("mail = ? ");
                 setWhere = false;
                 parameters.add(user.getMail());
             }
             
-            if (!UUIDHelper.isDefaultUUID(user.getUsername())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("username = ? ");
+            if (!ObjectHelper.isNull(user.getUsername())){
+                sqlBuilder.append(setWhere ? "WHERE UserNickname" : "AND ").append("username = ? ");
                 setWhere = false;
                 parameters.add(user.getUsername());
             }
             
-            if (!UUIDHelper.isDefaultUUID(user.getPassword())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("password = ? ");
+            if (!ObjectHelper.isNull(user.getPassword())){
+                sqlBuilder.append(setWhere ? "WHERE UserPassword" : "AND ").append("password = ? ");
                 setWhere = false;
                 parameters.add(user.getPassword());
             }
             
-            if (!UUIDHelper.isDefaultUUID(user.getBirthDate())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("birthDate = ? ");
+            if (!ObjectHelper.isNull(user.getBirthDate())){
+                sqlBuilder.append(setWhere ? "WHERE UserBirthdate" : "AND ").append("birthDate = ? ");
                 setWhere = false;
                 parameters.add(user.getBirthDate().toString());
             }
             
-            if (!UUIDHelper.isDefaultUUID(user.getDescription())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("description = ? ");
+            if (!ObjectHelper.isNull(user.getDescription())){
+                sqlBuilder.append(setWhere ? "WHERE UserDescription" : "AND ").append("description = ? ");
                 setWhere = false;
                 parameters.add(user.getDescription());
             }
-       /*     if (!UUIDHelper.isDefaultUUID(user.isPrivate())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("isPrivate = ? ");
+            if (!ObjectHelper.isNull(user.isPrivate())){
+                sqlBuilder.append(setWhere ? "WHERE UserIsPrivate" : "AND ").append("isPrivate = ? ");
                 setWhere = false;
                 parameters.add(user.isPrivate());
-            }*/
+            }
 
             
 
@@ -218,9 +219,9 @@ public class UserSqlServerDAO  extends DAORelational implements UserDAO {
                                     resultSet.getString("UserMail"),
                                     resultSet.getString("UserNickname"),
                                     resultSet.getString("UserPassword"),
-                                    resultSet.getString("UserBitrh"),
-                                    resultSet.getString("UserDescription"));
-                                 //   resultSet.getString("isPrivate"));
+                                    resultSet.getDate("UserBitrh"),
+                                    resultSet.getString("UserDescription"),
+                                    resultSet.getBoolean("UserIsPrivate"));
             
         } catch (SQLException exception) {
             throw DataCustomException.CreateTechnicalException(null, exception); //TODO

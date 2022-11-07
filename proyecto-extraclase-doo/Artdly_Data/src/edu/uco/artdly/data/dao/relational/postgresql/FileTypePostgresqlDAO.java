@@ -1,34 +1,34 @@
-package edu.uco.artdly.data.dao.relational.sqlserver;
+package edu.uco.artdly.data.dao.relational.postgresql;
 
 import java.sql.Connection;
 import java.util.List;
 import java.util.UUID;
 
-import edu.uco.artdly.data.dao.ArtworkDAO;
+import edu.uco.artdly.data.dao.FileTypeDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
-import edu.uco.artdly.domain.ArtworkDTO;
+import edu.uco.artdly.domain.FileTypeDTO;
 
-public class ArtworkSqlServerDAO  extends DAORelational implements ArtworkDAO {
+public class FileTypePostgresqlDAO extends DAORelational implements FileTypeDAO {
 
-	protected ArtworkSqlServerDAO(Connection connection) {
+	protected FileTypePostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void create(ArtworkDTO artwork) {
+	public void create(FileTypeDTO filetype) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<ArtworkDTO> find(ArtworkDTO artwork) {
+	public List<FileTypeDTO> find(FileTypeDTO filetype) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(ArtworkDTO artwork) {
+	public void update(FileTypeDTO filetype) {
 		// TODO Auto-generated method stub
 		
 	}

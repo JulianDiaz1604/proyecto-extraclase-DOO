@@ -1,4 +1,4 @@
-package edu.uco.artdly.data.dao.relational.sqlserver;
+package edu.uco.artdly.data.dao.relational.postgresql;
 
 import java.sql.Connection;
 import java.util.List;
@@ -7,9 +7,9 @@ import edu.uco.artdly.data.dao.CategoryDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.CategoryDTO;
 
-public class CategorySqlServerDAO  extends DAORelational implements CategoryDAO {
+public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO {
 
-	protected CategorySqlServerDAO(Connection connection) {
+	protected CategoryPostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
