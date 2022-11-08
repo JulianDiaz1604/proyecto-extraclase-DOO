@@ -3,12 +3,13 @@ package edu.uco.artdly.domain.builder;
 import java.util.UUID;
 
 import edu.uco.artdly.domain.FileDTO;
+import edu.uco.artdly.domain.FileTypeDTO;
 
 public class FileDTOBuilder {
     
     private UUID id;
     private String pathFile;
-    private String typeFile;
+    private FileTypeDTO typeFile;
 
     public FileDTOBuilder(){
         super();
@@ -28,7 +29,7 @@ public class FileDTOBuilder {
         return this;
     }
 
-    public final FileDTOBuilder setTypeFile(String typeFile) {
+    public final FileDTOBuilder setTypeFile(FileTypeDTO typeFile) {
         this.typeFile = typeFile;
         return this;
     }

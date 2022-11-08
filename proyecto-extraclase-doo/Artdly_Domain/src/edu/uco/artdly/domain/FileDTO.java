@@ -11,23 +11,23 @@ public class FileDTO {
     
     private UUID id;
     private String pathFile;
-    private String typeFile;
+    private FileTypeDTO typeFile;
 
     public FileDTO(){
         setId(getNewUUID());
     }
 
-    public FileDTO(final UUID id, final String pathFile, final String typeFile){
+    public FileDTO(final UUID id, final String pathFile, final FileTypeDTO typeFile){
         setId(id);
         setPathFile(pathFile);
         setTypeFile(typeFile);
     }
 
-    public static final FileDTO create(final UUID id, final String pathFile, final String typeFile){
+    public static final FileDTO create(final UUID id, final String pathFile, final FileTypeDTO typeFile){
         return new FileDTO(id, pathFile, typeFile);
     }
 
-    public static final FileDTO create(final String id, final String pathFile, final String typeFile){
+    public static final FileDTO create(final String id, final String pathFile, final FileTypeDTO typeFile){
         return new FileDTO(getUUIDFromString(id), pathFile, typeFile);
     }
 
@@ -43,10 +43,10 @@ public class FileDTO {
     public void setPathFile(String pathFile) {
         this.pathFile = pathFile;
     }
-    public String getTypeFile() {
+    public FileTypeDTO getTypeFile() {
         return typeFile;
     }
-    public void setTypeFile(String typeFile) {
+    public void setTypeFile(FileTypeDTO typeFile) {
         this.typeFile = typeFile;
     }
     public final String getIdAsString() {

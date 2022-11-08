@@ -6,6 +6,7 @@ import java.util.UUID;
 import edu.uco.artdly.domain.FileTypeDTO;
 
 public interface FileTypeDAO {
+	
 	void create(FileTypeDTO filetype);
 
 	List<FileTypeDTO> find(FileTypeDTO filetype);

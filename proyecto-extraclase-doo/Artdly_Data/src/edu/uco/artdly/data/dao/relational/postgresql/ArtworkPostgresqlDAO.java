@@ -16,6 +16,7 @@ import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.ArtworkTypeDTO;
 import edu.uco.artdly.domain.FileDTO;
+import edu.uco.artdly.domain.FileTypeDTO;
 import edu.uco.artdly.domain.UserDTO;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 
@@ -27,7 +28,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 
 	@Override
 	public void create(ArtworkDTO artwork) {
-		final var sql = "INSERT INTO ARTWORK(id, tittle, description, publicationDate, file, artworkType, user) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		final var sql = "INSERT INTO artwork(id, tittle, description, publicationDate, file, artworkType, user) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -40,10 +41,10 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 			preparedStatement.setString(7, artwork.getUser().getIdAsString());
 			preparedStatement.executeUpdate();
 
-		} catch (SQLException e) {
-			// TODO: handle exception
-		} catch (Exception e) {
-			//TODO
+		} catch (SQLException exception) {
+			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+		} catch (Exception exception) {
+			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
 		}
 	}
 
@@ -75,16 +76,17 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 			prepareStatement.setString(7, artwork.getUser().getIdAsString());
 			prepareStatement.executeUpdate();
 
-		} catch (SQLException e) {
-			// TODO: handle exception
-		} catch (Exception e) {
-			//TODO
+		} catch (SQLException exception) {
+			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+		} catch (Exception exception) {
+			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
 		}
 		
 	}
 
 	@Override
 	public void delete(UUID id) {
+		
 		final var sql = "DELETE FROM artwork WHERE id = ?";
 
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
@@ -107,7 +109,8 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		sqlBuilder.append("       art.publicationDate AS ArtworkPublicationDate, ");
 		sqlBuilder.append("       art.fileId AS FileId, ");
 		sqlBuilder.append("       fil.pathFile AS FilePathFile, ");
-		sqlBuilder.append("       fil.typeFile AS FileTypeFile, ");
+		sqlBuilder.append("       fil.typeFileId AS FileTypeFileId, ");
+		sqlBuilder.append("       fit.fileType AS FileTypeName, ");
 		sqlBuilder.append("       art.artworkTypeId AS ArtworkTypeId, ");
 		sqlBuilder.append("       aty.name AS ArtworkTypeName, ");
 		sqlBuilder.append("       art.userId AS ArtworkUserId, ");
@@ -121,6 +124,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
         sqlBuilder.append("       usr.isPrivate AS UserIsPrivate ");
 		sqlBuilder.append("FROM artwork art ");
 		sqlBuilder.append("JOIN file fil ON art.fileId = fil.id ");
+		sqlBuilder.append("JOIN filetype fit ON fil.typeFileId = fit.id ");
 		sqlBuilder.append("JOIN artworktype aty ON art.artworkTypeId = aty.id ");
 		sqlBuilder.append("JOIN user usr ON art.userId = usr.id ");
 	}
@@ -221,10 +225,23 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 
             return FileDTO.create(resultSet.getString("FileId"), 
                                   resultSet.getString("FilePathFile"), 
-                                  resultSet.getString("FileTypeFile"));
+                                  fillFileTypeDTO(resultSet));
             
         } catch (SQLException exception) {
             throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+        }
+
+    }
+
+	private final FileTypeDTO fillFileTypeDTO(final ResultSet resultSet){
+
+        try {
+
+            return FileTypeDTO.create(resultSet.getString("FileTypeFileId"), 
+                                  		 resultSet.getString("FileTypeName"));
+            
+        } catch (SQLException exception) {
+            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
         }
 
     }
