@@ -28,6 +28,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 
 	@Override
 	public void create(ArtworkDTO artwork) {
+
 		final var sql = "INSERT INTO artwork(id, tittle, description, publicationDate, file, artworkType, user) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
@@ -46,6 +47,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		} catch (Exception exception) {
 			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
 		}
+
 	}
 
 	@Override
@@ -59,10 +61,12 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		createOrderBy(sqlBuilder);
 
 		return prepareAndExecuteQuery(sqlBuilder, parameters);
+		
 	}
 
 	@Override
 	public void update(ArtworkDTO artwork) {
+
 		final var sql = "UPDATE artwork SET id = ?, tittle = ?, description = ?, publicationDate = ?, fileId = ?, artworkTypeId = ?, userId = ? ";
 		
 		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
@@ -89,10 +93,10 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		
 		final var sql = "DELETE FROM artwork WHERE id = ?";
 
-		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
+		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
             
-            preparedStatement.setString(1, getUUIDAsString(id));
-			preparedStatement.executeUpdate();
+            prepareStatement.setString(1, getUUIDAsString(id));
+			prepareStatement.executeUpdate();
 
         } catch (SQLException exception) {
             throw DataCustomException.CreateTechnicalException(null, exception); //TODO

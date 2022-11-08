@@ -12,21 +12,18 @@ import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.data.dao.CategoryDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
-import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.CategoryDTO;
-import edu.uco.artdly.domain.UserDTO;
 
 public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO {
 
 	public CategoryPostgresqlDAO(Connection connection) {
 		super(connection);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void create(CategoryDTO category) {
-		// TODO Auto-generated method stub
-		final var sql ="INSERT INTO CATEGORY (id, name, description) VALUES (?, ?. ?)";
+		
+		final var sql ="INSERT INTO category (id, name, description) VALUES (?, ?. ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -36,9 +33,9 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
             preparedStatement.executeUpdate();
             
 		} catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(""); 
+            throw DataCustomException.CreateTechnicalException("");  //TODO: create message
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); 
+            throw DataCustomException.CreateTechnicalException(null, exception);  //TODO create message
         }
 		
 	}
@@ -46,6 +43,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 
 	@Override
 	public List<CategoryDTO> find(CategoryDTO category) {
+
         var parameters = new ArrayList<Object>();
         final var sqlBuilder = new StringBuilder();
 
@@ -54,6 +52,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
         createOrderBy(sqlBuilder);
 
         return prepareAndExecuteQuery(sqlBuilder, parameters);
+
 	}
 
 	@Override
@@ -66,18 +65,18 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 			preparedStatement.setString(3, category.getDescription());
 			
 		} catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); 
+            throw DataCustomException.CreateTechnicalException(null, exception);  //TODO create message
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); 
+            throw DataCustomException.CreateTechnicalException(null, exception);  //TODO create message
         }
 		
 	}
 	
 	private final void createSelectFrom(final StringBuilder sqlBuilder) {
-		sqlBuilder.append("SELECT art.id AS CategoryId");
-		sqlBuilder.append("       art.name AS CategoryName");
-		sqlBuilder.append("       art.description AS Category");
-		sqlBuilder.append("FROM category us ");
+		sqlBuilder.append("SELECT cat.id AS CategoryId, ");
+		sqlBuilder.append("       cat.name AS CategoryName, ");
+		sqlBuilder.append("       cat.description AS CategoryDescription ");
+		sqlBuilder.append("FROM category cat ");
 	}
 
 
@@ -88,7 +87,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	    if(!ObjectHelper.isNull(category)){
 	
 	        if (!UUIDHelper.isDefaultUUID(category.getId())){
-	            sqlBuilder.append("WHERE Category = ? ");
+	            sqlBuilder.append("WHERE id = ? ");
 	            setWhere = false;
 	            parameters.add(category.getIdAsString());
 	        }
@@ -138,7 +137,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	        return executeQuery(preparedStatement);
 	
 	    } catch (Exception exception) {
-	        throw DataCustomException.CreateTechnicalException(null, exception);
+	        throw DataCustomException.CreateTechnicalException(null, exception); // TODO create message
 	    }
 	
 	}
@@ -184,8 +183,8 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
         try {
 
             return CategoryDTO.create(resultSet.getString("CategoryId"), 
-                                  resultSet.getString("CategoryName"), 
-                                  resultSet.getString("CategoryDescription"));
+                                  	  resultSet.getString("CategoryName"), 
+                                  	  resultSet.getString("CategoryDescription"));
             
         } catch (SQLException exception) {
             throw DataCustomException.CreateTechnicalException(null, exception); //TODO

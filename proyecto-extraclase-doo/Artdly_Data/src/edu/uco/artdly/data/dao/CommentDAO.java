@@ -10,7 +10,6 @@ public interface CommentDAO {
 
 	List<CommentDTO> find(CommentDTO comment);
 
-
 	void delete(UUID id);
 
 }
