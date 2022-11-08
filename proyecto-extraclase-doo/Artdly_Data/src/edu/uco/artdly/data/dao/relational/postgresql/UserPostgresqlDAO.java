@@ -122,7 +122,7 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
                 parameters.add(user.getLastName());
             }
             if (!ObjectHelper.isNull(user.getMail())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("mail = ? ");
                 setWhere = false;
                 parameters.add(user.getMail());
             }

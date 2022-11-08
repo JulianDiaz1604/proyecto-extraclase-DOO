@@ -257,7 +257,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
                                   resultSet.getBoolean("UserIsPrivate"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
         }
 
     }

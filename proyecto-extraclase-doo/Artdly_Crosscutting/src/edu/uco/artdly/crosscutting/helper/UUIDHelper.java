@@ -2,6 +2,8 @@ package edu.uco.artdly.crosscutting.helper;
 
 import java.util.UUID;
 
+import edu.uco.artdly.crosscutting.exception.data.CrosscuttingCustomException;
+
 import static edu.uco.artdly.crosscutting.helper.ObjectHelper.getDefaultIfNull;
 
 public class UUIDHelper {
@@ -38,13 +40,11 @@ public class UUIDHelper {
 
 	public static final UUID getUUIDFromString(final String value){
 		try {
-			return UUID.fromString("StringHelper.getDefaultString(value, DEFAULT_UUID_AS_STRING)");//TODO
+			return UUID.fromString("StringHelper.getDefaultString(value, DEFAULT_UUID_AS_STRING)");
 		} catch(IllegalArgumentException exception) {
-			//throw CrosscuttingCustomException.CreateTechnicalException(Messages.UUIDHelper.TECHNICAL_UUID_FROM_STRING_INVALID);
-			throw new RuntimeException(exception);
+			throw CrosscuttingCustomException.CreateTechnicalException(value, exception);
 		} catch (Exception exception){
-			//throw CrosscuttingCustomException.CreateTechnicalException(Messages.UUIDHelper.TECHNICAL_UUID_FROM_STRING_UNEXPECTED_ERROR);
-			throw new RuntimeException(exception);
+			throw CrosscuttingCustomException.CreateTechnicalException(value, exception);
 		}
 	}
 

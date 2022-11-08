@@ -21,7 +21,7 @@ public class PostgresqlConnectionHelper {
         } catch (final SQLException exception) {
             throw CrosscuttingCustomException.CreateTechnicalException(/**Messages.SqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED,exception**/"");
                     
-        }
+        }//TODO
     }
 
     public static final void closeConnection(final Connection connection){

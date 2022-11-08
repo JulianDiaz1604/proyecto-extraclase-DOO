@@ -11,7 +11,7 @@ public class DAORelational {
     protected DAORelational(final Connection connection){
 
         if(!PostgresqlConnectionHelper.connectionIsOpen(connection)){
-            throw new RuntimeException();
+            throw new RuntimeException(); //TODO: especificar excepcion
         }
 
         this.connection = connection;
