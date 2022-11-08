@@ -10,7 +10,7 @@ import edu.uco.artdly.domain.FileDTO;
 
 public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 
-	protected FilePostgresqlDAO(Connection connection) {
+	public FilePostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import edu.uco.artdly.crosscutting.exception.data.CrosscuttingCustomException;
 import edu.uco.artdly.data.dao.ArtworkDAO;
 import edu.uco.artdly.data.dao.ArtworkTypeDAO;
 import edu.uco.artdly.data.dao.CategoryArtworkDAO;
@@ -12,6 +13,14 @@ import edu.uco.artdly.data.dao.CommentDAO;
 import edu.uco.artdly.data.dao.FileDAO;
 import edu.uco.artdly.data.dao.LikeDAO;
 import edu.uco.artdly.data.dao.UserDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.ArtworkPostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.ArtworkTypePostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.CategoryArtworkPostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.CategoryPostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.CommentPostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.FilePostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.LikePostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.UserPostgresqlDAO;
 
 public class PostgreSQLDAOFactory extends DAOFactory {
 
@@ -35,76 +44,77 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public void initTransaction() {
         try {
-            
-        } catch (Exception e) {
+            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.initTrasaction(connection);
+        } catch (CrosscuttingCustomException e) {
             // TODO: handle exception
         }
     }
 
     @Override
     public void confirmTransaction() {
-        // TODO Auto-generated method stub
-        
+        try {
+            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.commitTrasaction(connection);
+        } catch (CrosscuttingCustomException e) {
+            // TODO: handle exception
+        }
     }
 
     @Override
     public void closeConection() {
-        // TODO Auto-generated method stub
-        
+        try {
+            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.closeConnection(connection);
+        } catch (CrosscuttingCustomException e) {
+            // TODO: handle exception
+        }
     }
 
     @Override
     public void cancelTransaction() {
-        // TODO Auto-generated method stub
-        
+        try {
+            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.rollbackTrasaction(connection);
+        } catch (CrosscuttingCustomException e) {
+            // TODO: handle exception
+        }
     }
 
     @Override
     public ArtworkDAO getArtworkDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new ArtworkPostgresqlDAO(connection);
     }
 
     @Override
     public ArtworkTypeDAO getArtworkTypeDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new ArtworkTypePostgresqlDAO(connection);
     }
 
     @Override
     public CategoryArtworkDAO getCategoryArtworkDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new CategoryArtworkPostgresqlDAO(connection);
     }
 
     @Override
     public CategoryDAO getCategoryDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new CategoryPostgresqlDAO(connection);
     }
 
     @Override
     public CommentDAO getCommentDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new CommentPostgresqlDAO(connection);
     }
 
     @Override
     public FileDAO getFileDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new FilePostgresqlDAO(connection);
     }
 
     @Override
     public LikeDAO getLikeDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new LikePostgresqlDAO(connection);
     }
 
     @Override
     public UserDAO getUserDAO() {
-        // TODO Auto-generated method stub
-        return null;
+        return new UserPostgresqlDAO(connection);
     }
     
 }

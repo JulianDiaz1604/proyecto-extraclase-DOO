@@ -9,7 +9,7 @@ import edu.uco.artdly.domain.ArtworkTypeDTO;
 
 public class ArtworkTypePostgresqlDAO extends DAORelational implements ArtworkTypeDAO {
 
-	protected ArtworkTypePostgresqlDAO(Connection connection) {
+	public ArtworkTypePostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

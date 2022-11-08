@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 import edu.uco.artdly.crosscutting.exception.data.CrosscuttingCustomException;
 
-public class PostgreSQLConnectionHelper {
+public class PostgresqlConnectionHelper {
     
-    private PostgreSQLConnectionHelper(){
+    private PostgresqlConnectionHelper(){
         super();
     } 
 

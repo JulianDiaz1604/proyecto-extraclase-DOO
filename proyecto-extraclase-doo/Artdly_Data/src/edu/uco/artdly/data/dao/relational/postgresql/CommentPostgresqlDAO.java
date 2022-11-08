@@ -10,7 +10,7 @@ import edu.uco.artdly.domain.CommentDTO;
 
 public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 
-	protected CommentPostgresqlDAO(Connection connection) {
+	public CommentPostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

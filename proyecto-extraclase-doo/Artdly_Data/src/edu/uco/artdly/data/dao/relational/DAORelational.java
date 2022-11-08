@@ -2,7 +2,7 @@ package edu.uco.artdly.data.dao.relational;
 
 import java.sql.Connection;
 
-import edu.uco.artdly.crosscutting.helper.PostgreSQLConnectionHelper;
+import edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper;
 
 public class DAORelational {
     
@@ -10,7 +10,7 @@ public class DAORelational {
 
     protected DAORelational(final Connection connection){
 
-        if(!PostgreSQLConnectionHelper.connectionIsOpen(connection)){
+        if(!PostgresqlConnectionHelper.connectionIsOpen(connection)){
             throw new RuntimeException();
         }
 

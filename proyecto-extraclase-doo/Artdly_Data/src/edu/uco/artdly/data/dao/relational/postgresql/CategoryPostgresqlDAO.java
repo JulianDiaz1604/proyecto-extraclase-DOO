@@ -9,7 +9,7 @@ import edu.uco.artdly.domain.CategoryDTO;
 
 public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO {
 
-	protected CategoryPostgresqlDAO(Connection connection) {
+	public CategoryPostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

@@ -10,7 +10,7 @@ import edu.uco.artdly.domain.LikeDTO;
 
 public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 
-	protected LikePostgresqlDAO(Connection connection) {
+	public LikePostgresqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

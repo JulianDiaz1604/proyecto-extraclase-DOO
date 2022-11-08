@@ -10,7 +10,7 @@ import edu.uco.artdly.domain.CategoryArtworkDTO;
 
 public class CategoryArtworkPostgresqlDAO extends DAORelational implements CategoryArtworkDAO {
 
-	protected CategoryArtworkPostgresqlDAO(Connection connection) {
+	public CategoryArtworkPostgresqlDAO(Connection connection) {
 		super(connection);
 
 	}
