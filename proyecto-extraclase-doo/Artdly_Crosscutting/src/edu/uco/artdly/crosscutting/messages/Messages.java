@@ -51,5 +51,14 @@ public class Messages {
         public static final String TECHNICAL_UUID_FROM_STRING_INVALID = "The UUID to convert doesn't have a correct format";
         public static final String TECHNICAL_UUID_FROM_STRING_UNEXPECTED_ERROR = "There was an unexpected error";
         }
-    
+    public static class PostgreSQLDAOFactory{
+        private PostgreSQLDAOFactory() {
+            super();
+        }
+        public static final String TECHNICAL_PROBLEM_CLOSE_CONNECTION = "There was a problem trying to close connection with the current connection in SQLServerDAOFactory";
+        public static final String TECHNICAL_PROBLEM_CONFIRM_TRANSACTION = "There was a problem trying to confirm trasaction with the current connection in SQLServerDAOFactory";
+        public static final String TECHNICAL_PROBLEM_CONNECT_DATABASE = "There was a problem trying to connect to Data base ";
+        public static final String TECHNICAL_PROBLEM_ROLLBACK_TRANSACTION = "There was a problem trying to rollback transaction";
+        public static final String TECHNICAL_PROBLEM_INIT_TRANSACTION = "There was a problem trying to init trasaction with the current connection in SQLServerDAOFactory";
+    }
 }

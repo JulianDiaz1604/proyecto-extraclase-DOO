@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import edu.uco.artdly.crosscutting.exception.data.CrosscuttingCustomException;
+import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.ArtworkDAO;
 import edu.uco.artdly.data.dao.ArtworkTypeDAO;
 import edu.uco.artdly.data.dao.CategoryArtworkDAO;
@@ -36,8 +38,8 @@ public class PostgreSQLDAOFactory extends DAOFactory {
         final String url = "postgres://ohqbpnkwqkxoly:fa44911ab8a2ae0393cc9d572c147ecdc3b36d77228d2059351ecccebbf45bcb@ec2-44-209-158-64.compute-1.amazonaws.com:5432/d6be0iacrla2jt";
         try {
             connection = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException exception) {
+            throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_CONNECT_DATABASE, exception);
         }
     }
 
@@ -45,8 +47,8 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     public void initTransaction() {
         try {
             edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.initTrasaction(connection);
-        } catch (CrosscuttingCustomException e) {
-            // TODO: handle exception
+        } catch (CrosscuttingCustomException exception) {
+            throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_INIT_TRANSACTION, exception);
         }
     }
 
@@ -54,8 +56,8 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     public void confirmTransaction() {
         try {
             edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.commitTrasaction(connection);
-        } catch (CrosscuttingCustomException e) {
-            // TODO: handle exception
+        } catch (CrosscuttingCustomException exception) {
+            throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_CONFIRM_TRANSACTION, exception);
         }
     }
 
@@ -63,8 +65,8 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     public void closeConection() {
         try {
             edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.closeConnection(connection);
-        } catch (CrosscuttingCustomException e) {
-            // TODO: handle exception
+        } catch (CrosscuttingCustomException exception) {
+            throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_CLOSE_CONNECTION, exception);
         }
     }
 
@@ -72,8 +74,8 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     public void cancelTransaction() {
         try {
             edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.rollbackTrasaction(connection);
-        } catch (CrosscuttingCustomException e) {
-            // TODO: handle exception
+        } catch (CrosscuttingCustomException exception) {
+            throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_ROLLBACK_TRANSACTION, exception);
         }
     }
 
