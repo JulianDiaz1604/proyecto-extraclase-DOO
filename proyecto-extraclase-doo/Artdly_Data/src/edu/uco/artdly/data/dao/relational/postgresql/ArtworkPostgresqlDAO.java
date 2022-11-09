@@ -203,6 +203,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
             throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_ARTWORK, exception); 
 
     }
+    }
 
     private final ArtworkDTO fillArtworkDTO(final ResultSet resultSet){
 
