@@ -46,7 +46,7 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public void initTransaction() {
         try {
-            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.initTrasaction(connection);
+            edu.uco.artdly.crosscutting.helper.SqlConnectionHelper.initTrasaction(connection);
         } catch (CrosscuttingCustomException exception) {
             throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_INIT_TRANSACTION, exception);
         }
@@ -55,7 +55,7 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public void confirmTransaction() {
         try {
-            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.commitTrasaction(connection);
+            edu.uco.artdly.crosscutting.helper.SqlConnectionHelper.commitTrasaction(connection);
         } catch (CrosscuttingCustomException exception) {
             throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_CONFIRM_TRANSACTION, exception);
         }
@@ -64,7 +64,7 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public void closeConection() {
         try {
-            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.closeConnection(connection);
+            edu.uco.artdly.crosscutting.helper.SqlConnectionHelper.closeConnection(connection);
         } catch (CrosscuttingCustomException exception) {
             throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_CLOSE_CONNECTION, exception);
         }
@@ -73,7 +73,7 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public void cancelTransaction() {
         try {
-            edu.uco.artdly.crosscutting.helper.PostgresqlConnectionHelper.rollbackTrasaction(connection);
+            edu.uco.artdly.crosscutting.helper.SqlConnectionHelper.rollbackTrasaction(connection);
         } catch (CrosscuttingCustomException exception) {
             throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_ROLLBACK_TRANSACTION, exception);
         }
