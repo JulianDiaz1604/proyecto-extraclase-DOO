@@ -1,5 +1,7 @@
 package edu.uco.artdly.data.daofactory;
 
+import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.ArtworkDAO;
 import edu.uco.artdly.data.dao.ArtworkTypeDAO;
 import edu.uco.artdly.data.dao.CategoryArtworkDAO;
@@ -8,7 +10,6 @@ import edu.uco.artdly.data.dao.CommentDAO;
 import edu.uco.artdly.data.dao.FileDAO;
 import edu.uco.artdly.data.dao.LikeDAO;
 import edu.uco.artdly.data.dao.UserDAO;
-//import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 
 public abstract class DAOFactory {
@@ -19,22 +20,22 @@ public abstract class DAOFactory {
 
         switch(factory){
             case SQLSERVER: 
-                throw new RuntimeException(); //TODO
+                throw DataCustomException.CreateTechnicalException(Messages.DAOFactory.TECHNICAL_SQLSERVER_NOT_IMPLEMENTED);
             case CASSANDRA:    
-                throw new RuntimeException(/**Messages.DAOFactory.TECHNICAL_CASSANDRA_NOT_IMPLEMENTED**/);
+                throw DataCustomException.CreateTechnicalException(Messages.DAOFactory.TECHNICAL_CASSANDRA_NOT_IMPLEMENTED);
             case MARIADB: 
-                throw new RuntimeException(/**Messages.DAOFactory.TECHNICAL_MARIADB_NOT_IMPLEMENTED**/);
+                throw DataCustomException.CreateTechnicalException(Messages.DAOFactory.TECHNICAL_MARIADB_NOT_IMPLEMENTED) ;
             case MONGODB: 
-                throw new RuntimeException(/**Messages.DAOFactory.TECHNICAL_MONGODB_NOT_IMPLEMENTED**/);
+                throw DataCustomException.CreateTechnicalException(Messages.DAOFactory.TECHNICAL_MONGODB_NOT_IMPLEMENTED) ;
             case MYSQL: 
-                throw new RuntimeException(/**Messages.DAOFactory.TECHNICAL_MYSQL_NOT_IMPLEMENTED**/);
+                throw DataCustomException.CreateTechnicalException(Messages.DAOFactory.TECHNICAL_MYSQL_NOT_IMPLEMENTED) ;
             case ORACLE: 
-                throw new RuntimeException(/**Messages.DAOFactory.TECHNICAL_ORACLE_NOT_IMPLEMENTED**/);
+                throw DataCustomException.CreateTechnicalException(Messages.DAOFactory.TECHNICAL_ORACLE_NOT_IMPLEMENTED) ;
             case POSTGRESQL: 
                 daoFactory = new PostgreSQLDAOFactory();
                 break;
             default: 
-                throw new RuntimeException(/**Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY**/);
+                throw DataCustomException.CreateTechnicalException(Messages.DAOFactory.TECHNICAL_UNEXPECTED_DAOFACTORY) ;
         }
 
         return daoFactory;
