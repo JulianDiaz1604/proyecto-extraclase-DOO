@@ -61,4 +61,12 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_ROLLBACK_TRANSACTION = "There was a problem trying to rollback transaction";
         public static final String TECHNICAL_PROBLEM_INIT_TRANSACTION = "There was a problem trying to init trasaction with the current connection in SQLServerDAOFactory";
     }
+    public static class ArtworkPostgresqlDAO{
+        private ArtworkPostgresqlDAO() {
+            super();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_ARTWORK = "There was a problem trying to create the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_ARTWORK = "There was a unexpected problem trying to create the artwork";
+
+    }
 }

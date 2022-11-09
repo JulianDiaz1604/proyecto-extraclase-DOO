@@ -19,12 +19,12 @@ public class DataCustomException extends ArtdlyCustomException {
 	    return new DataCustomException(null, technicalMessage, new Exception());
 	    
 	}
-	public static final ArtdlyCustomException CreateTechnicalException(final String technicalMessage, final Exception rootException ) {
+	public static final ArtdlyCustomException CreateTechnicalException(final String technicalMessage, final Exception rootException) {
 	    return new DataCustomException(null, technicalMessage,rootException);
 	    
 	}
 	public static final ArtdlyCustomException Create(final String userMessage, final String technicalMessage) {
-	    return new DataCustomException(userMessage, technicalMessage, new Exception());
+	    return new DataCustomException(userMessage, technical0Message, new Exception());
 	    
 	}
 	public static final ArtdlyCustomException Create(final String userMessage, final String technicalMessage, final Exception rootException ) {

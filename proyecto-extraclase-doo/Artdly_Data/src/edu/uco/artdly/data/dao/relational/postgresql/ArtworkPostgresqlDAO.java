@@ -11,6 +11,7 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.ArtworkDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.ArtworkDTO;
@@ -43,9 +44,9 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_CREATE_ARTWORK, exception);
 		} catch (Exception exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_ARTWORK, exception); 
 		}
 
 	}
@@ -61,7 +62,6 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		createOrderBy(sqlBuilder);
 
 		return prepareAndExecuteQuery(sqlBuilder, parameters);
-		
 	}
 
 	@Override
