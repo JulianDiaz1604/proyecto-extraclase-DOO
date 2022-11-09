@@ -81,9 +81,9 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 			prepareStatement.executeUpdate();
 
 		} catch (SQLException exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_UPDATE_ARTWORK, exception); 
 		} catch (Exception exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_ARTWORK, exception); 
 		}
 		
 	}
@@ -99,9 +99,9 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 			prepareStatement.executeUpdate();
 
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_DELETE_ARTWORK, exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_ARTWORK, exception); //TODO
         }
 		
 	}
@@ -198,10 +198,9 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
             return results;
 
         } catch (final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLRESULTS_ARTWORK, exception); 
         } catch (final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
-        }
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_ARTWORK, exception); 
 
     }
 
@@ -218,7 +217,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
                                      fillUserDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLARTWORKDTO_ARTWORK, exception); 
         }
 
     }
@@ -232,7 +231,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
                                   fillFileTypeDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_ARTWORK, exception); 
         }
 
     }
@@ -245,7 +244,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
                                   		 resultSet.getString("FileTypeName"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILETYPEDTO_ARTWORK, exception); 
         }
 
     }
@@ -258,7 +257,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
                                   		 resultSet.getString("ArtworkTypeName"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_ARTWORK, exception); 
         }
 
     }
@@ -278,7 +277,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
                                   resultSet.getBoolean("UserIsPrivate"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLUSERDTO_ARTWORK, exception); 
         }
 
     }
@@ -292,7 +291,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
             return executeQuery(preparedStatement);
 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_ARTWORK, exception);
         }
 
     }
@@ -304,9 +303,9 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
                 preparedStatement.setObject(index + 1, parameters.get(index));
             }
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_SETPARAMETERSVALUES_ARTWORK, exception); 
         } catch(final Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_ARTWORK, exception); 
         }
     }
 
@@ -315,11 +314,11 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
         try (final var resultSet = preparedStatement.executeQuery()) {
             return fillResults(resultSet);
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_EXECUTEQUERY_ARTWORK, exception); 
         } catch(final DataCustomException exception) {
             throw exception;
         } catch(final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_ARTWORK, exception); 
         }
     }
 

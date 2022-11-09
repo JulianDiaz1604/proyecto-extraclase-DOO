@@ -67,6 +67,21 @@ public class Messages {
         }
         public static final String TECHNICAL_PROBLEM_CREATE_ARTWORK = "There was a problem trying to create the artwork";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_ARTWORK = "There was a unexpected problem trying to create the artwork";
-
+        public static final String TECHNICAL_PROBLEM_UPDATE_ARTWORK = "There was a problem trying to update the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_ARTWORK = "There was a unexpected problem trying to update the artwork";
+        public static final String TECHNICAL_PROBLEM_DELETE_ARTWORK = "There was a problem trying to delete the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_ARTWORK = "There was a unexpected problem trying to delete the artwork";
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_ARTWORK = "There was a problem trying to fillResults the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_ARTWORK = "There was a unexpected problem trying to fillResults the artwork";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKDTO_ARTWORK = "There was a problem trying to fillArtworkDTO the artwork";
+        public static final String TECHNICAL_PROBLEM_FILLFILEDTO_ARTWORK = "There was a problem trying to fillFileDTO the artwork";
+        public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_ARTWORK = "There was a problem trying to fillFileTypeDTO the artwork";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_ARTWORK = "There was a problem trying to fillArtworkTypeDTO the artwork";
+        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_ARTWORK = "There was a problem trying to fillUserDTO the artwork";
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_ARTWORK = "There was a problem trying to prepareAndExecuteQuery the artwork";
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_ARTWORK = "There was a problem trying to setParametersValues the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_ARTWORK = "There was a unexpected problem trying to setParametersValues the artwork";
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_ARTWORK = "There was a problem trying to executeQuery the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_ARTWORK = "There was a unexpected problem trying to executeQuery the artwork";
     }
 }
