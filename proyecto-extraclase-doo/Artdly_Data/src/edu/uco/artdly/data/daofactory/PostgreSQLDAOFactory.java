@@ -36,7 +36,6 @@ public class PostgreSQLDAOFactory extends DAOFactory {
         openConnection();
     }
 
-    //TODO - probar conexion
     @Override
     protected void openConnection() {
         final String url = "jdbc:postgresql://" + host + ":5432/" + database;
