@@ -27,6 +27,10 @@ import edu.uco.artdly.data.dao.relational.postgresql.UserPostgresqlDAO;
 public class PostgreSQLDAOFactory extends DAOFactory {
 
     private Connection connection;
+    private String host = "ec2-44-209-158-64.compute-1.amazonaws.com";
+    private String database = "d6be0iacrla2jt";
+    private String user = "ohqbpnkwqkxoly";
+    private String password = "fa44911ab8a2ae0393cc9d572c147ecdc3b36d77228d2059351ecccebbf45bcb";
 
     public PostgreSQLDAOFactory(){
         openConnection();
@@ -35,9 +39,9 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     //TODO - probar conexion
     @Override
     protected void openConnection() {
-        final String url = "postgres://ohqbpnkwqkxoly:fa44911ab8a2ae0393cc9d572c147ecdc3b36d77228d2059351ecccebbf45bcb@ec2-44-209-158-64.compute-1.amazonaws.com:5432/d6be0iacrla2jt";
+        final String url = "jdbc:postgresql://" + host + ":5432/" + database;
         try {
-            connection = DriverManager.getConnection(url);
+            connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException exception) {
             throw DataCustomException.CreateTechnicalException(Messages.PostgreSQLDAOFactory.TECHNICAL_PROBLEM_CONNECT_DATABASE, exception);
         }
