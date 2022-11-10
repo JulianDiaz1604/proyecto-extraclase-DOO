@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import edu.uco.artdly.crosscutting.exception.data.CrosscuttingCustomException;
+import edu.uco.artdly.crosscutting.exception.crosscutting.CrosscuttingCustomException;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.ArtworkDAO;

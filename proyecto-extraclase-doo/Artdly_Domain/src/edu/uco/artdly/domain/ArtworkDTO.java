@@ -19,7 +19,7 @@ public class ArtworkDTO {
     private UserDTO user;
 
     public ArtworkDTO(){
-        setId(getNewUUID());
+        setId(getDefaultUUID(id));
     }
 
     public ArtworkDTO(final UUID id, final String tittle, final String description, final Date publicationDate, 

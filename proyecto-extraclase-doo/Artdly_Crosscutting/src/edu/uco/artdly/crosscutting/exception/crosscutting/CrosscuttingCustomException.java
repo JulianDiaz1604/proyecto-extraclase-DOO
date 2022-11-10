@@ -1,4 +1,4 @@
-package edu.uco.artdly.crosscutting.exception.data;
+package edu.uco.artdly.crosscutting.exception.crosscutting;
 
 import edu.uco.artdly.crosscutting.enumeration.LayerException;
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;

@@ -2,10 +2,13 @@ package edu.uco.artdly.domain;
 
 import java.util.UUID;
 
+import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
 
 public class ArtworkTypeDTO {
     
@@ -13,12 +16,17 @@ public class ArtworkTypeDTO {
     private String name;
 
     public ArtworkTypeDTO(){
-        setId(getNewUUID());
+        setId(getDefaultUUID(id));
+        setName(EMPTY);
     }
 
     public ArtworkTypeDTO(final UUID id, final String name){
         setId(id);
         setName(name);
+    }
+
+    public static ArtworkTypeDTO create(UUID id) {
+        return new ArtworkTypeDTO(id, EMPTY);
     }
 
     public static final ArtworkTypeDTO create(final UUID id, final String name){

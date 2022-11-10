@@ -3,7 +3,7 @@ package edu.uco.artdly.crosscutting.helper;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import edu.uco.artdly.crosscutting.exception.data.CrosscuttingCustomException;
+import edu.uco.artdly.crosscutting.exception.crosscutting.CrosscuttingCustomException;
 import edu.uco.artdly.crosscutting.messages.Messages;
 
 public class SqlConnectionHelper {
