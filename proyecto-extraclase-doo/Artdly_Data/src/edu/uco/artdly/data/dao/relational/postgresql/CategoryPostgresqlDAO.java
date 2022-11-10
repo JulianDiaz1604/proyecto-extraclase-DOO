@@ -10,6 +10,7 @@ import java.util.List;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.CategoryDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.CategoryDTO;
@@ -33,9 +34,9 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
             preparedStatement.executeUpdate();
             
 		} catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException("");  //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_PROBLEM_CREATE_CATEGORY,exception);  
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);  //TODO create message
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_CATEGORY, exception);  
         }
 		
 	}
@@ -65,9 +66,9 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 			preparedStatement.setString(3, category.getDescription());
 			
 		} catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);  //TODO create message
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_PROBLEM_UPDATE_CATEGORY, exception);  
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);  //TODO create message
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_CATEGORY, exception);  
         }
 		
 	}
@@ -118,11 +119,11 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	    try (final var resultSet = preparedStatement.executeQuery()) {
 	        return fillResults(resultSet);
 	    } catch(final SQLException exception){
-	        throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+	        throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_PROBLEM_EXECUTEQUERY_CATEGORY, exception); 
 	    } catch(final DataCustomException exception) {
 	        throw exception;
 	    } catch(final Exception exception){
-	        throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+	        throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_CATEGORY, exception); 
 	    }
 	}
 
@@ -137,7 +138,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	        return executeQuery(preparedStatement);
 	
 	    } catch (Exception exception) {
-	        throw DataCustomException.CreateTechnicalException(null, exception); // TODO create message
+	        throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_CATEGORY, exception); 
 	    }
 	
 	}
@@ -148,9 +149,9 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	            preparedStatement.setObject(index + 1, parameters.get(index));
 	        }
 	    } catch(final SQLException exception){
-	        throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+	        throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_PROBLEM_SETPARAMETERSVALUES_CATEGORY, exception); 
 	    } catch(final Exception exception) {
-	        throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+	        throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_CATEGORY, exception); 
 	    }
 	}
 
@@ -170,9 +171,9 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
             return results;
 
         } catch (final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_PROBLEM_FILLRESULTS_CATEGORY, exception); 
         } catch (final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_CATEGORY, exception); 
         }
 
     }
@@ -187,7 +188,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
                                   	  resultSet.getString("CategoryDescription"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryPostgresqlDAO.TECHNICAL_PROBLEM_FILLCATEGORYDTO_CATEGORY, exception); 
         }
 
     }

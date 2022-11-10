@@ -120,6 +120,7 @@ public class Messages {
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_CATEGORYARTWORK = "There was a unexpected problem trying to update the categoryArtwork";
         public static final String TECHNICAL_PROBLEM_DELETE_CATEGORYARTWORK = "There was a problem trying to delete the categoryArtwork";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_CATEGORYARTWORK = "There was a unexpected problem trying to delete the categoryArtwork";
+        
         public static final String TECHNICAL_PROBLEM_FILLRESULTS_CATEGORYARTWORK = "There was a problem trying to fillResults the categoryArtwork";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_CATEGORYARTWORK = "There was a unexpected problem trying to fillResults the categoryArtwork";
         
@@ -140,5 +141,85 @@ public class Messages {
         
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_CATEGORYARTWORK = "There was a unexpected problem trying to executeQuery the categoryArtwork";
     }
-    
+    public static class CategoryPostgresqlDAO{
+        private CategoryPostgresqlDAO () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_CATEGORY = "There was a problem trying to create the category";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_CATEGORY = "There was a unexpected problem trying to create the category";
+        public static final String TECHNICAL_PROBLEM_UPDATE_CATEGORY = "There was a problem trying to update the category";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_CATEGORY = "There was a unexpected problem trying to update the category";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_CATEGORY = "There was a problem trying to executeQuery the category";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_CATEGORY = "There was a unexpected problem trying to executeQuery the category";
+        
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_CATEGORY = "There was a problem trying to prepareAndExecuteQuery the category";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_CATEGORY = "There was a problem trying to setParametersValues the category";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_CATEGORY = "There was a unexpected problem trying to setParametersValues the category";
+        
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_CATEGORY = "There was a problem trying to fillResults the category";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_CATEGORY = "There was a unexpected problem trying to fillResults the category";
+        public static final String TECHNICAL_PROBLEM_FILLCATEGORYDTO_CATEGORY = "There was a problem trying to fillCategoryDTO the category ";
+    }
+    public static class CommentPostgresqlDAO{
+        private CommentPostgresqlDAO () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_COMMENT = "There was a problem trying to create the comment";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_COMMENT = "There was a unexpected problem trying to create the comment";
+        public static final String TECHNICAL_PROBLEM_DELETE_COMMENT = "There was a problem trying to delete the comment";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_COMMENT= "There was a unexpected problem trying to delete the comment";
+        
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_COMMENT = "There was a problem trying to fillResults the comment";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_COMMENT = "There was a unexpected problem trying to fillResults the comment";
+        
+        public static final String TECHNICAL_PROBLEM_FILLCOMMENTDTO_COMMENT= "There was a problem trying to fillCategoryDTO the comment ";
+        
+        public static final String TECHNICAL_PROBLEM_FILLCOMMENTUSERDTO_COMMENT = "There was a problem trying to fillUserDTO the comment ";
+        
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKDTO_COMMENT = "There was a problem trying to fillArtworkDTO the comment";
+        
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_COMMENT = "There was a problem trying to fillArtworkTypeDTO the comment";
+        
+        public static final String TECHNICAL_PROBLEM_FILLFILEDTO_COMMENT ="There was a problem trying to fillFileDTO the comment";
+        public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_COMMENT="There was a problem trying to fillFileTypeDTO the comment"; 
+        
+        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_COMMENT = "There was a problem trying to fillUserDTO the comment";
+        
+        
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_COMMENT = "There was a problem trying to prepareAndExecuteQuery the comment";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_COMMENT = "There was a problem trying to setParametersValues the comment";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_COMMENT = "There was a unexpected problem trying to setParametersValues the comment";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_COMMENT = "There was a problem trying to executeQuery the comment";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_COMMENT = "There was a unexpected problem trying to executeQuery the comment";
+    }
+    public static class FilePostgresqlDAO{
+        private FilePostgresqlDAO() {
+            super ();        
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_FILE = "There was a problem trying to create the file";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_FILE = "There was a unexpected problem trying to create the file";
+        public static final String TECHNICAL_PROBLEM_UPDATE_FILE = "There was a problem trying to update the file";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_FILE= "There was a unexpected problem trying to update the file";
+        public static final String TECHNICAL_PROBLEM_DELETE_FILE = "There was a problem trying to delete the file";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_FILE = "There was a unexpected problem trying to delete the file";
+        
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_FILE = "There was a problem trying to fillResults the file";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_FILE = "There was a unexpected problem trying to fillResults the file";
+        
+        public static final String TECHNICAL_PROBLEM_FILLFILEDTO_FILE ="There was a problem trying to fillFileDTO the file";
+        public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_FILE ="There was a problem trying to fillFileTypeDTO the file"; 
+        
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_FILE = "There was a problem trying to prepareAndExecuteQuery the file";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_FILE = "There was a problem trying to setParametersValues the file";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_FILE= "There was a unexpected problem trying to setParametersValues the file";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_FILE = "There was a problem trying to executeQuery the file";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_FILE = "There was a unexpected problem trying to executeQuery the file";
+        
+    }
 }
