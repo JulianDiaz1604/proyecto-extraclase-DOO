@@ -99,7 +99,6 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	        }
 	        if (!ObjectHelper.isNull(category.getDescription())){
 	            sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("description = ? ");
-	            setWhere = false;
 	            parameters.add(category.getDescription());
 	        }
 	    }
