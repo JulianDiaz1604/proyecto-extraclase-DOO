@@ -77,6 +77,7 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_FILLFILEDTO_ARTWORK = "There was a problem trying to fillFileDTO the artwork";
         public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_ARTWORK = "There was a problem trying to fillFileTypeDTO the artwork";
         public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_ARTWORK = "There was a problem trying to fillArtworkTypeDTO the artwork";
+        
         public static final String TECHNICAL_PROBLEM_FILLUSERDTO_ARTWORK = "There was a problem trying to fillUserDTO the artwork";
         public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_ARTWORK = "There was a problem trying to prepareAndExecuteQuery the artwork";
         public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_ARTWORK = "There was a problem trying to setParametersValues the artwork";
@@ -84,4 +85,60 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_ARTWORK = "There was a problem trying to executeQuery the artwork";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_ARTWORK = "There was a unexpected problem trying to executeQuery the artwork";
     }
+
+    public static class ArtworkTypePostgresqlDAO{
+        private ArtworkTypePostgresqlDAO() {
+            super();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_ARTWORKTYPE = "There was a problem trying to create the artworktype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_ARTWORKTYPE = "There was a unexpected problem trying to create the artworktype";
+        public static final String TECHNICAL_PROBLEM_UPDATE_ARTWORKTYPE = "There was a problem trying to update the artworktype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_ARTWORKTYPE = "There was a unexpected problem trying to update the artworktype";
+        public static final String TECHNICAL_PROBLEM_DELETE_ARTWORKTYPE = "There was a problem trying to delete the artworktype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_ARTWORKTYPE = "There was a unexpected problem trying to delete the artworktype";
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_ARTWORKTYPE = "There was a problem trying to fillResults the artworktype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_ARTWORKTYPE = "There was a unexpected problem trying to fillResults the artworktype";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_ARTWORKTYPE = "There was a problem trying to fillArtworkTypeDTO the artworktype";
+       
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_ARTWORKTYPE = "There was a problem trying to prepareAndExecuteQuery the artworktype";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_ARTWORKTYPE = "There was a problem trying to setParametersValues the artworktype";
+        
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_ARTWORKTYPE = "There was a unexpected problem trying to setParametersValues the artworktype";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_ARTWORKTYPE = "There was a problem trying to executeQuery the artworktype";
+        
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_ARTWORKTYPE = "There was a unexpected problem trying to executeQuery the artworktype";
+    }
+    public static class CategoryArtworkPostgresqlDAO{
+        private CategoryArtworkPostgresqlDAO (){
+            super();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_CATEGORYARTWORK = "There was a problem trying to create the categoryArtwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_CATEGORYARTWORK = "There was a unexpected problem trying to create the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_UPDATE_CATEGORYARTWORK = "There was a problem trying to update the categoryArtwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_CATEGORYARTWORK = "There was a unexpected problem trying to update the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_DELETE_CATEGORYARTWORK = "There was a problem trying to delete the categoryArtwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_CATEGORYARTWORK = "There was a unexpected problem trying to delete the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_CATEGORYARTWORK = "There was a problem trying to fillResults the categoryArtwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_CATEGORYARTWORK = "There was a unexpected problem trying to fillResults the categoryArtwork";
+        
+        public static final String TECHNICAL_PROBLEM_FILLCATEGORYARTWORKDTO_CATEGORYARTWORK = "There was a problem trying to fillCategoryArtworkTypeDTO the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKDTO_CATEGORYARTWORK = "There was a problem trying to fillArtworkDTO the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_FILLFILEDTO_CATEGORYARTWORK ="There was a problem trying to fillFileDTO the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_CATEGORYARTWORK ="There was a problem trying to fillFileTypeDTO the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_CATEGORYARTWORK = "There was a problem trying to fillArtworkTypeDTO the categoryArtwork";
+        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_CATEGORYARTWORK = "There was a problem trying to fillUserDTO the categoryArtwork ";
+        public static final String TECHNICAL_PROBLEM_FILLCATEGORYDTO_CATEGORYARTWORK = "There was a problem trying to fillCategoryDTO the categoryArtwork ";
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_CATEGORYARTWORK = "There was a problem trying to prepareAndExecuteQuery the categoryArtwork";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_CATEGORYARTWORK = "There was a problem trying to setParametersValues the categoryArtwork";
+        
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_CATEGORYARTWORK = "There was a unexpected problem trying to setParametersValues the categoryArtwork";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_CATEGORYARTWORK = "There was a problem trying to executeQuery the categoryArtwork";
+        
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_CATEGORYARTWORK = "There was a unexpected problem trying to executeQuery the categoryArtwork";
+    }
+    
 }
