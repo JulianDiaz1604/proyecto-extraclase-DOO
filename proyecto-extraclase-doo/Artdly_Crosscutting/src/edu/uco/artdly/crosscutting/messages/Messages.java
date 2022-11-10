@@ -222,4 +222,88 @@ public class Messages {
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_FILE = "There was a unexpected problem trying to executeQuery the file";
         
     }
+    public static class FileTypePostgresqlDAO{
+        private FileTypePostgresqlDAO () {
+            super();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_FILETYPE = "There was a problem trying to create the filetype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_FILETYPE = "There was a unexpected problem trying to create the filetype";
+        public static final String TECHNICAL_PROBLEM_UPDATE_FILETYPE = "There was a problem trying to update the filetype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_FILETYPE= "There was a unexpected problem trying to update the filetype";
+        public static final String TECHNICAL_PROBLEM_DELETE_FILETYPE = "There was a problem trying to delete the filetype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_FILETYPE = "There was a unexpected problem trying to delete the filetype";
+        
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_FILETYPE = "There was a problem trying to fillResults the filetype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_FILETYPE = "There was a unexpected problem trying to fillResults the filetype";
+        
+        public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_FILETYPE ="There was a problem trying to fillFileTypeDTO the filetype"; 
+        
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_FILETYPE = "There was a problem trying to prepareAndExecuteQuery the filetype";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_FILETYPE = "There was a problem trying to setParametersValues the filetype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_FILETYPE = "There was a unexpected problem trying to setParametersValues the filetype";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_FILETYPE = "There was a problem trying to executeQuery the filetype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_FILETYPE = "There was a unexpected problem trying to executeQuery the filetype";
+    }
+    public static class LikePostgresqlDAO{
+        private LikePostgresqlDAO () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_LIKE = "There was a problem trying to create the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE = "There was a unexpected problem trying to create the like";
+        public static final String TECHNICAL_PROBLEM_DELETE_LIKE= "There was a problem trying to delete the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_LIKE= "There was a unexpected problem trying to delete the like";
+        
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_LIKE = "There was a problem trying to fillResults the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_LIKE = "There was a unexpected problem trying to fillResults the like";
+        
+        public static final String TECHNICAL_PROBLEM_FILLLIKEDTO_LIKE = "There was a unexpected problem trying to fillLikeDTO the like";
+        
+        public static final String TECHNICAL_PROBLEM_FILLLIKEUSERDTO_LIKE = "There was a unexpected problem trying to fillLikeUserDTO the like";
+        
+        public static final String TECHNICAL_PROBLEM_FILlARTWORKDTO_LIKE = "There was a unexpected problem trying to fillArtworkDTO the like";
+        
+        public static final String TECHNICAL_PROBLEM_FILLFILEDTO_LIKE ="There was a problem trying to fillFileDTO the like";
+        public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_LIKE ="There was a problem trying to fillFileTypeDTO the like";
+        
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_lIKE = "There was a problem trying to fillArtworkTypeDTO the like";
+        
+        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_lIKE = "There was a problem trying to fillUserDTO the like";
+        
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_lIKE = "There was a problem trying to prepareAndExecuteQuery the like";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_lIKE = "There was a problem trying to setParametersValues the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_lIKE = "There was a unexpected problem trying to setParametersValues the like";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_lIKE = "There was a problem trying to executeQuery the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_lIKE = "There was a unexpected problem trying to executeQuery the like";
+    }
+    public static class UserPostgresqlDAO {
+        private UserPostgresqlDAO () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_USER = "There was a problem trying to create the user";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER= "There was a unexpected problem trying to create the user";
+        public static final String TECHNICAL_PROBLEM_UPDATE_USER = "There was a problem trying to update the user";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_USER = "There was a unexpected problem trying to update the user";
+        public static final String TECHNICAL_PROBLEM_DELETE_USER = "There was a problem trying to delete the user";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_USER = "There was a unexpected problem trying to delete the user";
+        
+        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_USER = "There was a problem trying to fillUserDTO the user";
+        
+        public static final String TECHNICAL_PROBLEM_FILLRESULTS_USER = "There was a problem trying to fillResults the user";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_USER = "There was a unexpected problem trying to fillResults the user";
+        
+        
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_USER = "There was a problem trying to prepareAndExecuteQuery the user";
+        
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_USER = "There was a problem trying to setParametersValues the user";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_USER= "There was a unexpected problem trying to setParametersValues the user";
+        
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_USER = "There was a problem trying to executeQuery the user";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_USER  = "There was a unexpected problem trying to executeQuery the user";
+    }
+        
+    
 }

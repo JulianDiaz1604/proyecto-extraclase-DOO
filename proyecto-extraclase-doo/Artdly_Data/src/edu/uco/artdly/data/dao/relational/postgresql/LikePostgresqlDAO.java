@@ -11,6 +11,7 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.LikeDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.ArtworkDTO;
@@ -42,9 +43,9 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_CREATE_LIKE, exception); 
 		} catch (Exception exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE, exception); 
 		}
 		
 	}
@@ -75,9 +76,9 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 			prepareStatement.executeUpdate();
 
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_DELETE_LIKE, exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_LIKE, exception); 
         }
 		
 	}
@@ -172,9 +173,9 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
             return results;
 
         } catch (final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILLRESULTS_LIKE, exception); 
         } catch (final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_LIKE, exception); 
         }
 
     }
@@ -187,7 +188,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 								  fillLikeUserDTO(resultSet),
 								  fillArtworkDTO(resultSet));
 		} catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILLLIKEDTO_LIKE, exception); 
         }
 
 	}
@@ -207,7 +208,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
                                   resultSet.getBoolean("LikeUserIsPrivate"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILLLIKEUSERDTO_LIKE, exception); 
         }
 
     }
@@ -225,7 +226,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
                                      fillUserDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILlARTWORKDTO_LIKE, exception); 
         }
 
     }
@@ -239,7 +240,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
                                   fillFileTypeDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_LIKE, exception); 
         }
 
     }
@@ -252,7 +253,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
                                   		 resultSet.getString("FileTypeName"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILLFILETYPEDTO_LIKE, exception); 
         }
 
     }
@@ -265,7 +266,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
                                   		 resultSet.getString("ArtworkTypeName"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_lIKE, exception); 
         }
 
     }
@@ -285,7 +286,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
                                   resultSet.getBoolean("UserIsPrivate"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_FILLUSERDTO_lIKE, exception); 
         }
 
     }
@@ -299,7 +300,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
             return executeQuery(preparedStatement);
 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_lIKE, exception);
         }
 
     }
@@ -311,9 +312,9 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
                 preparedStatement.setObject(index + 1, parameters.get(index));
             }
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_SETPARAMETERSVALUES_lIKE, exception); 
         } catch(final Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_lIKE, exception); 
         }
     }
 
@@ -322,11 +323,11 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
         try (final var resultSet = preparedStatement.executeQuery()) {
             return fillResults(resultSet);
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_PROBLEM_EXECUTEQUERY_lIKE, exception); 
         } catch(final DataCustomException exception) {
             throw exception;
         } catch(final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.LikePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_lIKE, exception); 
         }
     }
 

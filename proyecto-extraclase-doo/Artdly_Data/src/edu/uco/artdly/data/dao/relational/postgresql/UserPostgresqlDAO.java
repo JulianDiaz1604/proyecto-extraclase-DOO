@@ -11,6 +11,7 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.UserDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.UserDTO;
@@ -41,9 +42,9 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
             preparedStatement.executeUpdate();
 
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(""); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_CREATE_USER,exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER, exception); 
         }
 		
 	}
@@ -70,7 +71,7 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
             return executeQuery(preparedStatement);
 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_USER, exception);
         }
 
     }
@@ -82,9 +83,9 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
                 preparedStatement.setObject(index + 1, parameters.get(index));
             }
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_SETPARAMETERSVALUES_USER, exception); 
         } catch(final Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_USER, exception); 
         }
     }
 
@@ -169,11 +170,11 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
         try (final var resultSet = preparedStatement.executeQuery()) {
             return fillResults(resultSet);
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_EXECUTEQUERY_USER, exception); 
         } catch(final DataCustomException exception) {
             throw exception;
         } catch(final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_USER, exception); 
         }
     }
 
@@ -192,9 +193,9 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
             return results;
 
         } catch (final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_FILLRESULTS_USER, exception); 
         } catch (final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_USER, exception); 
         }
 
     }
@@ -216,7 +217,7 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
                                     resultSet.getBoolean("UserIsPrivate"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_FILLUSERDTO_USER, exception); 
         }
 
     }
@@ -239,9 +240,9 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 	            preparedStatement.executeUpdate();
 
 	        } catch (SQLException exception) {
-	            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+	            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_UPDATE_USER, exception); 
 	        } catch (Exception exception) {
-	            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+	            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_USER, exception); 
 	        }
 		
 	}
@@ -257,9 +258,9 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
             preparedStatement.executeUpdate();
 
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_PROBLEM_DELETE_USER, exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.UserPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_USER, exception); 
         }
 		
 	}
