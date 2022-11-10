@@ -11,6 +11,7 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.CommentDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.ArtworkDTO;
@@ -43,9 +44,9 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_CREATE_COMMENT, exception); 
 		} catch (Exception exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_COMMENT, exception); 
 		}
 		
 	}
@@ -76,9 +77,9 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 			prepareStatement.executeUpdate();
 
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_DELETE_COMMENT, exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_COMMENT, exception); 
         }
 		
 	}
@@ -179,9 +180,9 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
             return results;
 
         } catch (final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLRESULTS_COMMENT, exception); 
         } catch (final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_COMMENT, exception); 
         }
 
     }
@@ -195,7 +196,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 									 fillCommentUserDTO(resultSet),
 									 fillArtworkDTO(resultSet));
 		} catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLCOMMENTDTO_COMMENT, exception); 
         }
 
 	}
@@ -215,7 +216,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                                   resultSet.getBoolean("CommentUserIsPrivate"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLCOMMENTUSERDTO_COMMENT, exception); 
         }
 
     }
@@ -233,7 +234,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                                      fillUserDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLARTWORKDTO_COMMENT, exception); 
         }
 
     }
@@ -247,7 +248,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                                   fillFileTypeDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_COMMENT, exception); //TODO
         }
 
     }
@@ -260,7 +261,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                                   		 resultSet.getString("FileTypeName"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILETYPEDTO_COMMENT, exception); 
         }
 
     }
@@ -273,7 +274,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                                   		 resultSet.getString("ArtworkTypeName"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_COMMENT, exception); 
         }
 
     }
@@ -293,7 +294,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                                   resultSet.getBoolean("UserIsPrivate"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: message
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLUSERDTO_COMMENT, exception); 
         }
 
     }
@@ -307,7 +308,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
             return executeQuery(preparedStatement);
 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_COMMENT, exception);
         }
 
     }
@@ -319,9 +320,9 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                 preparedStatement.setObject(index + 1, parameters.get(index));
             }
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_SETPARAMETERSVALUES_COMMENT, exception); 
         } catch(final Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_COMMENT, exception); 
         }
     }
 
@@ -330,11 +331,11 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
         try (final var resultSet = preparedStatement.executeQuery()) {
             return fillResults(resultSet);
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_EXECUTEQUERY_COMMENT, exception); 
         } catch(final DataCustomException exception) {
             throw exception;
         } catch(final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_COMMENT, exception); 
         }
     }
 

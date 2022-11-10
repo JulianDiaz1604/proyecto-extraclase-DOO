@@ -11,6 +11,7 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.FileDAO;
 import edu.uco.artdly.data.dao.relational.DAORelational;
 import edu.uco.artdly.domain.FileDTO;
@@ -35,9 +36,9 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_CREATE_FILE, exception); 
 		} catch (Exception exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_FILE, exception); 
 		}
 	}
 
@@ -68,9 +69,9 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 			prepareStatement.executeUpdate();
 
 		} catch (SQLException exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_UPDATE_FILE, exception); 
 		} catch (Exception exception) {
-			throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message for exception
+			throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_FILE, exception); 
 		}
 		
 		
@@ -87,9 +88,9 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 			preparedStatement.executeUpdate();
 
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_DELETE_FILE, exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_FILE, exception); 
         }
 		
 	}
@@ -148,9 +149,9 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
             return results;
 
         } catch (final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_FILLRESULTS_FILE, exception); 
         } catch (final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_FILLRESULTS_FILE, exception); 
         }
 
     }
@@ -164,7 +165,7 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
                                   fillFileTypeDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_FILE, exception); 
         }
 
     }
@@ -177,7 +178,7 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
                                   		 resultSet.getString("FileType"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_FILLFILETYPEDTO_FILE, exception); 
         }
 
     }
@@ -191,7 +192,7 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
             return executeQuery(preparedStatement);
 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception);
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_FILE, exception);
         }
 
     }
@@ -203,9 +204,9 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
                 preparedStatement.setObject(index + 1, parameters.get(index));
             }
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_SETPARAMETERSVALUES_FILE, exception); 
         } catch(final Exception exception) {
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_FILE, exception); 
         }
     }
 
@@ -214,11 +215,11 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
         try (final var resultSet = preparedStatement.executeQuery()) {
             return fillResults(resultSet);
         } catch(final SQLException exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_PROBLEM_EXECUTEQUERY_FILE, exception); 
         } catch(final DataCustomException exception) {
             throw exception;
         } catch(final Exception exception){
-            throw DataCustomException.CreateTechnicalException(null, exception); //TODO crear excepcion
+            throw DataCustomException.CreateTechnicalException(Messages.FilePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_FILE, exception); 
         }
     }
 
