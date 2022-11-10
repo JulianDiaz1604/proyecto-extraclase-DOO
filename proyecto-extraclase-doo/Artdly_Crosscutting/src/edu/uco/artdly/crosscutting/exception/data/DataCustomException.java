@@ -24,7 +24,7 @@ public class DataCustomException extends ArtdlyCustomException {
 	    
 	}
 	public static final ArtdlyCustomException Create(final String userMessage, final String technicalMessage) {
-	    return new DataCustomException(userMessage, technical0Message, new Exception());
+	    return new DataCustomException(userMessage, technicalMessage, new Exception());
 	    
 	}
 	public static final ArtdlyCustomException Create(final String userMessage, final String technicalMessage, final Exception rootException ) {
