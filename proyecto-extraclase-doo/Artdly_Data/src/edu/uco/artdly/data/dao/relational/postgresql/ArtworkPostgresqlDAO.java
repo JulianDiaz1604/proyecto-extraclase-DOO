@@ -30,7 +30,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 	@Override
 	public void create(ArtworkDTO artwork) {
 
-		final var sql = "INSERT INTO artwork(id, tittle, description, publicationDate, file, artworkType, user) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		final var sql = "INSERT INTO artwork(id, tittle, description, publicationDate, fileId, artworkTypeId, userId) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			

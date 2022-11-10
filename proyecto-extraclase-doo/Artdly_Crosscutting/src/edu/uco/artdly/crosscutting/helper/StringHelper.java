@@ -1,5 +1,7 @@
 package edu.uco.artdly.crosscutting.helper;
 
+import java.util.Objects;
+
 public class StringHelper {
     
     public static final String EMPTY = "";
@@ -18,6 +20,10 @@ public class StringHelper {
 
     public static final String applyTrim(String value) {
         return getDefaultString(value).trim();
+    }
+
+    public static final boolean isDefaultString(String value) {
+        return Objects.equals(value, EMPTY);
     }
 
 }
