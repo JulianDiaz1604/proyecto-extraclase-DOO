@@ -1,43 +1,47 @@
 package edu.uco.artdly.service.usecase.file.implementation;
 
-import java.util.UUID;
-
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.data.daofactory.DAOFactory;
-import edu.uco.artdly.domain.ArtworkTypeDTO;
 import edu.uco.artdly.domain.FileDTO;
-import edu.uco.artdly.service.usecase.artworktype.FindArtworkTypeById;
-import edu.uco.artdly.service.usecase.artworktype.implementation.FindArtworkTypeByIdImpl;
+import edu.uco.artdly.domain.FileTypeDTO;
 import edu.uco.artdly.service.usecase.file.CreateFileUseCase;
+import edu.uco.artdly.service.usecase.file.CreatePathFileUseCase;
+import edu.uco.artdly.service.usecase.fileType.FindFileTypeByName;
+import edu.uco.artdly.service.usecase.fileType.implementation.FindFileTypeByNameImpl;
 
 public class CreateFileUseCaseImpl implements CreateFileUseCase {
 
     private final DAOFactory factory;
-    private final String folderName = "artworks";
+    private final CreatePathFileUseCase createPathFileUseCase;
+    private final FindFileTypeByName findFileTypeByName;
 
     public CreateFileUseCaseImpl(DAOFactory factory){
         this.factory = factory;
+        this.createPathFileUseCase = new CreatePathFileUseCaseImpl();
+        this.findFileTypeByName = new FindFileTypeByNameImpl(factory);
     }
 
     @Override
-    public void execute(FileDTO file) {
-        // crear nombre de la ruta
-        String pathName = createPathFile(file.getPathFile());
-        // Validar si existe el tipo de archivo
+    public FileDTO execute(FileDTO file) {
+        String pathName = createPathFileUseCase.execute(file.getPathFile());
+        FileTypeDTO fileType = findFileType(file.getTypeFile().getFileType());
+
+        file.setPathFile(pathName);
+        file.setTypeFile(fileType);
+
+        factory.getFileDAO().create(file);
+
+        return file;
     }
 
-    private String createPathFile(String artworkTittle){
-        return folderName + "/" + artworkTittle;
-    }
-/*
-    private ArtworkTypeDTO findArtworkType(UUID id){
-        final ArtworkTypeDTO user = findUserById.execute(id);
+    private FileTypeDTO findFileType(String fileType){
+        final FileTypeDTO fType = findFileTypeByName.execute(fileType);
 
-        if(user.notExist()){ //TODO create message
-            throw UsecaseCustomException.CreateUserException("No existe el usuario");
+        if(fType.notExist()){ //TODO create message
+            throw UsecaseCustomException.CreateUserException("No existe el tipo de archivo");
         }
 
-        return user;
-    }*/
+        return fType;
+    }
     
 }

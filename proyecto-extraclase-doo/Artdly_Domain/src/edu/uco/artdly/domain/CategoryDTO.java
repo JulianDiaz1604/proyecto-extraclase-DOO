@@ -2,6 +2,8 @@ package edu.uco.artdly.domain;
 
 import java.util.UUID;
 
+import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+
 import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
@@ -58,6 +60,12 @@ public class CategoryDTO {
     }
     public final String getIdAsString() {
         return getUUIDAsString(getId());
+    }
+    public boolean exist() {
+        return !UUIDHelper.isDefaultUUID(id);
+    }
+    public boolean notExist() {
+        return !exist();
     }
 
 }

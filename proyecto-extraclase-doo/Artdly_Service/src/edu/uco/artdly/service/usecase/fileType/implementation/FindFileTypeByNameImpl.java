@@ -1,7 +1,6 @@
 package edu.uco.artdly.service.usecase.fileType.implementation;
 
 import java.util.List;
-import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.data.daofactory.DAOFactory;
