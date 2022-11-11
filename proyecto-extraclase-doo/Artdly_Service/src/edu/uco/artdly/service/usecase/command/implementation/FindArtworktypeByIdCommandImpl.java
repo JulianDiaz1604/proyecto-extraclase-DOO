@@ -6,23 +6,22 @@ import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
-import edu.uco.artdly.domain.ArtworkDTO;
-import edu.uco.artdly.service.usecase.artwork.FindArtworkByIdUsecase;
-import edu.uco.artdly.service.usecase.artwork.implementation.FindArtworkByIdUsecaseImpl;
-import edu.uco.artdly.service.usecase.command.FindArtworkByIdCommand;
+import edu.uco.artdly.domain.ArtworkTypeDTO;
+import edu.uco.artdly.service.usecase.artworktype.FindArtworkTypeByIdUsecase;
+import edu.uco.artdly.service.usecase.artworktype.implementation.FindArtworkTypeByIdUsecaseImpl;
+import edu.uco.artdly.service.usecase.command.FindArtworkTypeByIdCommand;
 
-public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
-    
+public class FindArtworktypeByIdCommandImpl implements FindArtworkTypeByIdCommand {
+
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final FindArtworkByIdUsecase useCase = new FindArtworkByIdUsecaseImpl(factory);
-
+    private final FindArtworkTypeByIdUsecase useCase = new FindArtworkTypeByIdUsecaseImpl(factory);
     @Override
-    public ArtworkDTO execute(UUID id) {
+    public ArtworkTypeDTO execute(UUID id) {
         try {
             factory.initTransaction();
-            ArtworkDTO artwork = useCase.execute(id);
+            ArtworkTypeDTO artworkType = useCase.execute(id);
             factory.confirmTransaction();
-            return artwork;
+            return artworkType;
         } catch(UsecaseCustomException exception){
             factory.cancelTransaction();
             throw exception;
@@ -32,7 +31,10 @@ public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(null, exception);
-        }
+        }  
     }
+
+
+
 
 }

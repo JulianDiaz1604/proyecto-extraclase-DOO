@@ -4,6 +4,6 @@ import java.util.UUID;
 
 import edu.uco.artdly.domain.ArtworkDTO;
 
-public interface FindArtworkById {
+public interface FindArtworkByIdUsecase {
     ArtworkDTO execute(UUID id);
 }

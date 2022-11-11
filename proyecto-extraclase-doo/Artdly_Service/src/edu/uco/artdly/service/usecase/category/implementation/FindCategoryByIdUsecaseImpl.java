@@ -5,13 +5,13 @@ import java.util.UUID;
 
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.CategoryDTO;
-import edu.uco.artdly.service.usecase.category.FindCategoryById;
+import edu.uco.artdly.service.usecase.category.FindCategoryByIdUsecase;
 
-public class FindCategoryByIdImpl implements FindCategoryById {
+public class FindCategoryByIdUsecaseImpl implements FindCategoryByIdUsecase {
 
     private final DAOFactory factory;
 
-    public FindCategoryByIdImpl(DAOFactory factory){
+    public FindCategoryByIdUsecaseImpl(DAOFactory factory){
         this.factory = factory;
     }
 

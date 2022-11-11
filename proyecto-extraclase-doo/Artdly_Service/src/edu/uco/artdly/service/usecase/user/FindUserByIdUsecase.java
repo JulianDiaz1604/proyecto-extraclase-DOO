@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import edu.uco.artdly.domain.UserDTO;
 
-public interface FindUserById {
+public interface FindUserByIdUsecase {
     
     UserDTO execute(UUID id);
 

@@ -5,13 +5,13 @@ import java.util.UUID;
 
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.UserDTO;
-import edu.uco.artdly.service.usecase.user.FindUserById;
+import edu.uco.artdly.service.usecase.user.FindUserByIdUsecase;
 
-public class FindUserByIdImpl implements FindUserById{
+public class FindUserByIdUsecaseImpl implements FindUserByIdUsecase{
 
     private final DAOFactory factory;
 
-    public FindUserByIdImpl(DAOFactory factory){
+    public FindUserByIdUsecaseImpl(DAOFactory factory){
         this.factory = factory;
     }
 

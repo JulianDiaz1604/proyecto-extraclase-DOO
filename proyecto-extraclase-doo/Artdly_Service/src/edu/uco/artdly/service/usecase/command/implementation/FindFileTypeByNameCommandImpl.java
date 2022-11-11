@@ -1,28 +1,26 @@
 package edu.uco.artdly.service.usecase.command.implementation;
 
-import java.util.UUID;
-
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
-import edu.uco.artdly.domain.ArtworkDTO;
-import edu.uco.artdly.service.usecase.artwork.FindArtworkByIdUsecase;
-import edu.uco.artdly.service.usecase.artwork.implementation.FindArtworkByIdUsecaseImpl;
-import edu.uco.artdly.service.usecase.command.FindArtworkByIdCommand;
+import edu.uco.artdly.domain.FileTypeDTO;
+import edu.uco.artdly.service.usecase.command.FindFileTypeByNameCommand;
+import edu.uco.artdly.service.usecase.fileType.FindFileTypeByNameUsecase;
+import edu.uco.artdly.service.usecase.fileType.implementation.FindFileTypeByNameUsecaseImpl;
 
-public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
-    
+public class FindFileTypeByNameCommandImpl implements FindFileTypeByNameCommand{
+
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final FindArtworkByIdUsecase useCase = new FindArtworkByIdUsecaseImpl(factory);
+    private final FindFileTypeByNameUsecase useCase = new FindFileTypeByNameUsecaseImpl(factory);
 
     @Override
-    public ArtworkDTO execute(UUID id) {
+    public FileTypeDTO execute(String name) {
         try {
             factory.initTransaction();
-            ArtworkDTO artwork = useCase.execute(id);
+            FileTypeDTO fileType = useCase.execute(name);
             factory.confirmTransaction();
-            return artwork;
+            return fileType;
         } catch(UsecaseCustomException exception){
             factory.cancelTransaction();
             throw exception;
@@ -32,7 +30,7 @@ public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(null, exception);
-        }
+        }      
     }
 
 }

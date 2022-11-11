@@ -1,5 +1,5 @@
 package edu.uco.artdly.service.usecase.file;
 
-public interface CreatePathFileUseCase {
+public interface CreatePathFileUsecase {
     String execute(String fileName);
 }

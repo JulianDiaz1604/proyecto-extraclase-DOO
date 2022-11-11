@@ -1,12 +1,12 @@
 package edu.uco.artdly.service.usecase.file.implementation;
 
-import edu.uco.artdly.service.usecase.file.CreatePathFileUseCase;
+import edu.uco.artdly.service.usecase.file.CreatePathFileUsecase;
 
-public class CreatePathFileUseCaseImpl implements CreatePathFileUseCase {
+public class CreatePathFileUsecaseImpl implements CreatePathFileUsecase {
 
     private static final String FOLDER_NAME = "artworks";
 
-    public CreatePathFileUseCaseImpl(){
+    public CreatePathFileUsecaseImpl(){
         super();
     }
 

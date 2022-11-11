@@ -6,23 +6,23 @@ import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
-import edu.uco.artdly.domain.ArtworkDTO;
-import edu.uco.artdly.service.usecase.artwork.FindArtworkByIdUsecase;
-import edu.uco.artdly.service.usecase.artwork.implementation.FindArtworkByIdUsecaseImpl;
-import edu.uco.artdly.service.usecase.command.FindArtworkByIdCommand;
+import edu.uco.artdly.domain.CategoryDTO;
+import edu.uco.artdly.service.usecase.category.FindCategoryByIdUsecase;
+import edu.uco.artdly.service.usecase.category.implementation.FindCategoryByIdUsecaseImpl;
+import edu.uco.artdly.service.usecase.command.FindCategoryByIdCommand;
 
-public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
-    
+public class FindCategoryByIdCommandImpl implements FindCategoryByIdCommand{
+
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final FindArtworkByIdUsecase useCase = new FindArtworkByIdUsecaseImpl(factory);
+    private final FindCategoryByIdUsecase useCase = new FindCategoryByIdUsecaseImpl(factory);
 
     @Override
-    public ArtworkDTO execute(UUID id) {
+    public CategoryDTO execute(UUID id) {
         try {
             factory.initTransaction();
-            ArtworkDTO artwork = useCase.execute(id);
+            CategoryDTO category = useCase.execute(id);
             factory.confirmTransaction();
-            return artwork;
+            return category;
         } catch(UsecaseCustomException exception){
             factory.cancelTransaction();
             throw exception;
@@ -32,7 +32,7 @@ public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(null, exception);
-        }
+        } 
     }
 
 }

@@ -1,9 +1,10 @@
-package edu.uco.artdly.service.usecase.category;
+package edu.uco.artdly.service.usecase.command;
 
 import java.util.UUID;
 
 import edu.uco.artdly.domain.CategoryDTO;
 
-public interface FindCategoryById {
+public interface FindCategoryByIdCommand {
     CategoryDTO execute(UUID id);
+
 }

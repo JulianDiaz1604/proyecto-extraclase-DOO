@@ -4,21 +4,21 @@ import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.FileDTO;
 import edu.uco.artdly.domain.FileTypeDTO;
-import edu.uco.artdly.service.usecase.file.CreateFileUseCase;
-import edu.uco.artdly.service.usecase.file.CreatePathFileUseCase;
-import edu.uco.artdly.service.usecase.fileType.FindFileTypeByName;
-import edu.uco.artdly.service.usecase.fileType.implementation.FindFileTypeByNameImpl;
+import edu.uco.artdly.service.usecase.file.CreateFileUsecase;
+import edu.uco.artdly.service.usecase.file.CreatePathFileUsecase;
+import edu.uco.artdly.service.usecase.fileType.FindFileTypeByNameUsecase;
+import edu.uco.artdly.service.usecase.fileType.implementation.FindFileTypeByNameUsecaseImpl;
 
-public class CreateFileUseCaseImpl implements CreateFileUseCase {
+public class CreateFileUsecaseImpl implements CreateFileUsecase {
 
     private final DAOFactory factory;
-    private final CreatePathFileUseCase createPathFileUseCase;
-    private final FindFileTypeByName findFileTypeByName;
+    private final CreatePathFileUsecase createPathFileUseCase;
+    private final FindFileTypeByNameUsecase findFileTypeByName;
 
-    public CreateFileUseCaseImpl(DAOFactory factory){
+    public CreateFileUsecaseImpl(DAOFactory factory){
         this.factory = factory;
-        this.createPathFileUseCase = new CreatePathFileUseCaseImpl();
-        this.findFileTypeByName = new FindFileTypeByNameImpl(factory);
+        this.createPathFileUseCase = new CreatePathFileUsecaseImpl();
+        this.findFileTypeByName = new FindFileTypeByNameUsecaseImpl(factory);
     }
 
     @Override

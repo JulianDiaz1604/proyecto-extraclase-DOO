@@ -13,25 +13,25 @@ import edu.uco.artdly.domain.ArtworkTypeDTO;
 import edu.uco.artdly.domain.FileDTO;
 import edu.uco.artdly.domain.UserDTO;
 import edu.uco.artdly.service.usecase.artwork.CreateArtworkUsecase;
-import edu.uco.artdly.service.usecase.artworktype.FindArtworkTypeById;
-import edu.uco.artdly.service.usecase.artworktype.implementation.FindArtworkTypeByIdImpl;
-import edu.uco.artdly.service.usecase.file.CreateFileUseCase;
-import edu.uco.artdly.service.usecase.file.implementation.CreateFileUseCaseImpl;
-import edu.uco.artdly.service.usecase.user.FindUserById;
-import edu.uco.artdly.service.usecase.user.implementation.FindUserByIdImpl;
+import edu.uco.artdly.service.usecase.artworktype.FindArtworkTypeByIdUsecase;
+import edu.uco.artdly.service.usecase.artworktype.implementation.FindArtworkTypeByIdUsecaseImpl;
+import edu.uco.artdly.service.usecase.file.CreateFileUsecase;
+import edu.uco.artdly.service.usecase.file.implementation.CreateFileUsecaseImpl;
+import edu.uco.artdly.service.usecase.user.FindUserByIdUsecase;
+import edu.uco.artdly.service.usecase.user.implementation.FindUserByIdUsecaseImpl;
 
 public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
 
     private final DAOFactory factory;
-    private final FindArtworkTypeById findArtworkTypeById;
-    private final FindUserById findUserById;
-    private final CreateFileUseCase createFileUseCase;
+    private final FindArtworkTypeByIdUsecase findArtworkTypeById;
+    private final FindUserByIdUsecase findUserById;
+    private final CreateFileUsecase createFileUseCase;
 
     public CreateArtworkUsecaseImpl(DAOFactory factory){
         this.factory = factory;
-        findArtworkTypeById = new FindArtworkTypeByIdImpl(factory);
-        findUserById = new FindUserByIdImpl(factory);
-        createFileUseCase = new CreateFileUseCaseImpl(factory);
+        findArtworkTypeById = new FindArtworkTypeByIdUsecaseImpl(factory);
+        findUserById = new FindUserByIdUsecaseImpl(factory);
+        createFileUseCase = new CreateFileUsecaseImpl(factory);
     }
 
     @Override

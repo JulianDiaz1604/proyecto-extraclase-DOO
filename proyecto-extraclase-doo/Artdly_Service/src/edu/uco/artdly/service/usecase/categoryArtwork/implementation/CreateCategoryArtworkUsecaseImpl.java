@@ -8,22 +8,22 @@ import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.CategoryArtworkDTO;
 import edu.uco.artdly.domain.CategoryDTO;
-import edu.uco.artdly.service.usecase.artwork.FindArtworkById;
-import edu.uco.artdly.service.usecase.artwork.implementation.FindArtworkByIdImpl;
-import edu.uco.artdly.service.usecase.category.FindCategoryById;
-import edu.uco.artdly.service.usecase.category.implementation.FindCategoryByIdImpl;
-import edu.uco.artdly.service.usecase.categoryArtwork.CreateCategoryArtwork;
+import edu.uco.artdly.service.usecase.artwork.FindArtworkByIdUsecase;
+import edu.uco.artdly.service.usecase.artwork.implementation.FindArtworkByIdUsecaseImpl;
+import edu.uco.artdly.service.usecase.category.FindCategoryByIdUsecase;
+import edu.uco.artdly.service.usecase.category.implementation.FindCategoryByIdUsecaseImpl;
+import edu.uco.artdly.service.usecase.categoryArtwork.CreateCategoryArtworkUsecase;
 
-public class CreateCategoryArtworkImpl implements CreateCategoryArtwork {
+public class CreateCategoryArtworkUsecaseImpl implements CreateCategoryArtworkUsecase {
 
     private final DAOFactory factory;
-    private final FindCategoryById findCategoryById;
-    private final FindArtworkById findArtworkById;
+    private final FindCategoryByIdUsecase findCategoryById;
+    private final FindArtworkByIdUsecase findArtworkById;
 
-    public CreateCategoryArtworkImpl(DAOFactory factory){
+    public CreateCategoryArtworkUsecaseImpl(DAOFactory factory){
         this.factory = factory;
-        this.findCategoryById = new FindCategoryByIdImpl(factory);
-        this.findArtworkById = new FindArtworkByIdImpl(factory);
+        this.findCategoryById = new FindCategoryByIdUsecaseImpl(factory);
+        this.findArtworkById = new FindArtworkByIdUsecaseImpl(factory);
     }
 
     @Override
