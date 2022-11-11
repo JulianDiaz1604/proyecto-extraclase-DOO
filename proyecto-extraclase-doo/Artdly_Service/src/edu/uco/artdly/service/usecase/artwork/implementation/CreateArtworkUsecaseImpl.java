@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
+import edu.uco.artdly.crosscutting.helper.DateHelper;
 import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.ArtworkDTO;
@@ -31,15 +32,16 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
     @Override
     public void execute(ArtworkDTO artwork) {
         try {
-            //Verificar que el titulo no esté vacio
-            if(StringHelper.isDefaultString(artwork.getTittle())){ //TODO: create message
-                throw UsecaseCustomException.CreateUserException("El titulo de la obra no puede estar vacio");
-            }
-            //Establecer fecha de publicacion
-            Date date = new Date();
+            final String tittle = validateTittle(artwork.getTittle());
+            final Date publicationDate = getPublicationDate();
             //Crear File
             final ArtworkTypeDTO artworkType = findArtworkType(artwork.getArtworkType().getId());
             final UserDTO user = findUser(artwork.getUser().getId());
+
+            artwork.setTittle(tittle);
+            artwork.setPublicationDate(publicationDate);
+            artwork.setArtworkType(artworkType);
+            artwork.setUser(user);
 
             factory.getArtworkDAO().create(artwork);
 
@@ -51,6 +53,17 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
             //Excepcion customizada
             throw exception;
         }
+    }
+
+    private final String validateTittle(String tittle){
+        if(StringHelper.isDefaultString(tittle)){ //TODO: create message
+            throw UsecaseCustomException.CreateUserException("El titulo de la obra no puede estar vacio");
+        }
+        return tittle;
+    }
+
+    private final Date getPublicationDate(){
+        return DateHelper.getNow();
     }
 
     private final ArtworkTypeDTO findArtworkType(final UUID id){

@@ -17,7 +17,7 @@ public class UUIDHelper {
 	}
 	
 	public static final UUID getDefaultUUID(final UUID value) {
-		return getDefaultIfNull(value, getNewUUID()); 
+		return getDefaultIfNull(value, DEFAULT_UUID); 
 	}
 	
 	public static final UUID getNewUUID() {

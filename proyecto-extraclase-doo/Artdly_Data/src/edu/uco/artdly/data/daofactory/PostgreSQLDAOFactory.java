@@ -13,6 +13,7 @@ import edu.uco.artdly.data.dao.CategoryArtworkDAO;
 import edu.uco.artdly.data.dao.CategoryDAO;
 import edu.uco.artdly.data.dao.CommentDAO;
 import edu.uco.artdly.data.dao.FileDAO;
+import edu.uco.artdly.data.dao.FileTypeDAO;
 import edu.uco.artdly.data.dao.LikeDAO;
 import edu.uco.artdly.data.dao.UserDAO;
 import edu.uco.artdly.data.dao.relational.postgresql.ArtworkPostgresqlDAO;
@@ -21,6 +22,7 @@ import edu.uco.artdly.data.dao.relational.postgresql.CategoryArtworkPostgresqlDA
 import edu.uco.artdly.data.dao.relational.postgresql.CategoryPostgresqlDAO;
 import edu.uco.artdly.data.dao.relational.postgresql.CommentPostgresqlDAO;
 import edu.uco.artdly.data.dao.relational.postgresql.FilePostgresqlDAO;
+import edu.uco.artdly.data.dao.relational.postgresql.FileTypePostgresqlDAO;
 import edu.uco.artdly.data.dao.relational.postgresql.LikePostgresqlDAO;
 import edu.uco.artdly.data.dao.relational.postgresql.UserPostgresqlDAO;
 
@@ -110,6 +112,11 @@ public class PostgreSQLDAOFactory extends DAOFactory {
     @Override
     public FileDAO getFileDAO() {
         return new FilePostgresqlDAO(connection);
+    }
+
+    @Override
+    public FileTypeDAO getFileTypeDAO() {
+        return new FileTypePostgresqlDAO(connection);
     }
 
     @Override

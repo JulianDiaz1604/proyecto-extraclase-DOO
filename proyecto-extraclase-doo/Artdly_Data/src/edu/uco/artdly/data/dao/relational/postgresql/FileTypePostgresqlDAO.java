@@ -19,7 +19,7 @@ import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 
 public class FileTypePostgresqlDAO extends DAORelational implements FileTypeDAO {
 
-	protected FileTypePostgresqlDAO(Connection connection) {
+	public FileTypePostgresqlDAO(Connection connection) {
 		super(connection);
 	}
 

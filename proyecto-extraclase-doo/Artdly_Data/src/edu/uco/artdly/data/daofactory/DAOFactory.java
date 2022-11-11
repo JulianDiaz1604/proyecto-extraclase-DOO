@@ -8,6 +8,7 @@ import edu.uco.artdly.data.dao.CategoryArtworkDAO;
 import edu.uco.artdly.data.dao.CategoryDAO;
 import edu.uco.artdly.data.dao.CommentDAO;
 import edu.uco.artdly.data.dao.FileDAO;
+import edu.uco.artdly.data.dao.FileTypeDAO;
 import edu.uco.artdly.data.dao.LikeDAO;
 import edu.uco.artdly.data.dao.UserDAO;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
@@ -62,6 +63,8 @@ public abstract class DAOFactory {
     public abstract CommentDAO getCommentDAO();
 
     public abstract FileDAO getFileDAO();
+
+    public abstract FileTypeDAO getFileTypeDAO();
 
     public abstract LikeDAO getLikeDAO();
 
