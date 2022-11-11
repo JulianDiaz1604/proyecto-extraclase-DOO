@@ -15,6 +15,8 @@ public class CategoryArtworkDTO {
 
     public CategoryArtworkDTO(){
         setId(getNewUUID());
+        setArtwork(new ArtworkDTO());
+        setCategory(new CategoryDTO());
     }
 
     public CategoryArtworkDTO(final UUID id, final ArtworkDTO artwork, final CategoryDTO category){
@@ -25,6 +27,9 @@ public class CategoryArtworkDTO {
 
     public static final CategoryArtworkDTO create(final UUID id, final ArtworkDTO artwork, final CategoryDTO category){
         return new CategoryArtworkDTO(id, artwork, category);
+    }
+    public static final CategoryArtworkDTO create(final UUID id){
+        return new CategoryArtworkDTO(id, new ArtworkDTO(), new CategoryDTO());
     }
 
     public static final CategoryArtworkDTO create(final String id, final ArtworkDTO artwork, final CategoryDTO category){

@@ -3,9 +3,10 @@ package edu.uco.artdly.domain;
 import java.util.Date;
 import java.util.UUID;
 
+import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
+import static edu.uco.artdly.crosscutting.helper.DateHelper.getDeafultDate;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
-import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 
 public class CommentDTO {
@@ -17,7 +18,12 @@ public class CommentDTO {
     private ArtworkDTO artwork;
 
     public CommentDTO(){
-        setId(getNewUUID());
+        setId(getDefaultUUID(id));
+        setRealizationDate(getDeafultDate());
+        setDescription(EMPTY);
+        setUser(new UserDTO());
+        setArtwork(new ArtworkDTO());
+        
     }
 
     public CommentDTO(final UUID id, final Date realizationDate, final String description, final UserDTO user, 
@@ -33,6 +39,9 @@ public class CommentDTO {
                                             final UserDTO user, final ArtworkDTO artwork){
         return new CommentDTO(id, realizationDate, description, user, artwork);
     }
+    public static final CommentDTO create(final UUID id){
+return new CommentDTO(id, getDeafultDate(), EMPTY, new UserDTO(), new ArtworkDTO());
+}
 
     public static final CommentDTO create(final String id, final Date realizationDate, final String description, 
                                             final UserDTO user, final ArtworkDTO artwork){

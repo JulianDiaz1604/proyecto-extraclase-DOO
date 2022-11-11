@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
-import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
 
 public class FileDTO {
     
@@ -14,7 +14,9 @@ public class FileDTO {
     private FileTypeDTO typeFile;
 
     public FileDTO(){
-        setId(getNewUUID());
+        setId(getDefaultUUID(id));
+        setPathFile(EMPTY);
+        setTypeFile(new FileTypeDTO());
     }
 
     public FileDTO(final UUID id, final String pathFile, final FileTypeDTO typeFile){
@@ -25,6 +27,9 @@ public class FileDTO {
 
     public static final FileDTO create(final UUID id, final String pathFile, final FileTypeDTO typeFile){
         return new FileDTO(id, pathFile, typeFile);
+    }
+    public static final FileDTO create(final UUID id){
+        return new FileDTO(id, EMPTY, new FileTypeDTO());
     }
 
     public static final FileDTO create(final String id, final String pathFile, final FileTypeDTO typeFile){

@@ -6,7 +6,6 @@ import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
-import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
 
@@ -32,6 +31,7 @@ public class ArtworkTypeDTO {
     public static final ArtworkTypeDTO create(final UUID id, final String name){
         return new ArtworkTypeDTO(id, name);
     }
+   
 
     public static final ArtworkTypeDTO create(final String id, final String name){
         return new ArtworkTypeDTO(getUUIDFromString(id), name);

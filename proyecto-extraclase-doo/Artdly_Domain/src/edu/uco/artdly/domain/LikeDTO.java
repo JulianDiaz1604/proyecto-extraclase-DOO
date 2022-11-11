@@ -5,8 +5,8 @@ import java.util.UUID;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
-import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
+import static edu.uco.artdly.crosscutting.helper.DateHelper.getDeafultDate;
 
 public class LikeDTO {
     
@@ -16,7 +16,10 @@ public class LikeDTO {
     private ArtworkDTO artwork;
 
     public LikeDTO(){
-        setId(getNewUUID());
+        setId(getDefaultUUID(id));
+        setRealizationDate(getDeafultDate());
+        setUser(new UserDTO());
+        setArtwork(new ArtworkDTO());
     }
 
     public LikeDTO(final UUID id, final Date realizationDate, final UserDTO user, final ArtworkDTO artwork){
@@ -28,6 +31,9 @@ public class LikeDTO {
 
     public static final LikeDTO create(final UUID id, final Date realizationDate, final UserDTO user, final ArtworkDTO artwork) {
         return new LikeDTO(id, realizationDate, user, artwork);
+    }
+    public static final LikeDTO create(final UUID id) {
+        return new LikeDTO(id, getDeafultDate(), new UserDTO(), new ArtworkDTO());
     }
 
     public static final LikeDTO create(final String id, final Date realizationDate, final UserDTO user, final ArtworkDTO artwork) {

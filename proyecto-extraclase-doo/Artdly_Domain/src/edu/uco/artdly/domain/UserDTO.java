@@ -7,9 +7,9 @@ import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
-import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
+import static edu.uco.artdly.crosscutting.helper.DateHelper.getDeafultDate;
 
 public class UserDTO {
     
@@ -24,7 +24,15 @@ public class UserDTO {
     private boolean isPrivate;
 
     public UserDTO(){
-        setId(getNewUUID());
+        setId(getDefaultUUID(id));
+        setName(EMPTY);
+        setLastName(EMPTY);
+        setMail(EMPTY);
+        setUsername(EMPTY);
+        setPassword(EMPTY);
+        setBirthDate(getDeafultDate());
+        setDescription(EMPTY);
+        setPrivate(false);
     }
 
     public UserDTO(final UUID id, final String name, final String lastName, final String mail, final String username,
@@ -40,8 +48,8 @@ public class UserDTO {
         setPrivate(isPrivate);
     }
 
-    public static final UserDTO create(UUID id) { //TODO: retocar
-        return new UserDTO(id, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, new Date(), EMPTY, false);
+    public static final UserDTO create(UUID id) {
+        return new UserDTO(id, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, getDeafultDate(), EMPTY, false);
     }
 
     public static final UserDTO create(final UUID id, final String name, final String lastName, final String mail, final String username,
