@@ -88,5 +88,4 @@ public class ArtworkDTO {
     public final String getIdAsString() {
         return getUUIDAsString(getId());
     }
-
 }

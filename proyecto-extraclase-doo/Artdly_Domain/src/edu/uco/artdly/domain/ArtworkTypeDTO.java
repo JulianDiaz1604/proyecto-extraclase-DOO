@@ -52,5 +52,11 @@ public class ArtworkTypeDTO {
     public final String getIdAsString() {
         return getUUIDAsString(getId());
     }
+    public boolean exist() {
+        return !UUIDHelper.isDefaultUUID(id);
+    }
+    public boolean notExist() {
+        return !exist();
+    }
 
 }

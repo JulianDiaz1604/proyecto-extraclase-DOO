@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 
 public final class DateHelper {
-    public static final LocalDate defaultDate = LocalDate.of(0, 0, 0);
+    public static final LocalDate defaultDate = LocalDate.of(0001, 1, 1);
 
     private DateHelper() {
         
@@ -14,10 +14,15 @@ public final class DateHelper {
     public  static final short getNextYear() {
         return  (short) LocalDate.now().plusYears(1).getYear();
     }
-    public Date getDeafultDate() { 
+    public static final Date getDeafultDate() { 
         return Date.valueOf(defaultDate);
     }
-    public Date getNow() {
+    public static final Date getNow() {
         return Date.valueOf(LocalDate.now());
+    }
+
+    public static void main(String[] args) {
+        Date date = DateHelper.getDeafultDate();
+        System.out.println(date.toString());
     }
 }
