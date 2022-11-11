@@ -41,7 +41,7 @@ public class UUIDHelper {
 
 	public static final UUID getUUIDFromString(final String value){
 		try {
-			return UUID.fromString("StringHelper.getDefaultString(value, DEFAULT_UUID_AS_STRING)");
+			return UUID.fromString(StringHelper.getDefaultString(value, DEFAULT_UUID_AS_STRING));
 		} catch(IllegalArgumentException exception) {
 			throw CrosscuttingCustomException.CreateTechnicalException(Messages.UUIDHelper.TECHNICAL_UUID_FROM_STRING_INVALID, exception);
 		} catch (Exception exception){
