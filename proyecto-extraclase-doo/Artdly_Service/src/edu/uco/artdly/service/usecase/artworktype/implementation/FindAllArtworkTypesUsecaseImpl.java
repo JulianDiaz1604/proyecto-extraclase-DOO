@@ -17,7 +17,7 @@ public class FindAllArtworkTypesUsecaseImpl implements FindAllArtworkTypeUsecase
 
     @Override
     public List<ArtworkTypeDTO> exexute() {
-        final List<ArtworkTypeDTO> artworkType = factory.getArtworkTypeDAO().findAll();
+        final List<ArtworkTypeDTO> artworkType = factory.getArtworkTypeDAO().findAllArtworkTypes();
 
 
        return artworkType;

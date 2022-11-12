@@ -41,7 +41,7 @@ public class ArtworkTypePostgresqlDAO extends DAORelational implements ArtworkTy
 	}
 
     @Override
-    public List<ArtworkTypeDTO> findAll() {
+    public List<ArtworkTypeDTO> findAllArtworkTypes() {
         
         var parameters = new ArrayList<Object>();
         final var sqlBuilder = new StringBuilder();

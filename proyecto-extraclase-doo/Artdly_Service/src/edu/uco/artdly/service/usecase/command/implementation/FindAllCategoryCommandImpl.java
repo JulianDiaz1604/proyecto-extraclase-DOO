@@ -18,9 +18,9 @@ public class FindAllCategoryCommandImpl implements FindAllCategoryCommand {
     public List<CategoryDTO> execute() {
         try {
             factory.initTransaction();
-            List<CategoryDTO> category = useCase.execute();
+            List<CategoryDTO> categories = useCase.execute();
             factory.confirmTransaction();
-            return category;
+            return categories;
         } catch(UsecaseCustomException exception){
             factory.cancelTransaction();
             throw exception;
