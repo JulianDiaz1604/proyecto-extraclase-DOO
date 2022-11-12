@@ -25,7 +25,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	public void create(CategoryDTO category) {
 		
 		final var sql ="INSERT INTO category (id, name, description) VALUES (?, ?. ?)";
-		
+
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
 			preparedStatement.setString (1, category.getIdAsString());
@@ -41,17 +41,26 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 		
 	}
 
+    @Override
+    public List<CategoryDTO> findAll() {
 
+        var parameters = new ArrayList<Object>();
+        final var sqlBuilder = new StringBuilder();
+        createSelectFrom(sqlBuilder);
+        createOrderBy(sqlBuilder);
+
+        return prepareAndExecuteQuery(sqlBuilder, parameters);
+    }
+    
 	@Override
 	public List<CategoryDTO> find(CategoryDTO category) {
 
         var parameters = new ArrayList<Object>();
         final var sqlBuilder = new StringBuilder();
-
         createSelectFrom(sqlBuilder);
         createWhere(sqlBuilder, category, parameters);
         createOrderBy(sqlBuilder);
-
+        
         return prepareAndExecuteQuery(sqlBuilder, parameters);
 
 	}
@@ -191,5 +200,6 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
         }
 
     }
+
 	
 }

@@ -10,7 +10,6 @@ public interface CategoryDAO {
 	List<CategoryDTO> find(CategoryDTO category);
 
 	void update(CategoryDTO category);
-
-
-
+	
+	List<CategoryDTO> findAll();
 }

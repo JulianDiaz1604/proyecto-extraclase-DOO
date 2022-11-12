@@ -14,4 +14,5 @@ public interface ArtworkTypeDAO {
 
 	void delete(UUID id);
 
+   List<ArtworkTypeDTO> findAll();
 }
