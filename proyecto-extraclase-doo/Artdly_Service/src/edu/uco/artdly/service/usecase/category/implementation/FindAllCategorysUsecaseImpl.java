@@ -10,8 +10,8 @@ public class FindAllCategorysUsecaseImpl implements FindAllCategoryUsecase{
 
     private DAOFactory factory;
 
-    public void FindAllCategoryUsecase(){
-        
+    public FindAllCategorysUsecaseImpl(DAOFactory factory){
+        this.factory = factory;
     }
     @Override
     public List<CategoryDTO> execute() {

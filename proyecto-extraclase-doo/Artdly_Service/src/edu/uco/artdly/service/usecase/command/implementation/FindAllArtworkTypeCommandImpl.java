@@ -15,7 +15,7 @@ import edu.uco.artdly.service.usecase.command.FindAllArtworkTypeCommand;
 
 public class FindAllArtworkTypeCommandImpl implements FindAllArtworkTypeCommand {
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final FindAllArtworkTypeUsecase useCase = new FindAllArtworkTypesUsecaseImpl();
+    private final FindAllArtworkTypeUsecase useCase = new FindAllArtworkTypesUsecaseImpl(factory);
 
     @Override
     public List<ArtworkTypeDTO> exexute() {

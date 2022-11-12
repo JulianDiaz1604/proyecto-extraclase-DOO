@@ -13,7 +13,8 @@ import edu.uco.artdly.service.usecase.command.FindAllCategoryCommand;
 
 public class FindAllCategoryCommandImpl implements FindAllCategoryCommand {
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final FindAllCategoryUsecase useCase = new FindAllCategorysUsecaseImpl();
+    private final FindAllCategoryUsecase useCase = new FindAllCategorysUsecaseImpl(factory);
+
     @Override
     public List<CategoryDTO> execute() {
         try {

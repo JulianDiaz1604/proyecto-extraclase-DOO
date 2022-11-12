@@ -10,8 +10,8 @@ public class FindAllArtworkTypesUsecaseImpl implements FindAllArtworkTypeUsecase
     
     private DAOFactory factory;
 
-    public void FindAllArtworkTypesUsecase(){
-        
+    public FindAllArtworkTypesUsecaseImpl(DAOFactory factory){
+        this.factory = factory;
     }
         
 
