@@ -7,13 +7,13 @@ import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 import edu.uco.artdly.domain.CategoryDTO;
-import edu.uco.artdly.service.usecase.category.FindAllCategoryUsecase;
-import edu.uco.artdly.service.usecase.category.implementation.FindAllCategorysUsecaseImpl;
+import edu.uco.artdly.service.usecase.category.FindAllCategoriesUsecase;
+import edu.uco.artdly.service.usecase.category.implementation.FindAllCategoriesUsecaseImpl;
 import edu.uco.artdly.service.usecase.command.FindAllCategoryCommand;
 
 public class FindAllCategoryCommandImpl implements FindAllCategoryCommand {
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final FindAllCategoryUsecase useCase = new FindAllCategorysUsecaseImpl(factory);
+    private final FindAllCategoriesUsecase useCase = new FindAllCategoriesUsecaseImpl(factory);
 
     @Override
     public List<CategoryDTO> execute() {

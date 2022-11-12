@@ -4,7 +4,7 @@ import java.util.List;
 
 import edu.uco.artdly.domain.CategoryDTO;
 
-public interface FindAllCategoryUsecase {
+public interface FindAllCategoriesUsecase {
     List<CategoryDTO> execute();
 
 }
