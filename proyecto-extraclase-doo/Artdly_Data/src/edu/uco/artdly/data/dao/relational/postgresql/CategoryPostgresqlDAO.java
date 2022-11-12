@@ -42,7 +42,7 @@ public class CategoryPostgresqlDAO  extends DAORelational implements CategoryDAO
 	}
 
     @Override
-    public List<CategoryDTO> findAll() {
+    public List<CategoryDTO> findAllCategories() {
 
         var parameters = new ArrayList<Object>();
         final var sqlBuilder = new StringBuilder();

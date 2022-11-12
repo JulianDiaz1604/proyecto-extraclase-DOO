@@ -11,5 +11,5 @@ public interface CategoryDAO {
 
 	void update(CategoryDTO category);
 	
-	List<CategoryDTO> findAll();
+	List<CategoryDTO> findAllCategories();
 }
