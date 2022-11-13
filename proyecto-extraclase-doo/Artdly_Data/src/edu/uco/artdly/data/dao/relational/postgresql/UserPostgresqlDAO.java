@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
+import edu.uco.artdly.crosscutting.helper.DateHelper;
+import edu.uco.artdly.crosscutting.helper.MailHelper;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
+import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.UserDAO;
@@ -26,19 +29,19 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 
 	@Override
 	public void create(UserDTO user) {
-		final var sql = "INSERT INTO USER(id, name, lastName, mail, username, password, birthDate, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		final var sql = "INSERT INTO public.user(id, name, last_name, mail, username, password, birth_date, description, is_private) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (final var preparedStatement = getConnection().prepareStatement(sql)) {
             
             preparedStatement.setString(1, user.getIdAsString());
             preparedStatement.setString(2, user.getName());
             preparedStatement.setString(3, user.getLastName());
-            preparedStatement.setString(4, user.getMail());
+            preparedStatement.setString(4, "'"+user.getMail()+"'");
             preparedStatement.setString(5, user.getUsername());
             preparedStatement.setString(6, user.getPassword());
-            preparedStatement.setString(7, user.getBirthDate().toString());
+            preparedStatement.setDate(7, user.getBirthDate());
             preparedStatement.setString(8, user.getDescription());
-            preparedStatement.setString(9, String.valueOf(user.isPrivate()));
+            preparedStatement.setBoolean(9, user.isPrivate());
             preparedStatement.executeUpdate();
 
         } catch (SQLException exception) {
@@ -91,16 +94,28 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 
 
     private final void createSelectFrom(final StringBuilder sqlBuilder){
-        sqlBuilder.append("SELECT user.Id AS UserId, ");
-        sqlBuilder.append("       user.name AS UserName, ");
-        sqlBuilder.append("       user.lastName AS UserLastName, ");
-        sqlBuilder.append("       user.mail AS UserMail, ");
-        sqlBuilder.append("       user.username AS UserNickname, ");
-        sqlBuilder.append("       user.password AS UserPassword, ");
-        sqlBuilder.append("       user.birthDate AS UserBirthdate, ");
-        sqlBuilder.append("       user.description AS UserDescription, ");
-        sqlBuilder.append("       user.isPrivate AS UserIsPrivate ");
-        sqlBuilder.append("FROM user ");
+        /*
+        sqlBuilder.append("SELECT usr.id AS UserId, ");
+        sqlBuilder.append("       usr.name AS UserName, ");
+        sqlBuilder.append("       usr.lastName AS UserLastName, ");
+        sqlBuilder.append("       usr.mail AS UserMail, ");
+        sqlBuilder.append("       usr.username AS UserNickname, ");
+        sqlBuilder.append("       usr.password AS UserPassword, ");
+        sqlBuilder.append("       usr.birthDate AS UserBirthdate, ");
+        sqlBuilder.append("       usr.description AS UserDescription, ");
+        sqlBuilder.append("       usr.is_Private AS UserIsPrivate ");
+        sqlBuilder.append("FROM user usr ");
+        */
+        sqlBuilder.append("SELECT id AS UserId, ");
+        sqlBuilder.append("       name AS UserName, ");
+        sqlBuilder.append("       last_name AS UserLastName, ");
+        sqlBuilder.append("       mail AS UserMail, ");
+        sqlBuilder.append("       username AS UserNickname, ");
+        sqlBuilder.append("       password AS UserPassword, ");
+        sqlBuilder.append("       birth_date AS UserBirthdate, ");
+        sqlBuilder.append("       description AS UserDescription, ");
+        sqlBuilder.append("       is_private AS UserIsPrivate ");
+        sqlBuilder.append("FROM public.user ");
 }
     private final void createWhere(final StringBuilder sqlBuilder, final UserDTO user, final List<Object> parameters){
 
@@ -109,17 +124,17 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
         if(!ObjectHelper.isNull(user)){
 
             if (!UUIDHelper.isDefaultUUID(user.getId())){
-                sqlBuilder.append("WHERE UserId = ? ");
+                sqlBuilder.append("WHERE id = ? ");
                 setWhere = false;
                 parameters.add(user.getIdAsString());
-            }
+            }/*
             if (!ObjectHelper.isNull(user.getName())){
                 sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
                 setWhere = false;
                 parameters.add(user.getName());
             }
             if (!ObjectHelper.isNull(user.getLastName())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("lastName = ? ");
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("last_name = ? ");
                 parameters.add(user.getLastName());
             }
             if (!ObjectHelper.isNull(user.getMail())){
@@ -138,9 +153,9 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
                 parameters.add(user.getPassword());
             }
             if (!ObjectHelper.isNull(user.getBirthDate())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("birthDate = ? ");
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("birth_date = ? ");
                 setWhere = false;
-                parameters.add(user.getBirthDate().toString());
+                parameters.add(user.getBirthDate());
             }
             if (!ObjectHelper.isNull(user.getDescription())){
                 sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("description = ? ");
@@ -148,7 +163,45 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
                 parameters.add(user.getDescription());
             }
             if (!ObjectHelper.isNull(user.isPrivate())){
-                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("isPrivate = ? ");
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("is_private = ? ");
+                parameters.add(user.isPrivate());
+            } */
+            if (!StringHelper.isDefaultString(user.getName())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
+                setWhere = false;
+                parameters.add(user.getName());
+            }
+            if (!StringHelper.isDefaultString(user.getLastName())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("last_name = ? ");
+                parameters.add(user.getLastName());
+            }
+            if (!MailHelper.isDefaultMail(user.getMail())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("mail = ? ");
+                setWhere = false;
+                parameters.add(user.getMail());
+            }
+            if (!StringHelper.isDefaultString(user.getUsername())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("username = ? ");
+                setWhere = false;
+                parameters.add(user.getUsername());
+            }
+            if (!StringHelper.isDefaultString(user.getPassword())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("password = ? ");
+                setWhere = false;
+                parameters.add(user.getPassword());
+            }
+            if (!DateHelper.isDefaultDate(user.getBirthDate())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("birth_date = ? ");
+                setWhere = false;
+                parameters.add(user.getBirthDate());
+            }
+            if (!StringHelper.isDefaultString(user.getDescription())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("description = ? ");
+                setWhere = false;
+                parameters.add(user.getDescription());
+            }
+            if (!ObjectHelper.isNull(user.isPrivate())){
+                sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("is_private = ? ");
                 parameters.add(user.isPrivate());
             }
 
@@ -160,7 +213,7 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 
     private final void createOrderBy(final StringBuilder sqlBuilder){
 
-        sqlBuilder.append("ORDER BY us.id"); 
+        sqlBuilder.append("ORDER BY id"); 
 
 
     }
@@ -212,7 +265,7 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
                                     resultSet.getString("UserMail"),
                                     resultSet.getString("UserNickname"),
                                     resultSet.getString("UserPassword"),
-                                    resultSet.getDate("UserBitrh"),
+                                    resultSet.getDate("UserBirthdate"),
                                     resultSet.getString("UserDescription"),
                                     resultSet.getBoolean("UserIsPrivate"));
             
@@ -225,18 +278,19 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 	
 	@Override
 	public void update(UserDTO user) {
-		   final var sql = "UPDATE user SET id = ?, name = ?, lastName = ? , mail = ? , username = ? , password = ?, birthDate = ?, Description = ? ";
+		   final var sql = "UPDATE public.user SET id = ?, name = ?, last_name = ? , mail = ? , username = ? , password = ?, birth_date = ?, description = ?, is_private = ? ";
 
 	        try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 	            
 	            preparedStatement.setString(1, user.getIdAsString());
-	            preparedStatement.setString(1, user.getName());
-	            preparedStatement.setString(1, user.getLastName());
-	            preparedStatement.setString(1, user.getMail());
-	            preparedStatement.setString(1, user.getUsername());
-	            preparedStatement.setString(1, user.getPassword());
-	            preparedStatement.setString(1, user.getBirthDate().toString());
-	            preparedStatement.setString(1, user.getDescription());
+	            preparedStatement.setString(2, user.getName());
+	            preparedStatement.setString(3, user.getLastName());
+	            preparedStatement.setString(4, user.getMail());
+	            preparedStatement.setString(5, user.getUsername());
+	            preparedStatement.setString(6, user.getPassword());
+	            preparedStatement.setDate(7, user.getBirthDate());
+	            preparedStatement.setString(8, user.getDescription());
+	            preparedStatement.setBoolean(9, user.isPrivate());
 	            preparedStatement.executeUpdate();
 
 	        } catch (SQLException exception) {
@@ -249,7 +303,7 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 
 	@Override
 	public void delete(UUID id) {
-        final var sql = "DELETE FROM USER WHERE id = ?";
+        final var sql = "DELETE FROM public.user WHERE id = ?";
 
         try (final var preparedStatement = getConnection().prepareStatement(sql)) {
             

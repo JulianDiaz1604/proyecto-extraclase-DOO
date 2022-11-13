@@ -29,7 +29,8 @@ public class UserController {
 	public UserDTO mostrarUSer() {
 		return new UserDTO();
 	}
-	@PostMapping
+
+	@PostMapping("/register")
 	public ResponseEntity<Response<UserDTO>> create(@RequestBody UserDTO user) {
 		Response<UserDTO> response = new Response<>();
 		HttpStatus httpStatus = HttpStatus.OK;
@@ -37,30 +38,30 @@ public class UserController {
 			Validator<UserDTO> validator = new CreateUserValidator();
 			List<Message> messages = validator.validate(user);
 			if(messages.isEmpty()) {
-			createUserCommand.execute(user);
-			final List<UserDTO> data = new ArrayList<>();
-			data.add(user);
-			response.setData(data);
-			response.addSuccessMessage("la persona se creó chimbisima");
-			}
-			else {
+				createUserCommand.execute(user);
+				final List<UserDTO> data = new ArrayList<>();
+				data.add(user);
+				response.setData(data);
+				response.addSuccessMessage("la persona se creó chimbisima");
+			}else {
 				 httpStatus = HttpStatus.BAD_REQUEST;
 				 response.setMessages(messages);
 			}
-			}catch(final ArtdlyCustomException exception) {
-				 httpStatus = HttpStatus.BAD_REQUEST;
+		}catch(final ArtdlyCustomException exception) {
+			httpStatus = HttpStatus.BAD_REQUEST;
 
-				if(exception.isTechinalException()) {
+			if(exception.isTechinalException()) {
 				response.addErrorMessage("es un error tratando de crear el budget, please try again.......");
-				}else {
-				response.addErrorMessage(exception.getMessage());}
-				exception.printStackTrace();
-			}catch(final Exception exception) {
-				 httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-				response.addFatalMessage("se nos fue a la mierda esto es un error inesperado!!!!!!!");
-				exception.printStackTrace();
-
+			}else {
+				response.addErrorMessage(exception.getMessage());
 			}
+			exception.printStackTrace();
+		}catch(final Exception exception) {
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+			response.addFatalMessage("se nos fue a la mierda esto es un error inesperado!!!!!!!");
+			exception.printStackTrace();
+
+		}
 			
 		return new ResponseEntity<>(response,httpStatus);
 	}

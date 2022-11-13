@@ -1,6 +1,8 @@
 package edu.uco.artdly.controller.validator.user;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -10,7 +12,6 @@ import edu.uco.artdly.crosscutting.helper.MailHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.crosscutting.messages.Message;
 import edu.uco.artdly.domain.UserDTO;
-import static edu.uco.artdly.crosscutting.helper.DateHelper.isMinor;
 
 public class CreateUserValidator implements Validator<UserDTO>{
 
@@ -22,22 +23,33 @@ public class CreateUserValidator implements Validator<UserDTO>{
 		validateUserBirthdate(dto.getBirthDate(), messages);
 		return messages;
 	}
+
 	public void validateUserId(UUID userId, List<Message> messages) {
 		if(UUIDHelper.isDefaultUUID(userId)) {
-			messages.add(Message.createErrorMessage("el id es el mismo que el default"));
+			userId = UUIDHelper.getNewUUID();
 		}
 	}
+
 	public void validateUserBirthdate(Date userDate, List<Message> messages) {
 		if(isMinor(userDate)) {
 			messages.add(Message.createInfoMessage("usted es menor de edad"));
 		}
 		
-		
 	}
+
 	public void validateMail(String mail, List<Message> messages) {
 		if(MailHelper.isDefaultMail(mail)) {
 			messages.add(Message.createErrorMessage("el mail es igual que el Default mail"));
 		}
+	}
 
-}
+	public static final int yearsOld(Date birthdate) {
+        Date now = Date.valueOf(LocalDate.now());
+        Period year = Period.between(birthdate.toLocalDate(), now.toLocalDate());
+        return year.getYears();
+    }
+
+    public static final boolean isMinor(Date birthdate){
+        return yearsOld(birthdate) < 18;
+    }
 }

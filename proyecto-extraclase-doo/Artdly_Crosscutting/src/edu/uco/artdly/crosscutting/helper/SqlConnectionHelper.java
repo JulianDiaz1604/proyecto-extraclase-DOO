@@ -57,6 +57,7 @@ public class SqlConnectionHelper {
             if(!connectionIsOpen(connection)){
                 throw CrosscuttingCustomException.CreateTechnicalException(Messages.PostgresqlConnectionHelper.TECHNICAL_CONNECTION_IS_CLOSED_FOR_COMMIT_TRANSACTION);
             }
+            connection.commit();
             connection.setAutoCommit(false);
         } catch (CrosscuttingCustomException exception) {
            throw exception;
