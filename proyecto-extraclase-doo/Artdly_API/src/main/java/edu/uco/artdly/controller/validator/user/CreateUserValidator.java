@@ -20,7 +20,6 @@ public class CreateUserValidator implements Validator<UserDTO>{
 		List<Message> messages = new ArrayList<>();
 		validateUserId(dto.getId(), messages);
 		validateMail(dto.getMail(), messages);
-		validateUserBirthdate(dto.getBirthDate(), messages);
 		return messages;
 	}
 
