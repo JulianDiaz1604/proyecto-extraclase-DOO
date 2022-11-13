@@ -1,5 +1,9 @@
 package edu.uco.artdly.service.usecase.like;
 
-public interface DeleteLikeUsecase {
+import edu.uco.artdly.domain.LikeDTO;
 
+public interface DeleteLikeUsecase {
+   
+    void execute(LikeDTO like); 
+  
 }
