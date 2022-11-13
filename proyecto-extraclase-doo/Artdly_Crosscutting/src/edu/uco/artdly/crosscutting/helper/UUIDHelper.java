@@ -10,7 +10,7 @@ import static edu.uco.artdly.crosscutting.helper.ObjectHelper.getDefaultIfNull;
 public class UUIDHelper {
 	
 	private static final String DEFAULT_UUID_AS_STRING = "00000000-0000-0000-0000-000000000000";
-	private static final UUID DEFAULT_UUID = UUID.fromString(DEFAULT_UUID_AS_STRING);
+	public static final UUID DEFAULT_UUID = UUID.fromString(DEFAULT_UUID_AS_STRING);
 
 	private UUIDHelper() {
 		super();

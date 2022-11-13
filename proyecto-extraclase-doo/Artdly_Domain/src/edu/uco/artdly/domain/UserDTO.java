@@ -10,12 +10,13 @@ import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
 import static edu.uco.artdly.crosscutting.helper.DateHelper.getDeafultDate;
+import static edu.uco.artdly.crosscutting.helper.UUIDHelper.DEFAULT_UUID;;
 
 public class UserDTO {
     
     private UUID id;
     private String name;
-    private String lastName;
+    private String lastname;
     private String mail;
     private String username;
     private String password;
@@ -56,6 +57,10 @@ public class UserDTO {
     final String password, final Date birthDate, final String description, final boolean isPrivate){
         return new UserDTO(id, name, lastName, mail, username, password, birthDate, description, isPrivate);
     }
+    public static final UserDTO create(final String username){
+        return new UserDTO(DEFAULT_UUID, EMPTY, EMPTY, EMPTY, username, EMPTY, getDeafultDate(), EMPTY, false);
+    }
+
 
     public static final UserDTO create(final String id, final String name, final String lastName, final String mail, final String username,
     final String password, final Date birthDate, final String description, final boolean isPrivate){
@@ -79,11 +84,11 @@ public class UserDTO {
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public String getMail() {

@@ -56,7 +56,6 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
         } catch(ArtdlyCustomException exception) {
             throw exception;
         } catch(Exception exception) {
-            //Excepcion customizada
             throw exception;
         }
     }
