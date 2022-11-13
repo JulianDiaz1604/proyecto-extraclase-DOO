@@ -34,6 +34,9 @@ public class UUIDHelper {
 	public static final String getUUIDAsString(final UUID value){
 		return getDefaultUUID(value).toString();
 	}
+	public static final UUID getDefaultUUID() {
+	    return DEFAULT_UUID;
+	}
 
 	public static final boolean isDefaultUUID(final UUID value){
 		return DEFAULT_UUID.equals(value);

@@ -5,3 +5,4 @@ import edu.uco.artdly.domain.UserDTO;
 public interface CreateUserUsercase {
     void execute(UserDTO user);
 }
+

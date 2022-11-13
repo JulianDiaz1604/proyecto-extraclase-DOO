@@ -1,12 +1,16 @@
 package edu.uco.artdly.domain;
 
 import java.util.Date;
+
 import java.util.UUID;
+
+import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.artdly.crosscutting.helper.DateHelper.getDeafultDate;
+
 
 public class LikeDTO {
     
@@ -39,6 +43,9 @@ public class LikeDTO {
     public static final LikeDTO create(final String id, final Date realizationDate, final UserDTO user, final ArtworkDTO artwork) {
         return new LikeDTO(getUUIDFromString(id), realizationDate, user, artwork);
     }
+    public static final LikeDTO create (final UserDTO user, final ArtworkDTO artwork) {
+        return new LikeDTO (UUIDHelper.getDefaultUUID(), null, user, artwork);
+    }
 
     public UUID getId() {
         return id;
@@ -66,6 +73,12 @@ public class LikeDTO {
     }
     public final String getIdAsString() {
         return getUUIDAsString(getId());
+    }
+    public boolean exist() {
+        return !UUIDHelper.isDefaultUUID(id);
+    }
+    public boolean notExist() {
+        return !exist();
     }
 
 
