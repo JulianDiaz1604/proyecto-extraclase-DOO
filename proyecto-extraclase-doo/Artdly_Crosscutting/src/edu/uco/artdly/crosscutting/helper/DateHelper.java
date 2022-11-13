@@ -2,6 +2,7 @@ package edu.uco.artdly.crosscutting.helper;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.Period;
 
 
 public final class DateHelper {
@@ -20,9 +21,16 @@ public final class DateHelper {
     public static final Date getNow() {
         return Date.valueOf(LocalDate.now());
     }
+    public static final int yearsOld(Date birthdate) {
+        Date now = Date.valueOf(LocalDate.now());
+        
+        Period year = Period.between(birthdate.toLocalDate(), now.toLocalDate());
+        return year.getYears();
 
-    public static void main(String[] args) {
-        Date date = DateHelper.getDeafultDate();
-        System.out.println(date.toString());
     }
+    public static final boolean isMinor(Date birthdate){
+        return yearsOld(birthdate) < 18;
+    }
+    
 }
+

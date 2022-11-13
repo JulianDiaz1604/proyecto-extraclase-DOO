@@ -23,5 +23,8 @@ public class MailHelper {
     public static final String getDefaultMail() {
         return DEFAULT_MAIL;
     }
+    public static final boolean isDefaultMail(String mail) {
+        return DEFAULT_MAIL.equals(mail);
+    }
 
 }
