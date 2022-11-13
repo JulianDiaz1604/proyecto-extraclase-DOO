@@ -6,12 +6,12 @@ import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 import edu.uco.artdly.domain.UserDTO;
 import edu.uco.artdly.service.usecase.command.CreateUserCommand;
-import edu.uco.artdly.service.usecase.user.CreateUserUsercase;
-import edu.uco.artdly.service.usecase.user.implementation.CreateUserUsercaseImpl;
+import edu.uco.artdly.service.usecase.user.CreateUserUsecase;
+import edu.uco.artdly.service.usecase.user.implementation.CreateUserUsecaseImpl;
 
 public class CreateUserCommandImpl implements CreateUserCommand{
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final CreateUserUsercase useCase = new CreateUserUsercaseImpl(factory);
+    private final CreateUserUsecase useCase = new CreateUserUsecaseImpl(factory);
 
     @Override
     public void execute(UserDTO user) {

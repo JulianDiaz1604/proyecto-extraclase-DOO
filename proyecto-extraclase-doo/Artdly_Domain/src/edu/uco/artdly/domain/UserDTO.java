@@ -1,6 +1,6 @@
 package edu.uco.artdly.domain;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
@@ -9,6 +9,7 @@ import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDFromString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
+import static edu.uco.artdly.crosscutting.helper.MailHelper.getDefaultMail;
 import static edu.uco.artdly.crosscutting.helper.DateHelper.getDeafultDate;
 
 public class UserDTO {
@@ -27,7 +28,7 @@ public class UserDTO {
         setId(getDefaultUUID(id));
         setName(EMPTY);
         setLastName(EMPTY);
-        setMail(EMPTY);
+        setMail(getDefaultMail());
         setUsername(EMPTY);
         setPassword(EMPTY);
         setBirthDate(getDeafultDate());
@@ -49,7 +50,7 @@ public class UserDTO {
     }
 
     public static final UserDTO create(UUID id) {
-        return new UserDTO(id, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, getDeafultDate(), EMPTY, false);
+        return new UserDTO(id, EMPTY, EMPTY, getDefaultMail(), EMPTY, EMPTY, getDeafultDate(), EMPTY, false);
     }
 
     public static final UserDTO create(final UUID id, final String name, final String lastName, final String mail, final String username,
@@ -57,7 +58,7 @@ public class UserDTO {
         return new UserDTO(id, name, lastName, mail, username, password, birthDate, description, isPrivate);
     }
     public static final UserDTO create(final String username){
-        return new UserDTO(UUIDHelper.getDefaultUUID(null), EMPTY, EMPTY, EMPTY, username, EMPTY, getDeafultDate(), EMPTY, false);
+        return new UserDTO(UUIDHelper.getDefaultUUID(null), EMPTY, EMPTY, getDefaultMail(), username, EMPTY, getDeafultDate(), EMPTY, false);
     }
 
 

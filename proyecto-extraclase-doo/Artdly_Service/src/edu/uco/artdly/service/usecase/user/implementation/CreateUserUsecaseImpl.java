@@ -1,6 +1,6 @@
 package edu.uco.artdly.service.usecase.user.implementation;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.UUID;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
@@ -11,15 +11,15 @@ import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.UserDTO;
-import edu.uco.artdly.service.usecase.user.CreateUserUsercase;
+import edu.uco.artdly.service.usecase.user.CreateUserUsecase;
 import edu.uco.artdly.service.usecase.user.FindUserByUsernameUsecase;
 
-public class CreateUserUsercaseImpl implements CreateUserUsercase{
+public class CreateUserUsecaseImpl implements CreateUserUsecase{
     
     private final DAOFactory factory;
     private final FindUserByUsernameUsecase findUserByUsername;
     
-    public CreateUserUsercaseImpl(DAOFactory factory){
+    public CreateUserUsecaseImpl(DAOFactory factory){
         this.factory = factory;
         this.findUserByUsername = new FindUserByUsernameUsecaseImpl(factory);
     }
@@ -75,7 +75,7 @@ public class CreateUserUsercaseImpl implements CreateUserUsercase{
     
     private final String validateMail(String mail){
 
-        if(trueMailForm(mail)){ //TODO: create message
+        if(!trueMailForm(mail)){ //TODO: create message
             throw UsecaseCustomException.CreateUserException("NO TIENE LA FORMA DE UN CORREO");
       
     }
@@ -85,12 +85,12 @@ public class CreateUserUsercaseImpl implements CreateUserUsercase{
     private final String validateUsername(String username){
         final UserDTO user = findUserByUsername.execute(username);
         if(invalidUsername(username)) {
-            throw UsecaseCustomException.CreateUserException("que no se pueda colocar ese nombre");
+            throw UsecaseCustomException.CreateUserException("que no se pueda colocar ese nick");
         }
         if(StringHelper.isDefaultString(username)){ //TODO: create message
             throw UsecaseCustomException.CreateUserException("El nickname no puede estar vacio");
         }
-        if(user.notExist()) {
+        if(user.exist()) {
             throw UsecaseCustomException.CreateUserException("ESTE NICK YA EXISTE");
         }
         return username;
@@ -119,8 +119,4 @@ public class CreateUserUsercaseImpl implements CreateUserUsercase{
             return false;
         }
     }
-
-
-    
-
 }

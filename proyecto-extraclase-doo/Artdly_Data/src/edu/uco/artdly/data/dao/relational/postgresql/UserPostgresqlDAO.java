@@ -91,16 +91,16 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
 
 
     private final void createSelectFrom(final StringBuilder sqlBuilder){
-        sqlBuilder.append("SELECT us.Id AS UserId, ");
-        sqlBuilder.append("       us.name AS UserName, ");
-        sqlBuilder.append("       us.lastName AS UserLastName, ");
-        sqlBuilder.append("       us.mail AS UserMail, ");
-        sqlBuilder.append("       us.username AS UserNickname, ");
-        sqlBuilder.append("       us.password AS UserPassword, ");
-        sqlBuilder.append("       us.birthDate AS UserBirthdate, ");
-        sqlBuilder.append("       us.description AS UserDescription, ");
-        sqlBuilder.append("       us.isPrivate AS UserIsPrivate ");
-        sqlBuilder.append("FROM user us ");
+        sqlBuilder.append("SELECT user.Id AS UserId, ");
+        sqlBuilder.append("       user.name AS UserName, ");
+        sqlBuilder.append("       user.lastName AS UserLastName, ");
+        sqlBuilder.append("       user.mail AS UserMail, ");
+        sqlBuilder.append("       user.username AS UserNickname, ");
+        sqlBuilder.append("       user.password AS UserPassword, ");
+        sqlBuilder.append("       user.birthDate AS UserBirthdate, ");
+        sqlBuilder.append("       user.description AS UserDescription, ");
+        sqlBuilder.append("       user.isPrivate AS UserIsPrivate ");
+        sqlBuilder.append("FROM user ");
 }
     private final void createWhere(final StringBuilder sqlBuilder, final UserDTO user, final List<Object> parameters){
 
