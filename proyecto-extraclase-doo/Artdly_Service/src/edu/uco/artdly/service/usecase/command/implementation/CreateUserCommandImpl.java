@@ -6,8 +6,6 @@ import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 import edu.uco.artdly.domain.UserDTO;
 import edu.uco.artdly.service.usecase.command.CreateUserCommand;
-import edu.uco.artdly.service.usecase.file.CreateFileUsecase;
-import edu.uco.artdly.service.usecase.file.implementation.CreateFileUsecaseImpl;
 import edu.uco.artdly.service.usecase.user.CreateUserUsercase;
 import edu.uco.artdly.service.usecase.user.implementation.CreateUserUsercaseImpl;
 

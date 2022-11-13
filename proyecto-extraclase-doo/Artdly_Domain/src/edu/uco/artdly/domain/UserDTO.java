@@ -10,7 +10,6 @@ import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getUUIDAsString;
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getDefaultUUID;
 import static edu.uco.artdly.crosscutting.helper.StringHelper.EMPTY;
 import static edu.uco.artdly.crosscutting.helper.DateHelper.getDeafultDate;
-import static edu.uco.artdly.crosscutting.helper.UUIDHelper.DEFAULT_UUID;;
 
 public class UserDTO {
     
@@ -58,7 +57,7 @@ public class UserDTO {
         return new UserDTO(id, name, lastName, mail, username, password, birthDate, description, isPrivate);
     }
     public static final UserDTO create(final String username){
-        return new UserDTO(DEFAULT_UUID, EMPTY, EMPTY, EMPTY, username, EMPTY, getDeafultDate(), EMPTY, false);
+        return new UserDTO(UUIDHelper.getDefaultUUID(null), EMPTY, EMPTY, EMPTY, username, EMPTY, getDeafultDate(), EMPTY, false);
     }
 
 
@@ -147,6 +146,7 @@ public class UserDTO {
     public boolean notExist() {
         return !exist();
     }
+
     
 
 }

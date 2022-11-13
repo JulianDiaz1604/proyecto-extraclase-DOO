@@ -2,10 +2,9 @@ package edu.uco.artdly.service.usecase.user.implementation;
 
 import java.util.Date;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
+import static edu.uco.artdly.crosscutting.helper.MailHelper.trueMailForm;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
@@ -76,7 +75,7 @@ public class CreateUserUsercaseImpl implements CreateUserUsercase{
     
     private final String validateMail(String mail){
 
-        if(trueMailFrom(mail)){ //TODO: create message
+        if(trueMailForm(mail)){ //TODO: create message
             throw UsecaseCustomException.CreateUserException("NO TIENE LA FORMA DE UN CORREO");
       
     }
@@ -111,19 +110,7 @@ public class CreateUserUsercaseImpl implements CreateUserUsercase{
         return description;
     }
     
-    private final static boolean trueMailFrom(String mail) {
-        Pattern pattern = Pattern
-                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-        Matcher mather = pattern.matcher(mail);
 
-        if (mather.find() == true) {
-            return true;
-        } else {
-            return false;
-        }
-        
-    }
     private final static boolean invalidUsername(String username) {
         String ofensive = "nigga";
         if(username.equals(ofensive)) {

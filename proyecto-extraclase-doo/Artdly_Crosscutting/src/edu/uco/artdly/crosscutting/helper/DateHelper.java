@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 
 public final class DateHelper {
-    public static final LocalDate defaultDate = LocalDate.of(0001, 1, 1);
+    private static final LocalDate defaultDate = LocalDate.of(0001, 1, 1);
 
     private DateHelper() {
         
