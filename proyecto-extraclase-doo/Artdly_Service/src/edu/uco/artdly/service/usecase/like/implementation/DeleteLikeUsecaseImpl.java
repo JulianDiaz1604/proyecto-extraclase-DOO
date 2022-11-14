@@ -2,38 +2,33 @@ package edu.uco.artdly.service.usecase.like.implementation;
 
 
 
+import java.util.UUID;
+
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
-
 import edu.uco.artdly.data.daofactory.DAOFactory;
-import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.LikeDTO;
-import edu.uco.artdly.domain.UserDTO;
 import edu.uco.artdly.service.usecase.like.DeleteLikeUsecase;
-import edu.uco.artdly.service.usecase.like.FindLikeByUserUsecase;
+import edu.uco.artdly.service.usecase.like.FindLikeByIdUsecase;
+
 
 public class DeleteLikeUsecaseImpl implements DeleteLikeUsecase {
     
     
     private final DAOFactory factory;
-    private final FindLikeByUserUsecase findLikeByUserUsecase;
+    private final FindLikeByIdUsecase findLikeUsecase;
     public DeleteLikeUsecaseImpl(DAOFactory factory){
         this.factory = factory;
-        this.findLikeByUserUsecase = new FindLikeByUserUsecaseImpl(factory);
+        this.findLikeUsecase = new FindLikeByIdUsecaseImpl(factory);
     }
     
-    public void execute(LikeDTO like) {
+    @Override
+    public void execute(UUID id) {
         try {
-            if(existLike(like.getUser(),like.getArtwork())) {
-                
-                
-                LikeDTO newLike = findLikeByUserUsecase.execute(like.getUser(), like.getArtwork());
-                
-                
-                factory.getLikeDAO().delete(newLike.getId()); 
-            }
-           
-        
+            LikeDTO like = findLikeUsecase.execute(id);
+            factory.getLikeDAO().delete(id);
+            
+                                       
         }catch(UsecaseCustomException exception) {
             throw exception;
         } catch(ArtdlyCustomException exception) {
@@ -42,14 +37,7 @@ public class DeleteLikeUsecaseImpl implements DeleteLikeUsecase {
             throw exception;
         }
     } 
-    private final boolean existLike(UserDTO user, ArtworkDTO artwork){
-        final LikeDTO like = findLikeByUserUsecase.execute(user, artwork);
-        if(like.exist()){ 
-            return true;
-            
-        }
-        return false;
-    }
+  
 }
 
      

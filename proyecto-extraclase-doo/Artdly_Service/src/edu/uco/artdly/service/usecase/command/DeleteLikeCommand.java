@@ -1,8 +1,9 @@
 package edu.uco.artdly.service.usecase.command;
 
-import edu.uco.artdly.domain.LikeDTO;
+import java.util.UUID;
+
 
 public interface DeleteLikeCommand {
-    void execute(final LikeDTO like);
+    void execute(UUID id);
 
 }
