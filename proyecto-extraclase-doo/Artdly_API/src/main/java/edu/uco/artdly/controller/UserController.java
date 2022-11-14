@@ -16,6 +16,7 @@ import edu.uco.artdly.controller.validator.Validator;
 import edu.uco.artdly.controller.validator.user.CreateUserValidator;
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.messages.Message;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.domain.UserDTO;
 import edu.uco.artdly.service.usecase.command.CreateUserCommand;
 import edu.uco.artdly.service.usecase.command.implementation.CreateUserCommandImpl;
@@ -42,7 +43,7 @@ public class UserController {
 				final List<UserDTO> data = new ArrayList<>();
 				data.add(user);
 				response.setData(data);
-				response.addSuccessMessage("la persona se creó chimbisima");
+				response.addSuccessMessage(Messages.UserController.TECHNICAL_PROBLEM_CREATE_USER);
 			}else {
 				 httpStatus = HttpStatus.BAD_REQUEST;
 				 response.setMessages(messages);
@@ -51,14 +52,14 @@ public class UserController {
 			httpStatus = HttpStatus.BAD_REQUEST;
 
 			if(exception.isTechinalException()) {
-				response.addErrorMessage("es un error tratando de crear el budget, please try again.......");
+				response.addErrorMessage(Messages.UserController.TECHNICAL_PROBLEM_CREATE_BUDGET);
 			}else {
 				response.addErrorMessage(exception.getMessage());
 			}
 			exception.printStackTrace();
 		}catch(final Exception exception) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-			response.addFatalMessage("se nos fue a la mierda esto es un error inesperado!!!!!!!");
+			response.addFatalMessage(Messages.UserController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
 			exception.printStackTrace();
 
 		}

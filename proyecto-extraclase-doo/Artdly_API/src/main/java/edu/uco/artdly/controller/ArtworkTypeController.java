@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.uco.artdly.controller.response.Response;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.domain.ArtworkTypeDTO;
 import edu.uco.artdly.service.usecase.command.FindAllArtworkTypeCommand;
 import edu.uco.artdly.service.usecase.command.implementation.FindAllArtworkTypeCommandImpl;
@@ -28,10 +29,10 @@ public class ArtworkTypeController {
 		try {
 			List<ArtworkTypeDTO> artworkTypes = findAllArtworkTypeCommand.execute();
 			response.setData(artworkTypes);
-			response.addSuccessMessage("Se devolvieron los tipos de obras almacenados");
+			response.addSuccessMessage(Messages.ArtworkTypeController.TECHNICAL_PROBLEM_FIND_ARTWORKTYPE);
 		} catch (final Exception exception) {
 			httpStatus = HttpStatus.BAD_REQUEST;
-			response.addFatalMessage("Solo Dios sabe que pasó, animo tigre");
+			response.addFatalMessage(Messages.ArtworkTypeController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
 			exception.printStackTrace();
 		}
 

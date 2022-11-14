@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.uco.artdly.controller.response.Response;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.domain.CategoryDTO;
 import edu.uco.artdly.service.usecase.command.FindAllCategoryCommand;
 import edu.uco.artdly.service.usecase.command.implementation.FindAllCategoryCommandImpl;
@@ -28,10 +29,10 @@ public class CategoryController {
 		try {
 			List<CategoryDTO> categories = findAllCategoryCommand.execute();
 			response.setData(categories);
-			response.addSuccessMessage("Se devolvieron las categorias almacenadas");
+			response.addSuccessMessage(Messages.CategoryController.TECHNICAL_PROBLEM_FIND_CATEGORY);
 		} catch (final Exception exception) {
 			httpStatus = HttpStatus.BAD_REQUEST;
-			response.addFatalMessage("Solo Dios sabe que pasó, animo tigre");
+			response.addFatalMessage(Messages.CategoryController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
 			exception.printStackTrace();
 		}
 
