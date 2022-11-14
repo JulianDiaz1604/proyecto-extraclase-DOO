@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,9 @@ import edu.uco.artdly.crosscutting.messages.Message;
 import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.service.usecase.command.CreateArtworkCommand;
+import edu.uco.artdly.service.usecase.command.FindAllArtworkCommand;
 import edu.uco.artdly.service.usecase.command.implementation.CreateArtworkCommandImpl;
+import edu.uco.artdly.service.usecase.command.implementation.FindAllArtworkCommandImpl;
 
 @RestController
 @RequestMapping("/artdly/artwork")
@@ -32,6 +35,7 @@ public class ArtworkController {
 	private CreateArtworkCommand createArtworkCommand = new CreateArtworkCommandImpl();
 	List<String> files = new ArrayList<String>();
 	private final Path rootLocation = Paths.get("C:/Users/diazj/OneDrive/Escritorio");
+	private FindAllArtworkCommand findAllArtwork = new FindAllArtworkCommandImpl();
 
 	@PostMapping("/postArtwork")
 	public ResponseEntity<Response<ArtworkDTO>> postArtwork(@RequestBody ArtworkDTO artwork) {
@@ -89,5 +93,25 @@ public class ArtworkController {
 		   return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
 	 }
+	
+	@GetMapping("/findall")
+	public ResponseEntity<Response<ArtworkDTO>>	findAllArtworks(){
+		Response<ArtworkDTO> response = new Response<>();
+		HttpStatus httpStatus = HttpStatus.OK;
+		try {
+			List<ArtworkDTO> artworks = findAllArtwork.execute();
+			response.setData(artworks);
+			response.addSuccessMessage(Messages.ArtworkTypeController.TECHNICAL_PROBLEM_FIND_ARTWORKTYPE);
+		} catch (final Exception exception) {
+			httpStatus = HttpStatus.BAD_REQUEST;
+			response.addFatalMessage(Messages.ArtworkTypeController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
+			exception.printStackTrace();
+		}
+
+		return new ResponseEntity<>(response, httpStatus);
+		
+		
+	}
+	
 	
 }

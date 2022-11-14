@@ -50,6 +50,16 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		}
 
 	}
+    @Override
+    public List<ArtworkDTO> findAll() {
+        var parameters = new ArrayList<Object>();
+        final var sqlBuilder = new StringBuilder();
+
+        createSelectFrom(sqlBuilder);
+        createOrderBy(sqlBuilder);
+
+        return prepareAndExecuteQuery(sqlBuilder, parameters);
+    }
 
 	@Override
 	public List<ArtworkDTO> find(ArtworkDTO artwork) {
@@ -322,5 +332,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
             throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_ARTWORK, exception); 
         }
     }
+
+
 
 }

@@ -11,7 +11,6 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.DateHelper;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
-import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.LikeDAO;

@@ -11,6 +11,8 @@ public interface ArtworkDAO {
     void create(ArtworkDTO artwork);
 
     List<ArtworkDTO> find(ArtworkDTO artwork);
+    
+    List<ArtworkDTO> findAll();
 
     void update(ArtworkDTO artwork);
 

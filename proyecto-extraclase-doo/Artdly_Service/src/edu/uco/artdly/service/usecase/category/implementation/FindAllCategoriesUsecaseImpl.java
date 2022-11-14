@@ -15,11 +15,7 @@ public class FindAllCategoriesUsecaseImpl implements FindAllCategoriesUsecase{
     }
     @Override
     public List<CategoryDTO> execute() {
-         final List<CategoryDTO> category = factory.getCategoryDAO().findAllCategories();
-
-
-        return category;
-
+        return factory.getCategoryDAO().findAllCategories();
     }   
 }
 
