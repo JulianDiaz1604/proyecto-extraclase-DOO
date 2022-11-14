@@ -1,6 +1,6 @@
 package edu.uco.artdly.service.usecase.artwork.implementation;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
