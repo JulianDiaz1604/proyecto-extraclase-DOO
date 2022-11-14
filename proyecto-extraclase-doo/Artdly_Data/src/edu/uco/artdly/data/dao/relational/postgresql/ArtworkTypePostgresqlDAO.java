@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
+import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.ArtworkTypeDAO;
@@ -118,7 +119,7 @@ public class ArtworkTypePostgresqlDAO extends DAORelational implements ArtworkTy
 				setWhere = false;
 				parameters.add(artworktype.getIdAsString());
 			}
-			if(!ObjectHelper.isNull(artworktype.getName())){
+			if(!StringHelper.isDefaultString(artworktype.getName())){
 				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
 				parameters.add(artworktype.getName());
 			}

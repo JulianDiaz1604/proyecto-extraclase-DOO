@@ -3,7 +3,7 @@ package edu.uco.artdly.service.usecase.like.implementation;
 
 import static edu.uco.artdly.crosscutting.helper.UUIDHelper.getNewUUID;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
@@ -46,7 +46,7 @@ import edu.uco.artdly.service.usecase.like.CreateLikeUsecase;
            newLike.setUser(user);
            newLike.setArtwork(artwork);
            
-           factory.getLikeDAO().create(like);
+           factory.getLikeDAO().create(newLike);
        
        }catch(UsecaseCustomException exception) {
            throw exception;

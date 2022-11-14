@@ -36,7 +36,7 @@ public class UserPostgresqlDAO  extends DAORelational implements UserDAO {
             preparedStatement.setString(1, user.getIdAsString());
             preparedStatement.setString(2, user.getName());
             preparedStatement.setString(3, user.getLastName());
-            preparedStatement.setString(4, "'"+user.getMail()+"'");
+            preparedStatement.setString(4, user.getMail());
             preparedStatement.setString(5, user.getUsername());
             preparedStatement.setString(6, user.getPassword());
             preparedStatement.setDate(7, user.getBirthDate());

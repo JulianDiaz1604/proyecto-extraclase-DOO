@@ -1,7 +1,6 @@
 package edu.uco.artdly.domain;
 
-import java.util.Date;
-
+import java.sql.Date;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;

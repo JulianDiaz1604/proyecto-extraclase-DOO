@@ -1,6 +1,7 @@
 package edu.uco.artdly.service.usecase.file.implementation;
 
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
+import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.FileDTO;
 import edu.uco.artdly.domain.FileTypeDTO;
@@ -26,6 +27,7 @@ public class CreateFileUsecaseImpl implements CreateFileUsecase {
         String pathName = createPathFileUseCase.execute(file.getPathFile());
         //FileTypeDTO fileType = findFileType(file.getTypeFile().getFileType());
 
+        file.setId(UUIDHelper.getNewUUID());
         file.setPathFile(pathName);
         //file.setTypeFile(fileType);
 

@@ -16,16 +16,16 @@ public class DeleteLikeUsecaseImpl implements DeleteLikeUsecase {
     
     
     private final DAOFactory factory;
-    private final FindLikeByIdUsecase findLikeUsecase;
+    private final FindLikeByIdUsecase findLikeByIdUsecase;
     public DeleteLikeUsecaseImpl(DAOFactory factory){
         this.factory = factory;
-        this.findLikeUsecase = new FindLikeByIdUsecaseImpl(factory);
+        this.findLikeByIdUsecase = new FindLikeByIdUsecaseImpl(factory);
     }
     
     @Override
     public void execute(UUID id) {
         try {
-            LikeDTO like = findLikeUsecase.execute(id);
+            LikeDTO like = findLikeByIdUsecase.execute(id);
             factory.getLikeDAO().delete(id);
             
                                        

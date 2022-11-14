@@ -37,7 +37,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 			preparedStatement.setString(1, artwork.getIdAsString());
 			preparedStatement.setString(2, artwork.getTittle());
 			preparedStatement.setString(3, artwork.getDescription());
-			preparedStatement.setString(4, artwork.getPublicationDate().toString());
+			preparedStatement.setDate(4, artwork.getPublicationDate());
 			preparedStatement.setString(5, artwork.getFile().getIdAsString());
 			preparedStatement.setString(6, artwork.getArtworkType().getIdAsString());
 			preparedStatement.setString(7, artwork.getUser().getIdAsString());

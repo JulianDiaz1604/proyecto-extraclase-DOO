@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
+import edu.uco.artdly.crosscutting.helper.DateHelper;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
+import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.LikeDAO;
@@ -32,12 +34,12 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 	@Override
 	public void create(LikeDTO like) {
 
-		final var sql = "INSERT INTO like (id, realization_date, user_id, artwork_id) VALUES (?, ?, ?, ?, ?)";
+		final var sql = "INSERT INTO public.like (id, realization_date, user_id, artwork_id) VALUES (?, ?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
 			preparedStatement.setString(1, like.getIdAsString());
-			preparedStatement.setString(2, like.getRealizationDate().toString());
+			preparedStatement.setDate(2, like.getRealizationDate());
 			preparedStatement.setString(3, like.getUser().getIdAsString());
 			preparedStatement.setString(4, like.getArtwork().getIdAsString());
 			preparedStatement.executeUpdate();
@@ -68,7 +70,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 	@Override
 	public void delete(UUID id) {
 		
-		final var sql = "DELETE FROM comment WHERE id = ?";
+		final var sql = "DELETE FROM public.like lik WHERE lik.id = ?";
 
 		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
             
@@ -94,7 +96,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
         sqlBuilder.append("       usr1.password AS LikeUserPassword, ");
         sqlBuilder.append("       usr1.birth_date AS LikeUserBirthdate, ");
         sqlBuilder.append("       usr1.description AS LikeUserDescription, ");
-        sqlBuilder.append("       usr1.is_private AS LikeUserIsPrivate ");
+        sqlBuilder.append("       usr1.is_private AS LikeUserIsPrivate, ");
 		sqlBuilder.append("       lik.artwork_id AS LikeArtworkId, ");
 		sqlBuilder.append("       art.tittle AS ArtworkTittle, ");
 		sqlBuilder.append("       art.description AS ArtworkDescription, ");
@@ -102,7 +104,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 		sqlBuilder.append("       art.file_id AS FileId, ");
 		sqlBuilder.append("       fil.path_file AS FilePathFile, ");
 		sqlBuilder.append("       fil.type_file_id AS FileTypeFileId, ");
-		sqlBuilder.append("       fit.file_type AS FileTypeName, ");
+		sqlBuilder.append("       fit.name AS FileTypeName, ");
 		sqlBuilder.append("       art.artwork_type_id AS ArtworkTypeId, ");
 		sqlBuilder.append("       aty.name AS ArtworkTypeName, ");
 		sqlBuilder.append("       art.user_id AS ArtworkUserId, ");
@@ -114,13 +116,13 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
         sqlBuilder.append("       usr2.birth_date AS UserBirthdate, ");
         sqlBuilder.append("       usr2.description AS UserDescription, ");
         sqlBuilder.append("       usr2.is_private AS UserIsPrivate ");
-		sqlBuilder.append("FROM like lik ");
-		sqlBuilder.append("JOIN user usr1 ON lik.userId = usr1.id ");
-		sqlBuilder.append("JOIN artwork art ON lik.artworkId = art.id ");
-		sqlBuilder.append("JOIN file fil ON art.fileId = fil.id ");
-		sqlBuilder.append("JOIN filetype fit ON fil.typeFileId = fit.id ");
-		sqlBuilder.append("JOIN artworktype aty ON art.artworkTypeId = aty.id ");
-		sqlBuilder.append("JOIN user usr2 ON art.userId = usr2.id ");
+		sqlBuilder.append("FROM public.like lik ");
+		sqlBuilder.append("JOIN public.user usr1 ON lik.user_id = usr1.id ");
+		sqlBuilder.append("JOIN artwork art ON lik.artwork_id = art.id ");
+		sqlBuilder.append("JOIN file fil ON art.file_id = fil.id ");
+		sqlBuilder.append("JOIN filetype fit ON fil.type_file_id = fit.id ");
+		sqlBuilder.append("JOIN artworktype aty ON art.artwork_type_id = aty.id ");
+		sqlBuilder.append("JOIN public.user usr2 ON art.user_id = usr2.id ");
 	}
 
 	private final void createWhere(final StringBuilder sqBuilder, final LikeDTO like, final List<Object> parameters){
@@ -130,21 +132,21 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 		if(!ObjectHelper.isNull(like)){
 
 			if(!UUIDHelper.isDefaultUUID(like.getId())){
-				sqBuilder.append("WHERE id = ? ");
+				sqBuilder.append("WHERE lik.id = ? ");
 				setWhere = false;
 				parameters.add(like.getIdAsString());
 			}
-			if(!ObjectHelper.isNull(like.getRealizationDate())){
+			if(!DateHelper.isDefaultDate(like.getRealizationDate())){
 				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("realization_date = ? ");
 				setWhere = false;
 				parameters.add(like.getRealizationDate());
 			}
-			if(!ObjectHelper.isNull(like.getUser().getIdAsString())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("user_id = ? ");
+			if(!UUIDHelper.isDefaultUUID(like.getUser().getId())){
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("lik.user_id = ? ");
 				setWhere = false;
 				parameters.add(like.getUser().getIdAsString());
 			}
-			if(!ObjectHelper.isNull(like.getArtwork().getId())){
+			if(!UUIDHelper.isDefaultUUID(like.getArtwork().getId())){
 				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artwork_id = ? ");
 				parameters.add(like.getArtwork().getIdAsString());
 			}
@@ -197,13 +199,13 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 
         try {
 
-            return UserDTO.create(resultSet.getString("LiketUserId"), 
+            return UserDTO.create(resultSet.getString("LikeUserId"), 
                                   resultSet.getString("LikeUserName"), 
                                   resultSet.getString("LikeUserLastName"),
                                   resultSet.getString("LikeUserMail"),
                                   resultSet.getString("LikeUserNickname"),
                                   resultSet.getString("LikeUserPassword"),
-                                  resultSet.getDate("LikeUserBitrh"),
+                                  resultSet.getDate("LikeUserBirthdate"),
                                   resultSet.getString("LikeUserDescription"),
                                   resultSet.getBoolean("LikeUserIsPrivate"));
             
@@ -275,13 +277,13 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 
         try {
 
-            return UserDTO.create(resultSet.getString("UserId"), 
+            return UserDTO.create(resultSet.getString("ArtworkUserId"), 
                                   resultSet.getString("UserName"), 
                                   resultSet.getString("UserLastName"),
                                   resultSet.getString("UserMail"),
                                   resultSet.getString("UserNickname"),
                                   resultSet.getString("UserPassword"),
-                                  resultSet.getDate("UserBitrh"),
+                                  resultSet.getDate("UserBirthdate"),
                                   resultSet.getString("UserDescription"),
                                   resultSet.getBoolean("UserIsPrivate"));
             

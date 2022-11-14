@@ -1,12 +1,13 @@
 package edu.uco.artdly.service.usecase.artwork.implementation;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.DateHelper;
 import edu.uco.artdly.crosscutting.helper.StringHelper;
+import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.ArtworkTypeDTO;
@@ -43,6 +44,7 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
             final ArtworkTypeDTO artworkType = findArtworkType(artwork.getArtworkType().getId());
             final UserDTO user = findUser(artwork.getUser().getId());
 
+            artwork.setId(UUIDHelper.getNewUUID());
             artwork.setTittle(tittle);
             artwork.setPublicationDate(publicationDate);
             artwork.setFile(file);

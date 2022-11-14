@@ -1,6 +1,5 @@
 package edu.uco.artdly.domain.builder;
-
-import java.util.Date;
+import java.sql.Date;
 import java.util.UUID;
 
 import edu.uco.artdly.domain.ArtworkDTO;
