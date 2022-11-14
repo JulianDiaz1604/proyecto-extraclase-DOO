@@ -2,6 +2,7 @@ package edu.uco.artdly.service.usecase.command.implementation;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 
@@ -26,10 +27,10 @@ public class CreateLikeCommandImpl implements CreateLikeCommand{
             throw exception;
         } catch(ArtdlyCustomException exception) {
             factory.cancelTransaction(); //TODO: create message
-            throw UsecaseCustomException.wrapException("Se presento un problema tratando de crear el like", exception);
+            throw UsecaseCustomException.wrapException(Messages.CreateLikeCommandImpl.TECHNICAL_PROBLEM_CREATE_LIKE , exception);
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
-            throw UsecaseCustomException.CreateBusinessException(null, exception);
+            throw UsecaseCustomException.CreateBusinessException(Messages.CreateLikeCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE, exception);
         }        
     }
 }

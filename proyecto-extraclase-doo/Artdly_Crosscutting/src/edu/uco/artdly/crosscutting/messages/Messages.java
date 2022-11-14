@@ -304,6 +304,107 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_USER = "There was a problem trying to executeQuery the user";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_USER  = "There was a unexpected problem trying to executeQuery the user";
     }
+    public static class CreateCategoryArtworkCommandImpl {
+        private CreateCategoryArtworkCommandImpl() {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_CATEGORYARTWORK = "There was a problem trying to create the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_CATEGORYARTWORK= "There was a unexpected problem trying to create the categoryArtwork";
         
+    }
+    public static class CreateFileCommandImpl {
+        private CreateFileCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_FILE = "There was a problem trying to create the file";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_FILE= "There was a unexpected problem trying to create the file";
+        
+    }
+    public static class CreateLikeCommandImpl {
+        private CreateLikeCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_LIKE = "There was a problem trying to create the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE = "There was a unexpected problem trying to create the like";
+        
+    }
+    public static class CreateUserCommandImpl {
+        private CreateUserCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_USER = "There was a problem trying to create the user";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER = "There was a unexpected problem trying to create the user";
+        
+    }
+    public static class DeleteLikeCommandImpl{
+        private DeleteLikeCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_DELETELIKE = "There was a problem trying to delete the deletelike";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_DELETELIKE = "There was a unexpected problem trying to delete the deletelike";
+         
+    }
+    public static class FindAllArtworkTypeCommandImpl {
+        private FindAllArtworkTypeCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_ARTWORKTYPE = "There was a problem trying to find the artworktype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKTYPE ="There was a unexpected problem trying to find the artworktype";
     
+    }
+    public static class FindAllCategoryCommandImpl {
+        private FindAllCategoryCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_CATEGORY = "There was a problem trying to find the category";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_CATEGORY ="There was a unexpected problem trying to find the category";
+    
+    }
+    public static class FindArtworkByIdCommandImpl {
+        private FindArtworkByIdCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_ARTWORKBYID = "There was a problem trying to find the ArtworkById";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKBYID ="There was a unexpected problem trying to find the ArtworkById";
+    
+    }
+    public static class FindArtworktypeByIdCommandImpl {
+        private FindArtworktypeByIdCommandImpl () {
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_ARTWORKTYPEBYID = "There was a problem trying to find the ArtworkTypeById";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKTYPEBYID ="There was a unexpected problem trying to find the ArtworkTypeById";
+    
+    }
+    public static class FindCategoryByIdCommandImpl {
+        private FindCategoryByIdCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_CATEGORYBYID = "There was a problem trying to find the CategoryById";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_CATEGORYBYID ="There was a unexpected problem trying to find the CategoryById";
+    
+    }
+    public static class FindFileTypeByNameCommandImpl {
+        private FindFileTypeByNameCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_FILETYPEBYNAME = "There was a problem trying to find the FileTypeByName";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_FILETYPEBYNAME ="There was a unexpected problem trying to find the FileTypeByName";
+           
+    }
+    public static class FindUserByIdCommandImpl{
+        private FindUserByIdCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_USERBYID = "There was a problem trying to find the UserById";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_USERBYID="There was a unexpected problem trying to find the UserById";
+        
+    }
+    public static class PostArtworkCommandImpl {
+        private PostArtworkCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_POST_ARTWORK = "There was a problem trying to post the Artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_POST_ARTWORK ="There was a unexpected problem trying to post the Artwork";
+        
+    }
 }

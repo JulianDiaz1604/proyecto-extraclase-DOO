@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 import edu.uco.artdly.domain.CategoryDTO;
@@ -28,10 +29,10 @@ public class FindCategoryByIdCommandImpl implements FindCategoryByIdCommand{
             throw exception;
         } catch(ArtdlyCustomException exception) {
             factory.cancelTransaction(); //TODO: create message
-            throw UsecaseCustomException.wrapException("Se presento un problema tratando de crear la obra", exception);
+            throw UsecaseCustomException.wrapException(Messages.FindCategoryByIdCommandImpl.TECHNICAL_PROBLEM_FIND_CATEGORYBYID, exception);
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
-            throw UsecaseCustomException.CreateBusinessException(null, exception);
+            throw UsecaseCustomException.CreateBusinessException(Messages.FindCategoryByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_CATEGORYBYID, exception);
         } finally {
             factory.closeConection();
         } 
