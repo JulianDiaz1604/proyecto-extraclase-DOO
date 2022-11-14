@@ -11,6 +11,7 @@ import edu.uco.artdly.controller.validator.Validator;
 import edu.uco.artdly.crosscutting.helper.MailHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.crosscutting.messages.Message;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.domain.UserDTO;
 
 public class CreateUserValidator implements Validator<UserDTO>{
@@ -31,14 +32,14 @@ public class CreateUserValidator implements Validator<UserDTO>{
 
 	public void validateUserBirthdate(Date userDate, List<Message> messages) {
 		if(isMinor(userDate)) {
-			messages.add(Message.createInfoMessage("usted es menor de edad"));
+			messages.add(Message.createInfoMessage(Messages.CreateUserValidator.TECHNICAL_PROBLEM_VALIDATION_BIRTHDAY));
 		}
 		
 	}
 
 	public void validateMail(String mail, List<Message> messages) {
 		if(MailHelper.isDefaultMail(mail)) {
-			messages.add(Message.createErrorMessage("el mail es igual que el Default mail"));
+			messages.add(Message.createErrorMessage(Messages.CreateUserValidator.TECHNICAL_PROBLEM_VALIDATION_MAIL));
 		}
 	}
 

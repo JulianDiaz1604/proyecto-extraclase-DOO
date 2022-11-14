@@ -20,6 +20,7 @@ import edu.uco.artdly.controller.validator.Validator;
 import edu.uco.artdly.controller.validator.artwork.CreateArtworkValidator;
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.messages.Message;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.service.usecase.command.CreateArtworkCommand;
 import edu.uco.artdly.service.usecase.command.implementation.CreateArtworkCommandImpl;
@@ -46,7 +47,7 @@ public class ArtworkController {
 				final List<ArtworkDTO> data = new ArrayList<>();
 				data.add(artwork);
 				response.setData(data);
-				response.addSuccessMessage("la obra se creó chimbisima");
+				response.addSuccessMessage(Messages.ArtworkController.TECHNICAL_PROBLEM_CREATE_ARTWORK);
 			} else {
 				 httpStatus = HttpStatus.BAD_REQUEST;
 				 response.setMessages(messages);
@@ -55,14 +56,14 @@ public class ArtworkController {
 			httpStatus = HttpStatus.BAD_REQUEST;
 
 			if(exception.isTechinalException()) {
-				response.addErrorMessage("es un error tratando de crear el budget, please try again.......");
+				response.addErrorMessage(Messages.ArtworkController.TECHNICAL_PROBLEM_CREATE_BUDGET);
 			}else {
 				response.addErrorMessage(exception.getMessage());
 			}
 			exception.printStackTrace();
 		}catch(final Exception exception) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-			response.addFatalMessage("mka mejor deje la carrera");
+			response.addFatalMessage(Messages.ArtworkController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
 			exception.printStackTrace();
 
 		}
@@ -77,7 +78,7 @@ public class ArtworkController {
 		   try {
 			  Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
 		   } catch (Exception e) {
-			  throw new RuntimeException("FAIL!");
+			  throw new RuntimeException(Messages.ArtworkController.TECHNICAL_PROBLEM_FAIL_ARTWORK);
 		   }
 		   files.add(file.getOriginalFilename());
   

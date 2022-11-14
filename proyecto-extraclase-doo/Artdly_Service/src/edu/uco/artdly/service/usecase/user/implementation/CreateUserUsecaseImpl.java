@@ -9,6 +9,7 @@ import static edu.uco.artdly.crosscutting.helper.MailHelper.trueMailForm;
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.StringHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.UserDTO;
 import edu.uco.artdly.service.usecase.user.CreateUserUsecase;
@@ -36,7 +37,7 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
             final String username = validateUsername(user.getUsername());
             final String password = validatePassword(user.getPassword());
             final Date birthDate = user.getBirthDate();
-            final String description = validateDescription(user.getDescription());
+            final String description = user.getDescription();
             final boolean isPrivate = false;
             
             user.setId(id);
@@ -62,13 +63,13 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
     
     private final String validateName(String name){
         if(StringHelper.isDefaultString(name)){ //TODO: create message
-            throw UsecaseCustomException.CreateUserException("El nombre no puede estar vacio");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATENAME);
         }
         return name;
     }
     private final String validateLastname(String lastname){
         if(StringHelper.isDefaultString(lastname)){ //TODO: create message
-            throw UsecaseCustomException.CreateUserException("El segundo nombre no puede estar vacio");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATELASTNAME);
         }
         return lastname;
     }
@@ -76,7 +77,7 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
     private final String validateMail(String mail){
 
         if(!trueMailForm(mail)){ //TODO: create message
-            throw UsecaseCustomException.CreateUserException("NO TIENE LA FORMA DE UN CORREO");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATEMAIL);
       
     }
         return mail;
@@ -85,32 +86,25 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
     private final String validateUsername(String username){
         final UserDTO user = findUserByUsername.execute(username);
         if(invalidUsername(username)) {
-            throw UsecaseCustomException.CreateUserException("que no se pueda colocar ese nick");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME);
         }
         if(StringHelper.isDefaultString(username)){ //TODO: create message
-            throw UsecaseCustomException.CreateUserException("El nickname no puede estar vacio");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME2);
         }
         if(user.exist()) {
-            throw UsecaseCustomException.CreateUserException("ESTE NICK YA EXISTE");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATEUSERMANE3);
         }
         return username;
     }
     private final String validatePassword(String password){
 
         if(StringHelper.isDefaultString(password)){ //TODO: create message
-            throw UsecaseCustomException.CreateUserException("la contraseña no puede estar vacia");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATPASSWORD);
         }
         return password;
     }
 
-    private final String validateDescription(String description){
-        if(StringHelper.isDefaultString(description)){ //TODO: create message
-            return description = " ";
-        }
-        return description;
-    }
 
-    
     private final static boolean invalidUsername(String username) {
         String ofensive = "nigga";
         if(username.equals(ofensive)) {

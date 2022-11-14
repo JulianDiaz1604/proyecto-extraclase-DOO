@@ -1,13 +1,13 @@
 package edu.uco.artdly.service.usecase.artwork.implementation;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.DateHelper;
 import edu.uco.artdly.crosscutting.helper.StringHelper;
-import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.ArtworkTypeDTO;
@@ -44,7 +44,6 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
             final ArtworkTypeDTO artworkType = findArtworkType(artwork.getArtworkType().getId());
             final UserDTO user = findUser(artwork.getUser().getId());
 
-            artwork.setId(UUIDHelper.getNewUUID());
             artwork.setTittle(tittle);
             artwork.setPublicationDate(publicationDate);
             artwork.setFile(file);
@@ -64,7 +63,7 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
 
     private final String validateTittle(String tittle){
         if(StringHelper.isDefaultString(tittle)){ //TODO: create message
-            throw UsecaseCustomException.CreateUserException("El titulo de la obra no puede estar vacio");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATETITTLE);
         }
         return tittle;
     }
@@ -77,7 +76,7 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
         final ArtworkTypeDTO artworkType = findArtworkTypeById.execute(id);
 
         if(artworkType.notExist()){ //TODO: create message
-            throw UsecaseCustomException.CreateUserException("No existe el tipo de obra seleccionado");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDARTWORKTYPE);
         }
 
         return artworkType;
@@ -87,7 +86,7 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
         final UserDTO user = findUserById.execute(id);
 
         if(user.notExist()){ //TODO create message
-            throw UsecaseCustomException.CreateUserException("No existe el usuario");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDUSER);
         }
 
         return user;

@@ -9,6 +9,7 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.DateHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.LikeDTO;
@@ -32,7 +33,7 @@ import edu.uco.artdly.service.usecase.like.CreateLikeUsecase;
     public void execute(LikeDTO like) {
        try {
            if(existLike(like.getUser(),like.getArtwork())) {
-               throw UsecaseCustomException.CreateUserException("Se ha registrado el like a la obra");
+               throw UsecaseCustomException.CreateUserException(Messages.CreateLikeUsecaseImpl.TECHNICAL_PROBLEM_CREATE_LIKE);
            }
            LikeDTO newLike = new LikeDTO();
            

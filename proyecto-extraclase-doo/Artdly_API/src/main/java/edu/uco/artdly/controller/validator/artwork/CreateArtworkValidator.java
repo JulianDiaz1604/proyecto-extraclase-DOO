@@ -7,6 +7,7 @@ import edu.uco.artdly.controller.validator.Validator;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
 import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.crosscutting.messages.Message;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.domain.ArtworkDTO;
 
 public class CreateArtworkValidator implements Validator<ArtworkDTO> {
@@ -20,10 +21,10 @@ public class CreateArtworkValidator implements Validator<ArtworkDTO> {
 
     private void validateArtworkTittle(String artworkTittle, List<Message> messages){
         if (ObjectHelper.isNull(artworkTittle)) {
-            messages.add(Message.createInfoMessage("Debe asignarle un titulo a la obra"));
+            messages.add(Message.createInfoMessage(Messages.CreateArtworkValidator.TECHNICAL_PROBLEM_CREATE_VALIDATEARTWORKTITTLE));
         }
         if (StringHelper.isDefaultString(artworkTittle.trim())) {
-            messages.add(Message.createInfoMessage("Debe asignarle un titulo a la obra"));
+            messages.add(Message.createInfoMessage(Messages.CreateArtworkValidator.TECHNICAL_PROBLEM_CREATE_VALIDATEARTWORKTITTLE));
         }
     }
 
