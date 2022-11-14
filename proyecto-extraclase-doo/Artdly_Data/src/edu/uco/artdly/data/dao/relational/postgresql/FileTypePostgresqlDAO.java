@@ -25,7 +25,7 @@ public class FileTypePostgresqlDAO extends DAORelational implements FileTypeDAO 
 
 	@Override
 	public void create(FileTypeDTO filetype) {
-		final var sql = "INSERT INTO filetype (id, fileType) VALUES (?, ?)";
+		final var sql = "INSERT INTO filetype (id, name) VALUES (?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -56,7 +56,7 @@ public class FileTypePostgresqlDAO extends DAORelational implements FileTypeDAO 
 	@Override
 	public void update(FileTypeDTO filetype) {
 
-		final var sql = "UPDATE filetype set id = ?, fileType = ? ";
+		final var sql = "UPDATE filetype set id = ?, name = ? ";
 
 		try(final var prepareStatement = getConnection().prepareStatement(sql)) {
 			
@@ -92,7 +92,7 @@ public class FileTypePostgresqlDAO extends DAORelational implements FileTypeDAO 
 
 	private final void createSelectFrom(final StringBuilder sqlBuilder){
 		sqlBuilder.append("SELECT ft.id AS FileTypeId, ");
-        sqlBuilder.append("       ft.fileType AS FileTypeName ");
+        sqlBuilder.append("       ft.name AS FileTypeName ");
 		sqlBuilder.append("FROM filetype ft ");
 	}
 
@@ -108,7 +108,7 @@ public class FileTypePostgresqlDAO extends DAORelational implements FileTypeDAO 
 				parameters.add(filetype.getIdAsString());
 			}
 			if(!ObjectHelper.isNull(filetype.getFileType())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("fileType = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
 				parameters.add(filetype.getFileType());
 			}
 

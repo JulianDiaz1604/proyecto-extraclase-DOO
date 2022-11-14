@@ -30,7 +30,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 	@Override
 	public void create(ArtworkDTO artwork) {
 
-		final var sql = "INSERT INTO artwork(id, tittle, description, publicationDate, fileId, artworkTypeId, userId) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		final var sql = "INSERT INTO artwork(id, tittle, description, publication_date, file_id, artwork_type_id, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -67,7 +67,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 	@Override
 	public void update(ArtworkDTO artwork) {
 
-		final var sql = "UPDATE artwork SET id = ?, tittle = ?, description = ?, publicationDate = ?, fileId = ?, artworkTypeId = ?, userId = ? ";
+		final var sql = "UPDATE artwork SET id = ?, tittle = ?, description = ?, publication_date = ?, file_id = ?, artwork_type_id = ?, user_id = ? ";
 		
 		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
 			
@@ -110,27 +110,27 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		sqlBuilder.append("SELECT art.id AS ArtworkId, ");
 		sqlBuilder.append("       art.tittle AS ArtworkTittle, ");
 		sqlBuilder.append("       art.description AS ArtworkDescription, ");
-		sqlBuilder.append("       art.publicationDate AS ArtworkPublicationDate, ");
-		sqlBuilder.append("       art.fileId AS FileId, ");
-		sqlBuilder.append("       fil.pathFile AS FilePathFile, ");
-		sqlBuilder.append("       fil.typeFileId AS FileTypeFileId, ");
-		sqlBuilder.append("       fit.fileType AS FileTypeName, ");
-		sqlBuilder.append("       art.artworkTypeId AS ArtworkTypeId, ");
+		sqlBuilder.append("       art.publication_date AS ArtworkPublicationDate, ");
+		sqlBuilder.append("       art.file_id AS FileId, ");
+		sqlBuilder.append("       fil.path_file AS FilePathFile, ");
+		sqlBuilder.append("       fil.type_file_id AS FileTypeFileId, ");
+		sqlBuilder.append("       fit.name AS FileTypeName, ");
+		sqlBuilder.append("       art.artwork_type_id AS ArtworkTypeId, ");
 		sqlBuilder.append("       aty.name AS ArtworkTypeName, ");
-		sqlBuilder.append("       art.userId AS ArtworkUserId, ");
+		sqlBuilder.append("       art.user_id AS ArtworkUserId, ");
 		sqlBuilder.append("       usr.name AS UserName, ");
-        sqlBuilder.append("       usr.lastName AS UserLastName, ");
+        sqlBuilder.append("       usr.last_name AS UserLastName, ");
         sqlBuilder.append("       usr.mail AS UserMail, ");
         sqlBuilder.append("       usr.username AS UserNickname, ");
         sqlBuilder.append("       usr.password AS UserPassword, ");
-        sqlBuilder.append("       usr.birthDate AS UserBirthdate, ");
+        sqlBuilder.append("       usr.birth_date AS UserBirthdate, ");
         sqlBuilder.append("       usr.description AS UserDescription, ");
-        sqlBuilder.append("       usr.isPrivate AS UserIsPrivate ");
+        sqlBuilder.append("       usr.is_private AS UserIsPrivate ");
 		sqlBuilder.append("FROM artwork art ");
-		sqlBuilder.append("JOIN file fil ON art.fileId = fil.id ");
-		sqlBuilder.append("JOIN filetype fit ON fil.typeFileId = fit.id ");
-		sqlBuilder.append("JOIN artworktype aty ON art.artworkTypeId = aty.id ");
-		sqlBuilder.append("JOIN user usr ON art.userId = usr.id ");
+		sqlBuilder.append("JOIN file fil ON art.file_id = fil.id ");
+		sqlBuilder.append("JOIN filetype fit ON fil.type_file_id = fit.id ");
+		sqlBuilder.append("JOIN artworktype aty ON art.artwork_type_id = aty.id ");
+		sqlBuilder.append("JOIN public.user usr ON art.user_id = usr.id ");
 	}
 
 	private final void createWhere(final StringBuilder sqBuilder, final ArtworkDTO artwork, final List<Object> parameters){
@@ -155,22 +155,22 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 				parameters.add(artwork.getTittle());
 			}
 			if(!ObjectHelper.isNull(artwork.getPublicationDate())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("publicationDate = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("publication_date = ? ");
 				setWhere = false;
 				parameters.add(artwork.getPublicationDate());
 			}
 			if(!ObjectHelper.isNull(artwork.getFile())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("fileId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("file_id = ? ");
 				setWhere = false;
 				parameters.add(artwork.getFile());
 			}
 			if(!ObjectHelper.isNull(artwork.getArtworkType().getId())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artworkTypeId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artwork_type_id = ? ");
 				setWhere = false;
 				parameters.add(artwork.getArtworkType().getIdAsString());
 			}
 			if(!ObjectHelper.isNull(artwork.getUser().getId())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("userId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("user_id = ? ");
 				parameters.add(artwork.getUser().getIdAsString());
 			}
 

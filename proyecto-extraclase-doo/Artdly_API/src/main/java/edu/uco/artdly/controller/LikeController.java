@@ -2,6 +2,7 @@ package edu.uco.artdly.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,4 +35,10 @@ public class LikeController {
 		createLikeCommand.execute(like);
 		return "Se registro correctamente el like";
 	}
+
+	@DeleteMapping("/delete")
+	public void delete(@RequestBody LikeDTO like){
+		deleteLikeCommand.execute(like.getId());
+	}
+
 }

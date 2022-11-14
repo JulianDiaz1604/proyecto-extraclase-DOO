@@ -32,7 +32,7 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 	@Override
 	public void create(LikeDTO like) {
 
-		final var sql = "INSERT INTO like (id, realizationDate, userID, artworkId) VALUES (?, ?, ?, ?, ?)";
+		final var sql = "INSERT INTO like (id, realization_date, user_id, artwork_id) VALUES (?, ?, ?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -85,35 +85,35 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 
 	private final void createSelectFrom(final StringBuilder sqlBuilder){
 		sqlBuilder.append("SELECT lik.id AS LikeId, ");
-		sqlBuilder.append("       lik.realizationDate AS LikeRealizationDate, ");
-		sqlBuilder.append("       lik.userId AS LikeUserId, ");
+		sqlBuilder.append("       lik.realization_date AS LikeRealizationDate, ");
+		sqlBuilder.append("       lik.user_id AS LikeUserId, ");
 		sqlBuilder.append("       usr1.name AS LikeUserName, ");
-        sqlBuilder.append("       usr1.lastName AS LikeUserLastName, ");
+        sqlBuilder.append("       usr1.last_name AS LikeUserLastName, ");
         sqlBuilder.append("       usr1.mail AS LikeUserMail, ");
         sqlBuilder.append("       usr1.username AS LikeUserNickname, ");
         sqlBuilder.append("       usr1.password AS LikeUserPassword, ");
-        sqlBuilder.append("       usr1.birthDate AS LikeUserBirthdate, ");
+        sqlBuilder.append("       usr1.birth_date AS LikeUserBirthdate, ");
         sqlBuilder.append("       usr1.description AS LikeUserDescription, ");
-        sqlBuilder.append("       usr1.isPrivate AS LikeUserIsPrivate ");
-		sqlBuilder.append("       lik.artworkId AS LikeArtworkId, ");
+        sqlBuilder.append("       usr1.is_private AS LikeUserIsPrivate ");
+		sqlBuilder.append("       lik.artwork_id AS LikeArtworkId, ");
 		sqlBuilder.append("       art.tittle AS ArtworkTittle, ");
 		sqlBuilder.append("       art.description AS ArtworkDescription, ");
-		sqlBuilder.append("       art.publicationDate AS ArtworkPublicationDate, ");
-		sqlBuilder.append("       art.fileId AS FileId, ");
-		sqlBuilder.append("       fil.pathFile AS FilePathFile, ");
-		sqlBuilder.append("       fil.typeFileId AS FileTypeFileId, ");
-		sqlBuilder.append("       fit.fileType AS FileTypeName, ");
-		sqlBuilder.append("       art.artworkTypeId AS ArtworkTypeId, ");
+		sqlBuilder.append("       art.publication_date AS ArtworkPublicationDate, ");
+		sqlBuilder.append("       art.file_id AS FileId, ");
+		sqlBuilder.append("       fil.path_file AS FilePathFile, ");
+		sqlBuilder.append("       fil.type_file_id AS FileTypeFileId, ");
+		sqlBuilder.append("       fit.file_type AS FileTypeName, ");
+		sqlBuilder.append("       art.artwork_type_id AS ArtworkTypeId, ");
 		sqlBuilder.append("       aty.name AS ArtworkTypeName, ");
-		sqlBuilder.append("       art.userId AS ArtworkUserId, ");
+		sqlBuilder.append("       art.user_id AS ArtworkUserId, ");
 		sqlBuilder.append("       usr2.name AS UserName, ");
-        sqlBuilder.append("       usr2.lastName AS UserLastName, ");
+        sqlBuilder.append("       usr2.last_name AS UserLastName, ");
         sqlBuilder.append("       usr2.mail AS UserMail, ");
         sqlBuilder.append("       usr2.username AS UserNickname, ");
         sqlBuilder.append("       usr2.password AS UserPassword, ");
-        sqlBuilder.append("       usr2.birthDate AS UserBirthdate, ");
+        sqlBuilder.append("       usr2.birth_date AS UserBirthdate, ");
         sqlBuilder.append("       usr2.description AS UserDescription, ");
-        sqlBuilder.append("       usr2.isPrivate AS UserIsPrivate ");
+        sqlBuilder.append("       usr2.is_private AS UserIsPrivate ");
 		sqlBuilder.append("FROM like lik ");
 		sqlBuilder.append("JOIN user usr1 ON lik.userId = usr1.id ");
 		sqlBuilder.append("JOIN artwork art ON lik.artworkId = art.id ");
@@ -135,17 +135,17 @@ public class LikePostgresqlDAO extends DAORelational implements LikeDAO {
 				parameters.add(like.getIdAsString());
 			}
 			if(!ObjectHelper.isNull(like.getRealizationDate())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("realizationDate = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("realization_date = ? ");
 				setWhere = false;
 				parameters.add(like.getRealizationDate());
 			}
 			if(!ObjectHelper.isNull(like.getUser().getIdAsString())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("userId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("user_id = ? ");
 				setWhere = false;
 				parameters.add(like.getUser().getIdAsString());
 			}
 			if(!ObjectHelper.isNull(like.getArtwork().getId())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artworkId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artwork_id = ? ");
 				parameters.add(like.getArtwork().getIdAsString());
 			}
 

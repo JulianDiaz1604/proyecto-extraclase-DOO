@@ -18,7 +18,7 @@ public class FindAllArtworkTypeCommandImpl implements FindAllArtworkTypeCommand 
     private final FindAllArtworkTypeUsecase useCase = new FindAllArtworkTypesUsecaseImpl(factory);
 
     @Override
-    public List<ArtworkTypeDTO> exexute() {
+    public List<ArtworkTypeDTO> execute() {
         try {
             factory.initTransaction();
             List<ArtworkTypeDTO> artworkType = useCase.exexute();

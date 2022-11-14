@@ -24,10 +24,10 @@ public class CreateFileUsecaseImpl implements CreateFileUsecase {
     @Override
     public FileDTO execute(FileDTO file) {
         String pathName = createPathFileUseCase.execute(file.getPathFile());
-        FileTypeDTO fileType = findFileType(file.getTypeFile().getFileType());
+        //FileTypeDTO fileType = findFileType(file.getTypeFile().getFileType());
 
         file.setPathFile(pathName);
-        file.setTypeFile(fileType);
+        //file.setTypeFile(fileType);
 
         factory.getFileDAO().create(file);
 
