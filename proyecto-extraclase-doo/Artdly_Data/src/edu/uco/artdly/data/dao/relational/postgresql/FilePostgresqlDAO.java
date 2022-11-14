@@ -26,7 +26,7 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 
 	@Override
 	public void create(FileDTO file) {
-		final var sql = "INSERT INTO file (id, pathFile, typeFile) VALUES (?, ?, ?)";
+		final var sql = "INSERT INTO file (id, path_file, type_file) VALUES (?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -59,7 +59,7 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 	@Override
 	public void update(FileDTO file) {
 
-		final var sql = "UPDATE file SET id = ?, pathFile = ?, typeFile = ? ";
+		final var sql = "UPDATE file SET id = ?, path_file = ?, type_file = ? ";
 		
 		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
 			
@@ -97,11 +97,11 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 
 	private final void createSelectFrom(final StringBuilder sqlBuilder){
 		sqlBuilder.append("SELECT fl.id AS FileId, ");
-		sqlBuilder.append("       fl.pathFile AS FilePathFile, ");
-        sqlBuilder.append("       fl.typeFileId AS FileTypeFile, ");
-        sqlBuilder.append("       ft.fileType AS FileType ");
+		sqlBuilder.append("       fl.path_file AS FilePathFile, ");
+        sqlBuilder.append("       fl.type_file_id AS FileTypeFile, ");
+        sqlBuilder.append("       ft.name AS FileType ");
 		sqlBuilder.append("FROM file fl ");
-		sqlBuilder.append("JOIN filetype ft ON fl.typeFileId = ft.id ");
+		sqlBuilder.append("JOIN filetype ft ON fl.type_file_id = ft.id ");
 	}
 
 	private final void createWhere(final StringBuilder sqBuilder, final FileDTO file, final List<Object> parameters){
@@ -116,12 +116,12 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 				parameters.add(file.getIdAsString());
 			}
 			if(!ObjectHelper.isNull(file.getPathFile())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("pathFile = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("path_file = ? ");
 				setWhere = false;
 				parameters.add(file.getPathFile());
 			}
 			if(!ObjectHelper.isNull(file.getTypeFile().getId())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("typeFile = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("type_file = ? ");
 				parameters.add(file.getTypeFile().getId());
 			}
 

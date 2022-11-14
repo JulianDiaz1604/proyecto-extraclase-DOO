@@ -7,24 +7,20 @@ import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.service.usecase.artwork.CreateArtworkUsecase;
-import edu.uco.artdly.service.usecase.artwork.StoreArtworkOnServerUsecase;
 import edu.uco.artdly.service.usecase.artwork.implementation.CreateArtworkUsecaseImpl;
-import edu.uco.artdly.service.usecase.artwork.implementation.StoreArtworkOnServerUsecaseImpl;
-import edu.uco.artdly.service.usecase.command.PostArtworkCommand;
+import edu.uco.artdly.service.usecase.command.CreateArtworkCommand;
 
-public class PostArtworkCommandImpl implements PostArtworkCommand {
+public class CreateArtworkCommandImpl implements CreateArtworkCommand {
 
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
-    private final CreateArtworkUsecase createArtworkUseCase = new CreateArtworkUsecaseImpl(factory);
-    private final StoreArtworkOnServerUsecase storeArtworkOnServerUsecase = new StoreArtworkOnServerUsecaseImpl();
+    private final CreateArtworkUsecase useCase = new CreateArtworkUsecaseImpl(factory);
 
     @Override
-    public void execute(ArtworkDTO artwork, String pathFile) {
+    public void execute(ArtworkDTO artwork) {
         try {
             factory.initTransaction();
-            createArtworkUseCase.execute(artwork);
+            useCase.execute(artwork);
             factory.confirmTransaction();
-            storeArtworkOnServerUsecase.execute(artwork, pathFile);
         } catch(UsecaseCustomException exception){
             factory.cancelTransaction();
             throw exception;

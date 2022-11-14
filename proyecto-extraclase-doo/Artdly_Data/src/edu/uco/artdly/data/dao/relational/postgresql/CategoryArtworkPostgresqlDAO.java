@@ -33,7 +33,7 @@ public class CategoryArtworkPostgresqlDAO extends DAORelational implements Categ
 	@Override
 	public void create(CategoryArtworkDTO categoryArtwork) {
 		
-		final var sql = "INSERT INTO categoryartwork(id, artworkId, categoryId) VALUES (?, ?, ?)";
+		final var sql = "INSERT INTO categoryartwork(id, artwork_id, category_id) VALUES (?, ?, ?)";
 		
 		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
 			
@@ -67,7 +67,7 @@ public class CategoryArtworkPostgresqlDAO extends DAORelational implements Categ
 	@Override
 	public void update(CategoryArtworkDTO categoryArtwork) {
 
-		final var sql = "UPDATE categoryartwork SET id = ?, artworkId = ?, categoryId = ? ";
+		final var sql = "UPDATE categoryartwork SET id = ?, artwork_id = ?, category_id = ? ";
 		
 		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
 			
@@ -104,35 +104,35 @@ public class CategoryArtworkPostgresqlDAO extends DAORelational implements Categ
 
 	private final void createSelectFrom(final StringBuilder sqlBuilder){
 		sqlBuilder.append("SELECT car.id AS CategoryArtworkId, ");
-		sqlBuilder.append("       car.artworkId AS CategoryArtworkIdArtwork, ");
+		sqlBuilder.append("       car.artwork_id AS CategoryArtworkIdArtwork, ");
 		sqlBuilder.append("       art.tittle AS ArtworkTittle, ");
 		sqlBuilder.append("       art.description AS ArtworkDescription, ");
-		sqlBuilder.append("       art.publicationDate AS ArtworkPublicationDate, ");
-		sqlBuilder.append("       art.fileId AS FileId, ");
-		sqlBuilder.append("       fil.pathFile AS FilePathFile, ");
-		sqlBuilder.append("       fil.typeFileId AS FileTypeFileId, ");
-		sqlBuilder.append("       fit.fileType AS FileTypeName, ");
-		sqlBuilder.append("       art.artworkTypeId AS ArtworkTypeId, ");
+		sqlBuilder.append("       art.publication_date AS ArtworkPublicationDate, ");
+		sqlBuilder.append("       art.file_id AS FileId, ");
+		sqlBuilder.append("       fil.path_file AS FilePathFile, ");
+		sqlBuilder.append("       fil.type_file_id AS FileTypeFileId, ");
+		sqlBuilder.append("       fit.file_type AS FileTypeName, ");
+		sqlBuilder.append("       art.artwork_type_id AS ArtworkTypeId, ");
 		sqlBuilder.append("       aty.name AS ArtworkTypeName, ");
-		sqlBuilder.append("       art.userId AS ArtworkUserId, ");
+		sqlBuilder.append("       art.user_id AS ArtworkUserId, ");
 		sqlBuilder.append("       usr.name AS UserName, ");
-        sqlBuilder.append("       usr.lastName AS UserLastName, ");
+        sqlBuilder.append("       usr.last_name AS UserLastName, ");
         sqlBuilder.append("       usr.mail AS UserMail, ");
         sqlBuilder.append("       usr.username AS UserNickname, ");
         sqlBuilder.append("       usr.password AS UserPassword, ");
-        sqlBuilder.append("       usr.birthDate AS UserBirthdate, ");
+        sqlBuilder.append("       usr.birth_date AS UserBirthdate, ");
         sqlBuilder.append("       usr.description AS UserDescription, ");
-        sqlBuilder.append("       usr.isPrivate AS UserIsPrivate ");
-		sqlBuilder.append("       car.categoryId AS CategoryArtworkIdCategory, ");
+        sqlBuilder.append("       usr.is_private AS UserIsPrivate ");
+		sqlBuilder.append("       car.category_id AS CategoryArtworkIdCategory, ");
 		sqlBuilder.append("       cat.name AS CategoryName, ");
 		sqlBuilder.append("       cat.description AS CategoryDescription ");
 		sqlBuilder.append("FROM categoryartwork car ");
-		sqlBuilder.append("JOIN artwork art ON car.artworkId = art.id ");
-		sqlBuilder.append("JOIN file fil ON art.fileId = fil.id ");
-		sqlBuilder.append("JOIN filetype fit ON fil.typeFileId = fit.id ");
-		sqlBuilder.append("JOIN artworktype aty ON art.artworkTypeId = aty.id ");
-		sqlBuilder.append("JOIN user usr ON art.userId = usr.id ");
-		sqlBuilder.append("JOIN category cat ON car.categoryId = cat.id ");
+		sqlBuilder.append("JOIN artwork art ON car.artwork_id = art.id ");
+		sqlBuilder.append("JOIN file fil ON art.file_id = fil.id ");
+		sqlBuilder.append("JOIN filetype fit ON fil.type_file_id = fit.id ");
+		sqlBuilder.append("JOIN artworktype aty ON art.artwork_type_id = aty.id ");
+		sqlBuilder.append("JOIN public.user usr ON art.user_id = usr.id ");
+		sqlBuilder.append("JOIN category cat ON car.category_id = cat.id ");
 	}
 
 	private final void createWhere(final StringBuilder sqBuilder, final CategoryArtworkDTO categoryArtwork, final List<Object> parameters){
@@ -147,12 +147,12 @@ public class CategoryArtworkPostgresqlDAO extends DAORelational implements Categ
 				parameters.add(categoryArtwork.getIdAsString());
 			}
 			if(!ObjectHelper.isNull(categoryArtwork.getArtwork().getIdAsString())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artworkId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artwork_id = ? ");
 				setWhere = false;
 				parameters.add(categoryArtwork.getArtwork().getIdAsString());
 			}
 			if(!ObjectHelper.isNull(categoryArtwork.getCategory().getIdAsString())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("categoryId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("category_id = ? ");
 				parameters.add(categoryArtwork.getCategory().getIdAsString());
 			}
 

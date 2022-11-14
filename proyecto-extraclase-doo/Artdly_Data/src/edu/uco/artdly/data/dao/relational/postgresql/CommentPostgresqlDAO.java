@@ -32,7 +32,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 	@Override
 	public void create(CommentDTO comment) {
 
-		final var sql = "INSERT INTO comment (id, realizationDate, description, userID, artworkId) VALUES (?, ?, ?, ?, ?)";
+		final var sql = "INSERT INTO comment (id, realization_date, description, user_iD, artwork_id) VALUES (?, ?, ?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -86,43 +86,43 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 
 	private final void createSelectFrom(final StringBuilder sqlBuilder){
 		sqlBuilder.append("SELECT com.id AS CommentId, ");
-		sqlBuilder.append("       com.realizationDate AS CommentRealizationDate, ");
+		sqlBuilder.append("       com.realization_date AS CommentRealizationDate, ");
 		sqlBuilder.append("       com.description AS CommentDescription, ");
-		sqlBuilder.append("       com.userId AS CommentUserId, ");
+		sqlBuilder.append("       com.user_id AS CommentUserId, ");
 		sqlBuilder.append("       usr1.name AS CommentUserName, ");
-        sqlBuilder.append("       usr1.lastName AS CommentUserLastName, ");
+        sqlBuilder.append("       usr1.last_name AS CommentUserLastName, ");
         sqlBuilder.append("       usr1.mail AS CommentUserMail, ");
         sqlBuilder.append("       usr1.username AS CommentUserNickname, ");
         sqlBuilder.append("       usr1.password AS CommentUserPassword, ");
-        sqlBuilder.append("       usr1.birthDate AS CommentUserBirthdate, ");
+        sqlBuilder.append("       usr1.birth_date AS CommentUserBirthdate, ");
         sqlBuilder.append("       usr1.description AS CommentUserDescription, ");
-        sqlBuilder.append("       usr1.isPrivate AS CommentUserIsPrivate ");
-		sqlBuilder.append("       com.artworkId AS CommentArtworkId, ");
+        sqlBuilder.append("       usr1.is_private AS CommentUserIsPrivate ");
+		sqlBuilder.append("       com.artwork_id AS CommentArtworkId, ");
 		sqlBuilder.append("       art.tittle AS ArtworkTittle, ");
 		sqlBuilder.append("       art.description AS ArtworkDescription, ");
-		sqlBuilder.append("       art.publicationDate AS ArtworkPublicationDate, ");
-		sqlBuilder.append("       art.fileId AS FileId, ");
-		sqlBuilder.append("       fil.pathFile AS FilePathFile, ");
-		sqlBuilder.append("       fil.typeFileId AS FileTypeFileId, ");
-		sqlBuilder.append("       fit.fileType AS FileTypeName, ");
-		sqlBuilder.append("       art.artworkTypeId AS ArtworkTypeId, ");
+		sqlBuilder.append("       art.publication_date AS ArtworkPublicationDate, ");
+		sqlBuilder.append("       art.file_id AS FileId, ");
+		sqlBuilder.append("       fil.path_file AS FilePathFile, ");
+		sqlBuilder.append("       fil.type_file_id AS FileTypeFileId, ");
+		sqlBuilder.append("       fit.file_type AS FileTypeName, ");
+		sqlBuilder.append("       art.artwork_type_id AS ArtworkTypeId, ");
 		sqlBuilder.append("       aty.name AS ArtworkTypeName, ");
-		sqlBuilder.append("       art.userId AS ArtworkUserId, ");
+		sqlBuilder.append("       art.user_id AS ArtworkUserId, ");
 		sqlBuilder.append("       usr2.name AS UserName, ");
-        sqlBuilder.append("       usr2.lastName AS UserLastName, ");
+        sqlBuilder.append("       usr2.last_name AS UserLastName, ");
         sqlBuilder.append("       usr2.mail AS UserMail, ");
         sqlBuilder.append("       usr2.username AS UserNickname, ");
         sqlBuilder.append("       usr2.password AS UserPassword, ");
-        sqlBuilder.append("       usr2.birthDate AS UserBirthdate, ");
+        sqlBuilder.append("       usr2.birth_date AS UserBirthdate, ");
         sqlBuilder.append("       usr2.description AS UserDescription, ");
-        sqlBuilder.append("       usr2.isPrivate AS UserIsPrivate ");
+        sqlBuilder.append("       usr2.is_private AS UserIsPrivate ");
 		sqlBuilder.append("FROM comment com ");
-		sqlBuilder.append("JOIN user usr1 ON com.userId = usr1.id ");
-		sqlBuilder.append("JOIN artwork art ON com.artworkId = art.id ");
-		sqlBuilder.append("JOIN file fil ON art.fileId = fil.id ");
-		sqlBuilder.append("JOIN filetype fit ON fil.typeFileId = fit.id ");
-		sqlBuilder.append("JOIN artworktype aty ON art.artworkTypeId = aty.id ");
-		sqlBuilder.append("JOIN user usr2 ON art.userId = usr2.id ");
+		sqlBuilder.append("JOIN public.user usr1 ON com.user_id = usr1.id ");
+		sqlBuilder.append("JOIN artwork art ON com.artwork_id = art.id ");
+		sqlBuilder.append("JOIN file fil ON art.file_id = fil.id ");
+		sqlBuilder.append("JOIN filetype fit ON fil.type_file_id = fit.id ");
+		sqlBuilder.append("JOIN artworktype aty ON art.artwork_type_id = aty.id ");
+		sqlBuilder.append("JOIN public.user usr2 ON art.user_id = usr2.id ");
 	}
 
 	private final void createWhere(final StringBuilder sqBuilder, final CommentDTO comment, final List<Object> parameters){
@@ -137,7 +137,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 				parameters.add(comment.getIdAsString());
 			}
 			if(!ObjectHelper.isNull(comment.getRealizationDate())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("realizationDate = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("realization_date = ? ");
 				setWhere = false;
 				parameters.add(comment.getRealizationDate());
 			}
@@ -147,12 +147,12 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
 				parameters.add(comment.getDescription());
 			}
 			if(!ObjectHelper.isNull(comment.getUser().getIdAsString())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("userId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("user_id = ? ");
 				setWhere = false;
 				parameters.add(comment.getUser().getIdAsString());
 			}
 			if(!ObjectHelper.isNull(comment.getArtwork().getId())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artworkId = ? ");
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("artwork_id = ? ");
 				parameters.add(comment.getArtwork().getIdAsString());
 			}
 
