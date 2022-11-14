@@ -16,7 +16,7 @@ public class UsecaseCustomException extends ArtdlyCustomException {
 	    return new UsecaseCustomException(userMessage, userMessage, new Exception());
 	    
 	}
-	
+	            
 	public static final ArtdlyCustomException CreateTechnicalException(final String technicalMessage) {
 	    return new UsecaseCustomException(EMPTY, technicalMessage, new Exception());
 	    

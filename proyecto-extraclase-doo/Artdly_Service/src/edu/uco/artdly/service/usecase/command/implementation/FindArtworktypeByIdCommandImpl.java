@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.data.enumeration.DAOFactoryType;
 import edu.uco.artdly.domain.ArtworkTypeDTO;
@@ -27,10 +28,12 @@ public class FindArtworktypeByIdCommandImpl implements FindArtworkTypeByIdComman
             throw exception;
         } catch(ArtdlyCustomException exception) {
             factory.cancelTransaction(); //TODO: create message
-            throw UsecaseCustomException.wrapException("Se presento un problema tratando de crear la obra", exception);
+            throw UsecaseCustomException.wrapException(Messages.FindArtworktypeByIdCommandImpl.TECHNICAL_PROBLEM_FIND_ARTWORKTYPEBYID, exception);
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
-            throw UsecaseCustomException.CreateBusinessException(null, exception);
+            throw UsecaseCustomException.CreateBusinessException(Messages.FindArtworktypeByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKTYPEBYID, exception);
+        } finally {
+            factory.closeConection();
         }  
     }
 
