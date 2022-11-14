@@ -179,7 +179,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 
 	private final void createOrderBy(final StringBuilder sqlBuilder){
 
-		sqlBuilder.append("ORDER BY art.id");
+		sqlBuilder.append("ORDER BY art.publication_date DESC");
 
 	}
 
