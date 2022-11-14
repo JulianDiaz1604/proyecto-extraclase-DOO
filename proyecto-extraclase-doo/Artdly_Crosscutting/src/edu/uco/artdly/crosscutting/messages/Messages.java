@@ -468,7 +468,7 @@ public class Messages {
         private CategoryController () {
             super ();
         }
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the artworktype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the Category";
         public static final String TECHNICAL_PROBLEM_FIND_CATEGORY = "Stored categories were returned";
     }
     public static class LikeController {
@@ -483,7 +483,7 @@ public class Messages {
         }
         public static final String TECHNICAL_PROBLEM_CREATE_USER = "The user has been created successfully";
         public static final String TECHNICAL_PROBLEM_CREATE_BUDGET = "An error occurred in creating the budget, please try again.......";
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the artworktype";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the User";
     }
     public static class CreateArtworkValidator {
         private CreateArtworkValidator () {
