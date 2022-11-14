@@ -404,7 +404,48 @@ public class Messages {
             super ();
         }
         public static final String TECHNICAL_PROBLEM_POST_ARTWORK = "There was a problem trying to post the Artwork";
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_POST_ARTWORK ="There was a unexpected problem trying to post the Artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_POST_ARTWORK ="There was a unexpected problem trying to post the Artwork";       
+    }
+    
+    public static class CreateArtworkUsecaseImpl {
+        private CreateArtworkUsecaseImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATETITTLE = "The tittle of the work cannot be empty";
+        public static final String TECHNICAL_PROBLEM_CREATE_FINDARTWORKTYPE = "The selected artwork type does not exist";
+        public static final String TECHNICAL_PROBLEM_CREATE_FINDUSER = "User does not exist";
+    }
+    public static class CreateCategoryArtworkUsecaseImpl{
+        private CreateCategoryArtworkUsecaseImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_FINDARTWORK= "The work does not exist";
+        public static final String TECHNICAL_PROBLEM_CREATE_FINDCATEOGRY= "The cateogry does not exist";
         
+    }
+    public static class CreateFileUsecaseImpl {
+        private CreateFileUsecaseImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_FINDFILETYPE= "File type does no exist";
+    }
+    public static class CreateLikeUsecaseImpl {
+        private CreateLikeUsecaseImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_LIKE= "The like has been successfully registered";
+    }
+    public static class CreateUserUsecaseImpl {
+        private CreateUserUsecaseImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATENAME = "The name cannot be empty";
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATELASTNAME = "The second name cannot be empty";
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEMAIL = "It is not formatted properly when creating an email";
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATPASSWORD = "The password field cannot be empty";
+        
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME = "Unable to enter username";
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME2 = "Username field cannot remain empty";
+        public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEUSERMANE3 = "The username entered already exists";
     }
 }

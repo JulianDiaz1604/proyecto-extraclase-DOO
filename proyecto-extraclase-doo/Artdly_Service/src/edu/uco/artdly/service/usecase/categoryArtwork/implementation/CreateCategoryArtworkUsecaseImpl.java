@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.ArtworkDTO;
 import edu.uco.artdly.domain.CategoryArtworkDTO;
@@ -40,7 +41,7 @@ public class CreateCategoryArtworkUsecaseImpl implements CreateCategoryArtworkUs
         final ArtworkDTO artwork = findArtworkById.execute(id);
 
         if(artwork.notExist()){ //TODO create message
-            throw UsecaseCustomException.CreateUserException("No existe la categoria");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateCategoryArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDARTWORK);
         }
 
         return artwork;
@@ -50,7 +51,7 @@ public class CreateCategoryArtworkUsecaseImpl implements CreateCategoryArtworkUs
         final CategoryDTO category = findCategoryById.execute(id);
 
         if(category.notExist()){ //TODO create message
-            throw UsecaseCustomException.CreateUserException("No existe la categoria");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateCategoryArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDCATEOGRY);
         }
 
         return category;
