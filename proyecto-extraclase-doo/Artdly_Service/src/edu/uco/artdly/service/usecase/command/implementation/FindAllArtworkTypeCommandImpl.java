@@ -33,6 +33,8 @@ public class FindAllArtworkTypeCommandImpl implements FindAllArtworkTypeCommand 
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(null, exception);
+        } finally {
+            factory.closeConection();
         }
     }
 

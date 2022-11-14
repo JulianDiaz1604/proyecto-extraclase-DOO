@@ -31,6 +31,8 @@ public class FindArtworktypeByIdCommandImpl implements FindArtworkTypeByIdComman
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(null, exception);
+        } finally {
+            factory.closeConection();
         }  
     }
 

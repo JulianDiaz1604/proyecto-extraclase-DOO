@@ -109,8 +109,8 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
         }
         return description;
     }
-    
 
+    
     private final static boolean invalidUsername(String username) {
         String ofensive = "nigga";
         if(username.equals(ofensive)) {

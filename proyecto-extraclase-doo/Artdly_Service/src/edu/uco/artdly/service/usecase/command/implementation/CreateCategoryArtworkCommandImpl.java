@@ -29,6 +29,8 @@ public class CreateCategoryArtworkCommandImpl implements CreateCategoryArtworkCo
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(null, exception);
+        } finally {
+            factory.closeConection();
         }        
     }
 }
