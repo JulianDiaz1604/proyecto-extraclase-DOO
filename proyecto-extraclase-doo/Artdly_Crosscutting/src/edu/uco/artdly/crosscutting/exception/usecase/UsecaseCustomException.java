@@ -38,8 +38,7 @@ public class UsecaseCustomException extends ArtdlyCustomException {
 	}
 	public static final ArtdlyCustomException wrapException(final String message, final ArtdlyCustomException exception){
             if(exception.isTechinalException()){
-                //TODO: wrapper negocio
-                throw UsecaseCustomException.CreateBusinessException(message, exception);
+                return UsecaseCustomException.CreateBusinessException(message, exception);
             }
             return exception;
 	}
