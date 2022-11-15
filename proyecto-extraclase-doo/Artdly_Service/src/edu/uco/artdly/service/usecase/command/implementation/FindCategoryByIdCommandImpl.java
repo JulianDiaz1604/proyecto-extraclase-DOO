@@ -28,10 +28,10 @@ public class FindCategoryByIdCommandImpl implements FindCategoryByIdCommand{
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.FindCategoryByIdCommandImpl.TECHNICAL_PROBLEM_FIND_CATEGORYBYID, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.FindCategoryByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_CATEGORYBYID, exception);
         }
     }

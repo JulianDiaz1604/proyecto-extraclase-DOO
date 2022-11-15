@@ -62,13 +62,13 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
     }
     
     private final String validateName(String name){
-        if(StringHelper.isDefaultString(name)){ //TODO: create message
+        if(StringHelper.isDefaultString(name)){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATENAME);
         }
         return name;
     }
     private final String validateLastname(String lastname){
-        if(StringHelper.isDefaultString(lastname)){ //TODO: create message
+        if(StringHelper.isDefaultString(lastname)){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATELASTNAME);
         }
         return lastname;
@@ -76,7 +76,7 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
     
     private final String validateMail(String mail){
 
-        if(!trueMailForm(mail)){ //TODO: create message
+        if(!trueMailForm(mail)){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATEMAIL);
       
     }
@@ -88,7 +88,7 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
         if(invalidUsername(username)) {
             throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME);
         }
-        if(StringHelper.isDefaultString(username)){ //TODO: create message
+        if(StringHelper.isDefaultString(username)){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME2);
         }
         if(user.exist()) {
@@ -98,7 +98,7 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
     }
     private final String validatePassword(String password){
 
-        if(StringHelper.isDefaultString(password)){ //TODO: create message
+        if(StringHelper.isDefaultString(password)){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATPASSWORD);
         }
         return password;

@@ -27,10 +27,10 @@ public class FindAllCategoryCommandImpl implements FindAllCategoryCommand {
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.FindAllCategoryCommandImpl.TECHNICAL_PROBLEM_FIND_CATEGORY, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.FindAllCategoryCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_CATEGORY, exception);
         } 
     }

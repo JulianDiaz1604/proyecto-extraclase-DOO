@@ -28,10 +28,10 @@ public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.FindArtworkByIdCommandImpl.TECHNICAL_PROBLEM_FIND_ARTWORKBYID, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.FindArtworkByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKBYID, exception);
         }
     }

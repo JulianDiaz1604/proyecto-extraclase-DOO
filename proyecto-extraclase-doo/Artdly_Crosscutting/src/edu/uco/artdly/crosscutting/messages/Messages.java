@@ -436,8 +436,8 @@ public class Messages {
         private CreateLikeUsecaseImpl () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_LIKE= "There was a problem trying to create the Like"; //RE
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE="There was a unexpected problem trying to create the Like"; //RE
+        public static final String TECHNICAL_PROBLEM_CREATE_LIKE= "There was a problem trying to create the Like"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE="There was a unexpected problem trying to create the Like"; 
        
         public static final String TECHNICAL_PROBLEM_REGISTRE_LIKE= "The like has been successfully registered";
     }
@@ -445,8 +445,8 @@ public class Messages {
         private CreateUserUsecaseImpl () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_USER= "There was a problem trying to create the User"; //RE
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER="There was a unexpected problem trying to create the User"; //RE
+        public static final String TECHNICAL_PROBLEM_CREATE_USER= "There was a problem trying to create the User"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER="There was a unexpected problem trying to create the User"; 
         
         public static final String TECHNICAL_PROBLEM_CREATE_INVALIDUSERNAME= "The username entered is offensive";
         
@@ -514,9 +514,16 @@ public class Messages {
         private DeleteLikeUsecaseImpl () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_DELETE_LIKE= "There was a problem trying to delete the Like"; //RE
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_LIKE ="There was a unexpected problem trying to delete the like"; //RE
+        public static final String TECHNICAL_PROBLEM_DELETE_LIKE= "There was a problem trying to delete the Like"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_LIKE ="There was a unexpected problem trying to delete the like";
        
     }
-    
+    public static class FindAllArtworkCommandImpl {
+        private FindAllArtworkCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_ARTWORK= "There was a problem trying to find the artworks"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORK ="There was a unexpected problem trying to find the artworks";
+       
+    }
 }

@@ -25,10 +25,10 @@ public class CreateArtworkCommandImpl implements CreateArtworkCommand {
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.PostArtworkCommandImpl.TECHNICAL_PROBLEM_POST_ARTWORK, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.PostArtworkCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_POST_ARTWORK, exception);
         }/* finally {
             factory.closeConection();

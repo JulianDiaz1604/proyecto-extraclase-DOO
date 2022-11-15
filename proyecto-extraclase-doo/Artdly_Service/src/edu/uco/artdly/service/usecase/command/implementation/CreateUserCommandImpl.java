@@ -24,10 +24,10 @@ public class CreateUserCommandImpl implements CreateUserCommand{
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.CreateUserCommandImpl.TECHNICAL_PROBLEM_CREATE_USER, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.CreateUserCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER, exception);
         }      
     }
