@@ -226,7 +226,7 @@ public class CategoryArtworkPostgresqlDAO extends DAORelational implements Categ
                                   fillFileTypeDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(Messages.CategoryArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_CATEGORYARTWORK, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_CATEGORYARTWORK, exception);
         }
 
     }
@@ -239,7 +239,7 @@ public class CategoryArtworkPostgresqlDAO extends DAORelational implements Categ
                                   		 resultSet.getString("FileTypeName"));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(Messages.CategoryArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILETYPEDTO_CATEGORYARTWORK, exception); //TODO: create message
+            throw DataCustomException.CreateTechnicalException(Messages.CategoryArtworkPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILETYPEDTO_CATEGORYARTWORK, exception);
         }
 
     }
