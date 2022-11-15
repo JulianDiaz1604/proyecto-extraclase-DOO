@@ -10,7 +10,6 @@ import edu.uco.artdly.data.enumeration.DAOFactoryType;
 import edu.uco.artdly.service.usecase.command.DeleteLikeCommand;
 import edu.uco.artdly.service.usecase.like.DeleteLikeUsecase;
 import edu.uco.artdly.service.usecase.like.implementation.DeleteLikeUsecaseImpl;
-
 public class DeleteLikeCommandImpl implements DeleteLikeCommand {
     private final DAOFactory factory = DAOFactory.getDAOFactory(DAOFactoryType.POSTGRESQL);
     private final DeleteLikeUsecase useCase = new DeleteLikeUsecaseImpl(factory);

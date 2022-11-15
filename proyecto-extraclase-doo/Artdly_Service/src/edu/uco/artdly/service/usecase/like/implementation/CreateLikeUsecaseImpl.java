@@ -52,9 +52,9 @@ import edu.uco.artdly.service.usecase.like.CreateLikeUsecase;
        }catch(UsecaseCustomException exception) {
            throw exception;
        } catch(ArtdlyCustomException exception) {
-           throw exception;
+           throw UsecaseCustomException.wrapException(null, exception);
        } catch(Exception exception) {
-           throw exception;
+           throw UsecaseCustomException.CreateBusinessException(null, exception);
        }
    }   
     private final boolean existLike(UserDTO user, ArtworkDTO artwork){
