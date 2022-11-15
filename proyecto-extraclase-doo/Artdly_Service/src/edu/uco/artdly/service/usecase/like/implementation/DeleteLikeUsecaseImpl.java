@@ -7,34 +7,31 @@ import java.util.UUID;
 import edu.uco.artdly.crosscutting.exception.ArtdlyCustomException;
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.data.daofactory.DAOFactory;
-import edu.uco.artdly.domain.LikeDTO;
 import edu.uco.artdly.service.usecase.like.DeleteLikeUsecase;
-import edu.uco.artdly.service.usecase.like.FindLikeByIdUsecase;
 
 
-public class DeleteLikeUsecaseImpl implements DeleteLikeUsecase {
+
+class DeleteLikeUsecaseImpl implements DeleteLikeUsecase {
     
     
     private final DAOFactory factory;
-    private final FindLikeByIdUsecase findLikeByIdUsecase;
+    
     public DeleteLikeUsecaseImpl(DAOFactory factory){
         this.factory = factory;
-        this.findLikeByIdUsecase = new FindLikeByIdUsecaseImpl(factory);
     }
     
     @Override
     public void execute(UUID id) {
         try {
-            LikeDTO like = findLikeByIdUsecase.execute(id);
             factory.getLikeDAO().delete(id);
             
                                        
         }catch(UsecaseCustomException exception) {
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            throw exception;
+            throw UsecaseCustomException.wrapException(null, exception);
         } catch(Exception exception) {
-            throw exception;
+            throw UsecaseCustomException.CreateBusinessException(null, exception);
         }
     } 
   
