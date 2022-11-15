@@ -277,13 +277,13 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 
         try {
 
-            return UserDTO.create(resultSet.getString("UserId"), 
+            return UserDTO.create(resultSet.getString("ArtworkUserId"), 
                                   resultSet.getString("UserName"), 
                                   resultSet.getString("UserLastName"),
                                   resultSet.getString("UserMail"),
                                   resultSet.getString("UserNickname"),
                                   resultSet.getString("UserPassword"),
-                                  resultSet.getDate("UserBitrh"),
+                                  resultSet.getDate("UserBirthdate"),
                                   resultSet.getString("UserDescription"),
                                   resultSet.getBoolean("UserIsPrivate"));
             

@@ -37,6 +37,11 @@ public class ArtworkController {
 	private final Path rootLocation = Paths.get("C:/Users/diazj/OneDrive/Escritorio");
 	private FindAllArtworkCommand findAllArtwork = new FindAllArtworkCommandImpl();
 
+	@GetMapping
+	public ArtworkDTO artwork(){
+		return new ArtworkDTO();
+	}
+
 	@PostMapping("/postArtwork")
 	public ResponseEntity<Response<ArtworkDTO>> postArtwork(@RequestBody ArtworkDTO artwork) {
 

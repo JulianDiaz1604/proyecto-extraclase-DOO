@@ -16,7 +16,7 @@ public class UserDTO {
     
     private UUID id;
     private String name;
-    private String lastname;
+    private String lastName;
     private String mail;
     private String username;
     private String password;
@@ -84,11 +84,11 @@ public class UserDTO {
     }
 
     public String getLastName() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastname = lastName;
+        this.lastName = lastName;
     }
 
     public String getMail() {

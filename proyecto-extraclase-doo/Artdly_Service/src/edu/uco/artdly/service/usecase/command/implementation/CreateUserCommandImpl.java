@@ -29,9 +29,7 @@ public class CreateUserCommandImpl implements CreateUserCommand{
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.CreateUserCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER, exception);
-        } finally {
-            factory.closeConection();
-        }        
+        }      
     }
 
 }

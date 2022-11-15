@@ -30,9 +30,9 @@ public class CreateArtworkCommandImpl implements CreateArtworkCommand {
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.PostArtworkCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_POST_ARTWORK, exception);
-        } finally {
+        }/* finally {
             factory.closeConection();
-        }
+        }*/
     }
     
 }

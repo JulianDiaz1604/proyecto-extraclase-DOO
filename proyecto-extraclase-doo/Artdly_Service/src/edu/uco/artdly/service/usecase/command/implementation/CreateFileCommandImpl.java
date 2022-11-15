@@ -30,8 +30,6 @@ public class CreateFileCommandImpl implements CreateFileCommand {
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.CreateFileCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_FILE, exception);
-        } finally {
-            factory.closeConection();
         }
     }
     

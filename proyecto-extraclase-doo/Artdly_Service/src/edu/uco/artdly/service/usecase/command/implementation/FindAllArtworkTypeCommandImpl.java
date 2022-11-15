@@ -34,9 +34,9 @@ public class FindAllArtworkTypeCommandImpl implements FindAllArtworkTypeCommand 
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.FindAllArtworkTypeCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKTYPE, exception);
-        } finally {
+        }/*finally {
             factory.closeConection();
-        }
+        }*/
     }
 
 }

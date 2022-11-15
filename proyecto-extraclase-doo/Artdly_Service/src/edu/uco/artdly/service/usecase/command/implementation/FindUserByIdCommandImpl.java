@@ -33,9 +33,7 @@ public class FindUserByIdCommandImpl implements FindUserByIdCommand{
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.FindUserByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_USERBYID, exception);
-        } finally {
-            factory.closeConection();
-        }   
+        }  
     }
 
 }

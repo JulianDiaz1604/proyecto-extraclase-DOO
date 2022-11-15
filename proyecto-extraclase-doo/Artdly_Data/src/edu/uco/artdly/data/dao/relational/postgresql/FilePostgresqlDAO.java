@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import edu.uco.artdly.crosscutting.exception.data.DataCustomException;
 import edu.uco.artdly.crosscutting.helper.ObjectHelper;
+import edu.uco.artdly.crosscutting.helper.StringHelper;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
 import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.dao.FileDAO;
@@ -26,7 +27,7 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 
 	@Override
 	public void create(FileDTO file) {
-		final var sql = "INSERT INTO file (id, path_file, type_file) VALUES (?, ?, ?)";
+		final var sql = "INSERT INTO file (id, path_file, type_file_id) VALUES (?, ?, ?)";
 		
 		try (final var preparedStatement = getConnection().prepareStatement(sql)) {
 			
@@ -59,7 +60,7 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 	@Override
 	public void update(FileDTO file) {
 
-		final var sql = "UPDATE file SET id = ?, path_file = ?, type_file = ? ";
+		final var sql = "UPDATE file SET id = ?, path_file = ?, type_file_id = ? ";
 		
 		try (final var prepareStatement = getConnection().prepareStatement(sql)) {
 			
@@ -115,13 +116,13 @@ public class FilePostgresqlDAO extends DAORelational implements FileDAO {
 				setWhere = false;
 				parameters.add(file.getIdAsString());
 			}
-			if(!ObjectHelper.isNull(file.getPathFile())){
+			if(!StringHelper.isDefaultString(file.getPathFile())){
 				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("path_file = ? ");
 				setWhere = false;
 				parameters.add(file.getPathFile());
 			}
-			if(!ObjectHelper.isNull(file.getTypeFile().getId())){
-				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("type_file = ? ");
+			if(!UUIDHelper.isDefaultUUID(file.getTypeFile().getId())){
+				sqBuilder.append(setWhere ? "WHERE " : "AND ").append("type_file_id = ? ");
 				parameters.add(file.getTypeFile().getId());
 			}
 

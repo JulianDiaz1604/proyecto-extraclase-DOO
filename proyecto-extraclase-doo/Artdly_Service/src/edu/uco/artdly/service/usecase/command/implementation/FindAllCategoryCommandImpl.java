@@ -32,9 +32,7 @@ public class FindAllCategoryCommandImpl implements FindAllCategoryCommand {
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.FindAllCategoryCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_CATEGORY, exception);
-        } finally {
-            factory.closeConection();
-        }
+        } 
     }
 
 }

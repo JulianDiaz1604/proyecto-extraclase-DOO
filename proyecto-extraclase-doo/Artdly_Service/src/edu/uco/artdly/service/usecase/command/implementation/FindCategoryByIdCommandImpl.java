@@ -33,9 +33,7 @@ public class FindCategoryByIdCommandImpl implements FindCategoryByIdCommand{
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.FindCategoryByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_CATEGORYBYID, exception);
-        } finally {
-            factory.closeConection();
-        } 
+        }
     }
 
 }

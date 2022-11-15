@@ -30,9 +30,7 @@ public class CreateCategoryArtworkCommandImpl implements CreateCategoryArtworkCo
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.CreateCategoryArtworkCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_CATEGORYARTWORK, exception);
-        } finally {
-            factory.closeConection();
-        }        
+        }     
     }
 }
     

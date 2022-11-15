@@ -33,8 +33,6 @@ public class FindArtworkByIdCommandImpl implements FindArtworkByIdCommand {
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException(Messages.FindArtworkByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKBYID, exception);
-        } finally {
-            factory.closeConection();
         }
     }
 

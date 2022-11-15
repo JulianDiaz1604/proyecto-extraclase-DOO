@@ -34,9 +34,9 @@ public class FindAllArtworkCommandImpl implements FindAllArtworkCommand{
         } catch(final Exception exception){
             factory.cancelTransaction(); //TODO: create message
             throw UsecaseCustomException.CreateBusinessException("ha ocurrido un error inesperando encontrando las orbas", exception);
-        } finally {
+        }/* finally {
             factory.closeConection();
-        }        
+        }  */      
     }
 
 }

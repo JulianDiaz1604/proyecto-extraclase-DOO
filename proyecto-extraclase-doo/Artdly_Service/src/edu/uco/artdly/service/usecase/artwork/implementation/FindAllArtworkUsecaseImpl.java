@@ -13,9 +13,6 @@ public class FindAllArtworkUsecaseImpl implements FindAllArtworkUsecase{
         this.factory = factory;
     }
     
-    
-
-    
     @Override
     public List<ArtworkDTO> execute(){
         return  factory.getArtworkDAO().findAll();
