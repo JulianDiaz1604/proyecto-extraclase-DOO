@@ -57,9 +57,9 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
         } catch(UsecaseCustomException exception) {
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            throw UsecaseCustomException.wrapException(null, exception);
+            throw UsecaseCustomException.wrapException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_ARTWORK, exception); //re
         } catch(Exception exception) {
-            throw UsecaseCustomException.CreateBusinessException(null, exception);
+            throw UsecaseCustomException.CreateBusinessException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_ARTWORK, exception); //re
         }
     }
 

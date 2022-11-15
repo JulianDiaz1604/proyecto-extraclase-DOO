@@ -3,6 +3,7 @@ package edu.uco.artdly.service.usecase.file.implementation;
 
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
+import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.FileDTO;
 import edu.uco.artdly.domain.FileTypeDTO;
@@ -42,7 +43,7 @@ public class CreateFileUsecaseImpl implements CreateFileUsecase {
         final FileTypeDTO fileType = findFileTypeByName.execute(type.getFileType());
         
         if(!fileType.exist()) {
-            throw UsecaseCustomException.CreateUserException("este tipo de archivo no existe");
+            throw UsecaseCustomException.CreateUserException(Messages.CreateFileUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDFILETYPE);
         }
         return type;
         

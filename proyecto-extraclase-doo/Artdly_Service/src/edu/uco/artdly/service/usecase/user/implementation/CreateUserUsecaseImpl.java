@@ -55,9 +55,9 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
         }catch(UsecaseCustomException exception) {
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            throw UsecaseCustomException.wrapException(null, exception);
+            throw UsecaseCustomException.wrapException(Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_USER, exception);
         } catch(Exception exception) {
-            throw UsecaseCustomException.CreateBusinessException(null, exception);
+            throw UsecaseCustomException.CreateBusinessException(Messages.CreateUserUsecaseImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER, exception);
         }
     }
     
@@ -106,7 +106,7 @@ public class CreateUserUsecaseImpl implements CreateUserUsecase{
 
 
     private final static boolean invalidUsername(String username) {
-        String ofensive = "nigga";
+        String ofensive = Messages.CreateUserUsecaseImpl.TECHNICAL_PROBLEM_CREATE_INVALIDUSERNAME;
         if(username.equals(ofensive)) {
             return true;
         }else {

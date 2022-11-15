@@ -33,7 +33,7 @@ import edu.uco.artdly.service.usecase.like.CreateLikeUsecase;
     public void execute(LikeDTO like) {
        try {
            if(existLike(like.getUser(),like.getArtwork())) {
-               throw UsecaseCustomException.CreateUserException(Messages.CreateLikeUsecaseImpl.TECHNICAL_PROBLEM_CREATE_LIKE);
+               throw UsecaseCustomException.CreateUserException(Messages.CreateLikeUsecaseImpl.TECHNICAL_PROBLEM_REGISTRE_LIKE);
            }
            LikeDTO newLike = new LikeDTO();
            
@@ -52,9 +52,9 @@ import edu.uco.artdly.service.usecase.like.CreateLikeUsecase;
        }catch(UsecaseCustomException exception) {
            throw exception;
        } catch(ArtdlyCustomException exception) {
-           throw UsecaseCustomException.wrapException(null, exception);
+           throw UsecaseCustomException.wrapException(Messages.CreateLikeUsecaseImpl.TECHNICAL_PROBLEM_CREATE_LIKE, exception);
        } catch(Exception exception) {
-           throw UsecaseCustomException.CreateBusinessException(null, exception);
+           throw UsecaseCustomException.CreateBusinessException(Messages.CreateLikeUsecaseImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE, exception);
        }
    }   
     private final boolean existLike(UserDTO user, ArtworkDTO artwork){
