@@ -10,6 +10,8 @@ public interface FileTypeDAO {
 	void create(FileTypeDTO filetype);
 
 	List<FileTypeDTO> find(FileTypeDTO filetype);
+	
+	List<FileTypeDTO> findAll();
 
 	void update(FileTypeDTO filetype);
 

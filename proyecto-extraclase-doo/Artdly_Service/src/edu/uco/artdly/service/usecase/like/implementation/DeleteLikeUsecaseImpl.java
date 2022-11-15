@@ -11,7 +11,7 @@ import edu.uco.artdly.service.usecase.like.DeleteLikeUsecase;
 
 
 
-class DeleteLikeUsecaseImpl implements DeleteLikeUsecase {
+public class DeleteLikeUsecaseImpl implements DeleteLikeUsecase {
     
     
     private final DAOFactory factory;

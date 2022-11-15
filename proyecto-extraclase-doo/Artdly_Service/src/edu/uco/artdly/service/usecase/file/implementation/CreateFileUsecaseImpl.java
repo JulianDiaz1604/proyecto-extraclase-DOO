@@ -1,8 +1,8 @@
 package edu.uco.artdly.service.usecase.file.implementation;
 
+
 import edu.uco.artdly.crosscutting.exception.usecase.UsecaseCustomException;
 import edu.uco.artdly.crosscutting.helper.UUIDHelper;
-import edu.uco.artdly.crosscutting.messages.Messages;
 import edu.uco.artdly.data.daofactory.DAOFactory;
 import edu.uco.artdly.domain.FileDTO;
 import edu.uco.artdly.domain.FileTypeDTO;
@@ -26,25 +26,30 @@ public class CreateFileUsecaseImpl implements CreateFileUsecase {
     @Override
     public FileDTO execute(FileDTO file) {
         String pathName = createPathFileUseCase.execute(file.getPathFile());
-        //FileTypeDTO fileType = findFileType(file.getTypeFile().getFileType());
+        FileTypeDTO fileType = validateType(file.getTypeFile());
 
         file.setId(UUIDHelper.getNewUUID());
         file.setPathFile(pathName);
-        //file.setTypeFile(fileType);
+        file.setTypeFile(fileType);
 
         factory.getFileDAO().create(file);
 
         return file;
     }
 
-    private FileTypeDTO findFileType(String fileType){
-        final FileTypeDTO fType = findFileTypeByName.execute(fileType);
 
-        if(fType.notExist()){ //TODO create message
-            throw UsecaseCustomException.CreateUserException(Messages.CreateFileUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDFILETYPE);
+    private FileTypeDTO validateType(FileTypeDTO type){
+        final FileTypeDTO fileType = findFileTypeByName.execute(type.getFileType());
+        
+        if(!fileType.exist()) {
+            throw UsecaseCustomException.CreateUserException("este tipo de archivo no existe");
         }
-
-        return fType;
+        return type;
+        
+        
+        
+        
+        
     }
     
 }

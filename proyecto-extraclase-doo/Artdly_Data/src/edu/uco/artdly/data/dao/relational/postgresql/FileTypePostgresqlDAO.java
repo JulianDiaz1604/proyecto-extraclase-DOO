@@ -39,6 +39,18 @@ public class FileTypePostgresqlDAO extends DAORelational implements FileTypeDAO 
 			throw DataCustomException.CreateTechnicalException(Messages.FileTypePostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_FILETYPE, exception); 
 		}
 	}
+	   @Override
+	    public List<FileTypeDTO> findAll() {
+	        
+	        var parameters = new ArrayList<Object>();
+	        final var sqlBuilder = new StringBuilder();
+
+	        createSelectFrom(sqlBuilder);
+	        createOrderBy(sqlBuilder);
+
+	        return prepareAndExecuteQuery(sqlBuilder, parameters);
+	    }
+
 
 	@Override
 	public List<FileTypeDTO> find(FileTypeDTO filetype) {
