@@ -33,7 +33,7 @@ import edu.uco.artdly.service.usecase.command.implementation.FindAllArtworkComma
 public class ArtworkController {
 	
 	private CreateArtworkCommand createArtworkCommand = new CreateArtworkCommandImpl();
-	List<String> files = new ArrayList<String>();
+	List<String> files = new ArrayList<>();
 	private final Path rootLocation = Paths.get("C:/Users/diazj/OneDrive/Escritorio");
 	private FindAllArtworkCommand findAllArtwork = new FindAllArtworkCommandImpl();
 
@@ -99,7 +99,7 @@ public class ArtworkController {
 	
 	@GetMapping("/findall")
 	public ResponseEntity<Response<ArtworkDTO>>	findAllArtworks(){
-		Response<Boolean> response = new Response<>(); //Cambiar por artworkDTO
+		Response<ArtworkDTO> response = new Response<>();
 		HttpStatus httpStatus = HttpStatus.OK;
 		try {
 			List<ArtworkDTO> artworks = findAllArtwork.execute();
