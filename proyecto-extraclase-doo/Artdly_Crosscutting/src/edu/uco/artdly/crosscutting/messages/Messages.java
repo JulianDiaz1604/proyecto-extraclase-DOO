@@ -262,22 +262,22 @@ public class Messages {
         
         public static final String TECHNICAL_PROBLEM_FILLLIKEUSERDTO_LIKE = "There was a unexpected problem trying to fillLikeUserDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_FILLARTWORKDTO_LIKE = "There was a unexpected problem trying to fillArtworkDTO the like";
+        public static final String TECHNICAL_PROBLEM_FILlARTWORKDTO_LIKE = "There was a unexpected problem trying to fillArtworkDTO the like";
         
         public static final String TECHNICAL_PROBLEM_FILLFILEDTO_LIKE ="There was a problem trying to fillFileDTO the like";
         public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_LIKE ="There was a problem trying to fillFileTypeDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_LIKE = "There was a problem trying to fillArtworkTypeDTO the like";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_lIKE = "There was a problem trying to fillArtworkTypeDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_LIKE = "There was a problem trying to fillUserDTO the like";
+        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_lIKE = "There was a problem trying to fillUserDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_LIKE = "There was a problem trying to prepareAndExecuteQuery the like";
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_lIKE = "There was a problem trying to prepareAndExecuteQuery the like";
         
-        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_LIKE = "There was a problem trying to setParametersValues the like";
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_LIKE = "There was a unexpected problem trying to setParametersValues the like";
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_lIKE = "There was a problem trying to setParametersValues the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_lIKE = "There was a unexpected problem trying to setParametersValues the like";
         
-        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_LIKE = "There was a problem trying to executeQuery the like";
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_LIKE = "There was a unexpected problem trying to executeQuery the like";
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_lIKE = "There was a problem trying to executeQuery the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_lIKE = "There was a unexpected problem trying to executeQuery the like";
     }
     public static class UserPostgresqlDAO {
         private UserPostgresqlDAO () {
@@ -430,7 +430,7 @@ public class Messages {
         private CreateFileUsecaseImpl () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_FINDFILETYPE= "This file type is not allowed yet";
+        public static final String TECHNICAL_PROBLEM_CREATE_FINDFILETYPE= "File type does no exist";
     }
     public static class CreateLikeUsecaseImpl {
         private CreateLikeUsecaseImpl () {
@@ -454,7 +454,6 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATELASTNAME = "The second name cannot be empty";
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEMAIL = "It is not formatted properly when creating an email";
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATPASSWORD = "The password field cannot be empty";
-        
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME = "Unable to enter username";
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEUSERNAME2 = "Username field cannot remain empty";
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEUSERMANE3 = "The username entered already exists";
@@ -463,11 +462,14 @@ public class Messages {
         private ArtworkController () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_ARTWORK = "The artwork was created correctly";
-        public static final String TECHNICAL_PROBLEM_CREATE_BUDGET = "An error occurred in creating the budget, please try again.......";
+        public static final String TECHNICAL_PROBLEM_CREATE_ARTWORK = "The work was created correctly";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the work";     
         public static final String TECHNICAL_PROBLEM_FAIL_ARTWORK = "An error occurred trying to save the work on the server";
         public static final String SUCCESS_FIND_ARTWORK = "The works stored were returned";
+        public static final String SUCCESS_SAVE_FILE = "The file was saved";
+        public static final String THECNICAL_PROBLEM_CREATE_FILE = "The file has a problem";
+        public static final String FATAL_PROBLEM_CREATE_FILE = "theres was a FATAL problem to create File";
+
 
     }
     public static class ArtworkTypeController{
@@ -502,6 +504,10 @@ public class Messages {
         private CreateArtworkValidator () {
             super ();
         }
+        public static final String TECHNICAL_PROBLEM_VALIDATE_ARTWORKTYPE = "You must assing a tittle to the work";
+        public static final String SUCCESS_SAVE_FILE = "the file was success save";
+ 
+
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEARTWORKTITTLE = "You must assing a tittle to the work";
     }
     public static class CreateUserValidator {
