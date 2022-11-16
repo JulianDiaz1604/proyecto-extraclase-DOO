@@ -41,7 +41,7 @@ public class LikeController {
 	@PostMapping("/register")
 	public String  create(@RequestBody LikeDTO like) {
 		createLikeCommand.execute(like);
-		return Messages.LikeController.TECHNICAL_PROBLEM_REGISTRE_LIKE;
+		return Messages.LikeController.SUCCESS_REGISTRE_LIKE;
 	}
 
 	@DeleteMapping("/delete")

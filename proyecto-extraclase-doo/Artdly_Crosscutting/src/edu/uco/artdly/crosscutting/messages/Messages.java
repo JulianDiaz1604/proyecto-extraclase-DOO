@@ -467,33 +467,35 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_CREATE_BUDGET = "An error occurred in creating the budget, please try again.......";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the work";     
         public static final String TECHNICAL_PROBLEM_FAIL_ARTWORK = "An error occurred trying to save the work on the server";
+        public static final String SUCCESS_FIND_ARTWORK = "The works stored were returned";
+
     }
     public static class ArtworkTypeController{
         private ArtworkTypeController () {
             super ();
         }
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the artworktype";
-        public static final String TECHNICAL_PROBLEM_FIND_ARTWORKTYPE = "The types of works stored were returned";
+        public static final String SUCCESS_FIND_ARTWORKTYPE = "The types of works stored were returned";
     }
     public static class CategoryController{
         private CategoryController () {
             super ();
         }
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the Category";
-        public static final String TECHNICAL_PROBLEM_FIND_CATEGORY = "Stored categories were returned";
+        public static final String SUCCESS_FIND_CATEGORY = "Stored categories were returned";
     }
     public static class LikeController {
         private LikeController () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_REGISTRE_LIKE = "The Like was registered correctly";
+        public static final String SUCCESS_REGISTRE_LIKE = "The Like was registered correctly";
     }
     public static class UserController{
         private UserController () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_USER = "The user has been created successfully";
-        public static final String TECHNICAL_PROBLEM_CREATE_BUDGET = "An error occurred in creating the budget, please try again.......";
+        public static final String SUCCESS_CREATE_USER = "The user has been created successfully";
+        public static final String TECHNICAL_PROBLEM_CREATE_USER = "An error occurred in creating the budget, please try again.......";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the User";
     }
     public static class CreateArtworkValidator {
@@ -506,8 +508,7 @@ public class Messages {
         private CreateUserValidator () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_VALIDATION_BIRTHDAY = "In the birthday validation it has been found that you are a minor";
-        public static final String TECHNICAL_PROBLEM_VALIDATION_MAIL = "Invalid email";
+        public static final String INVALID_MAIL = "Invalid email";
         
     }
     public static class DeleteLikeUsecaseImpl {

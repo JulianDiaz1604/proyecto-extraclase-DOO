@@ -29,5 +29,4 @@ public class StoreArtworkOnServerUsecaseImpl implements StoreArtworkOnServerUsec
 
         amazonS3.putObject(bucketName, key, new File(filePath));
     }
-    
 }

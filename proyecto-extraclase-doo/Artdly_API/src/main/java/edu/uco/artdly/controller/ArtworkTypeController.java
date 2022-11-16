@@ -29,7 +29,7 @@ public class ArtworkTypeController {
 		try {
 			List<ArtworkTypeDTO> artworkTypes = findAllArtworkTypeCommand.execute();
 			response.setData(artworkTypes);
-			response.addSuccessMessage(Messages.ArtworkTypeController.TECHNICAL_PROBLEM_FIND_ARTWORKTYPE);
+			response.addSuccessMessage(Messages.ArtworkTypeController.SUCCESS_FIND_ARTWORKTYPE);
 		} catch (final Exception exception) {
 			httpStatus = HttpStatus.BAD_REQUEST;
 			response.addFatalMessage(Messages.ArtworkTypeController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
