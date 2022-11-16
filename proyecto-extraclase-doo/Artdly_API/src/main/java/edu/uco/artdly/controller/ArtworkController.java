@@ -65,7 +65,7 @@ public class ArtworkController {
 			httpStatus = HttpStatus.BAD_REQUEST;
 
 			if(exception.isTechinalException()) {
-				response.addErrorMessage(Messages.ArtworkController.TECHNICAL_PROBLEM_CREATE_BUDGET);
+				response.addErrorMessage(Messages.ArtworkController.TECHNICAL_PROBLEM_CREATE_ARTWORK);
 			}else {
 				response.addErrorMessage(exception.getMessage());
 			}
@@ -81,21 +81,26 @@ public class ArtworkController {
 	}
 
 	@PostMapping("/savefile")
-	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
-		String message;
-		try {
-			Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
-		    files.add(file.getOriginalFilename());
-  
-		    message = "Successfully uploaded!";
-		    return ResponseEntity.status(HttpStatus.OK).body(message);
-		}catch (ArtdlyCustomException e) {
-			throw new RuntimeException(Messages.ArtworkController.TECHNICAL_PROBLEM_FAIL_ARTWORK);
-		}catch (Exception e) {
-		    message = "Failed to upload!";
-		    return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+    public ResponseEntity<Response<String>> handleFileUpload(@RequestParam("file") MultipartFile file) {
+        Response<String> response  = new Response<>();
+        HttpStatus httpestatus = HttpStatus.OK;
+           try {
+              Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+               files.add(file.getOriginalFilename());
+               response.addInfoMessage(Messages.ArtworkController.SUCCESS_SAVE_FILE);
+           }catch (final ArtdlyCustomException exception) {
+               httpestatus = HttpStatus.BAD_REQUEST;
+                if(exception.isTechinalException()) {
+                    response.addErrorMessage(Messages.ArtworkController.THECNICAL_PROBLEM_CREATE_FILE);
+                }else {
+                    response.addErrorMessage(exception.getMessage());
+                }
+           }catch (Exception exception) {
+               httpestatus = HttpStatus.INTERNAL_SERVER_ERROR;
+               response.addFatalMessage(Messages.ArtworkController.FATAL_PROBLEM_CREATE_FILE);
+           }
+           return new ResponseEntity<>(response,httpestatus);
 		}
-	}
 	
 	@GetMapping("/findall")
 	public ResponseEntity<Response<ArtworkDTO>>	findAllArtworks(){
