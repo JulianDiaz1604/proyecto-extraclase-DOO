@@ -97,7 +97,11 @@ public class ArtworkController {
 		   message = "Failed to upload!";
 		   return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
-	 }
+	}
+
+	public void saveFile(MultipartFile file){
+
+	}
 	
 	@GetMapping("/findall")
 	public ResponseEntity<Response<ArtworkDTO>>	findAllArtworks(){
