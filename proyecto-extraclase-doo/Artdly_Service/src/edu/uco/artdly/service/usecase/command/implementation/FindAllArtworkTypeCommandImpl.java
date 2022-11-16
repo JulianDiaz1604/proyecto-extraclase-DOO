@@ -29,10 +29,10 @@ public class FindAllArtworkTypeCommandImpl implements FindAllArtworkTypeCommand 
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.FindAllArtworkTypeCommandImpl.TECHNICAL_PROBLEM_FIND_ARTWORKTYPE, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.FindAllArtworkTypeCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKTYPE, exception);
         }/*finally {
             factory.closeConection();

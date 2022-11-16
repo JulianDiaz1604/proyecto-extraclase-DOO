@@ -19,7 +19,7 @@ public class FindFileTypeByNameUsecaseImpl implements FindFileTypeByNameUsecase{
     public FileTypeDTO execute(String name) {
         
         FileTypeDTO result = new FileTypeDTO();
-        final FileTypeDTO artworkType = FileTypeDTO.create(UUIDHelper.getDefaultUUID(null));
+        final FileTypeDTO artworkType = FileTypeDTO.create(UUIDHelper.getDefaultUUID(null), name);
         final List<FileTypeDTO> results = factory.getFileTypeDAO().find(artworkType);
 
         if(!results.isEmpty()){

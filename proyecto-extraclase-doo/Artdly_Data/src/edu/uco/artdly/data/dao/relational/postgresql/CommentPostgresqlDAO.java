@@ -248,7 +248,7 @@ public class CommentPostgresqlDAO extends DAORelational implements CommentDAO {
                                   fillFileTypeDTO(resultSet));
             
         } catch (SQLException exception) {
-            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_COMMENT, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.CommentPostgresqlDAO.TECHNICAL_PROBLEM_FILLFILEDTO_COMMENT, exception);
         }
 
     }

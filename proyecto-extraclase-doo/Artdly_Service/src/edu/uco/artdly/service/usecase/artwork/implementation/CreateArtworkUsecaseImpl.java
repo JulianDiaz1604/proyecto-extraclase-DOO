@@ -57,14 +57,14 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
         } catch(UsecaseCustomException exception) {
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            throw UsecaseCustomException.wrapException(null, exception);
+            throw UsecaseCustomException.wrapException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_ARTWORK, exception); //re
         } catch(Exception exception) {
-            throw UsecaseCustomException.CreateBusinessException(null, exception);
+            throw UsecaseCustomException.CreateBusinessException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_ARTWORK, exception); //re
         }
     }
 
     private final String validateTittle(String tittle){
-        if(StringHelper.isDefaultString(tittle)){ //TODO: create message
+        if(StringHelper.isDefaultString(tittle)){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_VALIDATETITTLE);
         }
         return tittle;
@@ -77,7 +77,7 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
     private final ArtworkTypeDTO findArtworkType(final UUID id){
         final ArtworkTypeDTO artworkType = findArtworkTypeById.execute(id);
 
-        if(artworkType.notExist()){ //TODO: create message
+        if(artworkType.notExist()){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDARTWORKTYPE);
         }
 
@@ -87,7 +87,7 @@ public class CreateArtworkUsecaseImpl implements CreateArtworkUsecase {
     private final UserDTO findUser(final UUID id){
         final UserDTO user = findUserById.execute(id);
 
-        if(user.notExist()){ //TODO create message
+        if(user.notExist()){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDUSER);
         }
 

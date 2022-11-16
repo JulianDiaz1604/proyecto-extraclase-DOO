@@ -26,10 +26,10 @@ public class CreateLikeCommandImpl implements CreateLikeCommand{
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.CreateLikeCommandImpl.TECHNICAL_PROBLEM_CREATE_LIKE , exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.CreateLikeCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE, exception);
         }        
     }

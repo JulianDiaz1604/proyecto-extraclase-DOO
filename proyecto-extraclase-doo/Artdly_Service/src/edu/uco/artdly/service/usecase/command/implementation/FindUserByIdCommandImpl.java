@@ -28,10 +28,10 @@ public class FindUserByIdCommandImpl implements FindUserByIdCommand{
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.FindUserByIdCommandImpl.TECHNICAL_PROBLEM_FIND_USERBYID, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.FindUserByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_USERBYID, exception);
         }  
     }

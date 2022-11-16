@@ -111,7 +111,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
         } catch (SQLException exception) {
             throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_DELETE_ARTWORK, exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_ARTWORK, exception); //TODO
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_ARTWORK, exception);
         }
 		
 	}

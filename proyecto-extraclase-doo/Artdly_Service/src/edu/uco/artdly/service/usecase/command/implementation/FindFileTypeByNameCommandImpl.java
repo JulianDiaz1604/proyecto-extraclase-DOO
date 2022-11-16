@@ -26,10 +26,10 @@ public class FindFileTypeByNameCommandImpl implements FindFileTypeByNameCommand{
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.FindFileTypeByNameCommandImpl.TECHNICAL_PROBLEM_FIND_FILETYPEBYNAME, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.FindFileTypeByNameCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_FILETYPEBYNAME, exception);
         }      
     }

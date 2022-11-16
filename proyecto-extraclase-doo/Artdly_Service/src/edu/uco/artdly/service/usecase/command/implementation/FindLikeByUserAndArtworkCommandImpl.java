@@ -32,10 +32,10 @@ public class FindLikeByUserAndArtworkCommandImpl implements FindLikeByUserAndArt
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.FindArtworktypeByIdCommandImpl.TECHNICAL_PROBLEM_FIND_ARTWORKTYPEBYID, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.FindArtworktypeByIdCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORKTYPEBYID, exception);
         } finally {
             factory.closeConection();

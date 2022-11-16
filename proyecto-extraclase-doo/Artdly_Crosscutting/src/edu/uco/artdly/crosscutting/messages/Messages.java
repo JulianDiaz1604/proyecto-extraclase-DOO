@@ -411,6 +411,9 @@ public class Messages {
         private CreateArtworkUsecaseImpl () {
             super ();
         }
+        public static final String TECHNICAL_PROBLEM_CREATE_ARTWORK = "There was a problem trying to create the artwork";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_ARTWORK ="There was a unexpected problem trying to create the artwork";
+        
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATETITTLE = "The tittle of the work cannot be empty";
         public static final String TECHNICAL_PROBLEM_CREATE_FINDARTWORKTYPE = "The selected artwork type does not exist";
         public static final String TECHNICAL_PROBLEM_CREATE_FINDUSER = "User does not exist";
@@ -433,12 +436,20 @@ public class Messages {
         private CreateLikeUsecaseImpl () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_LIKE= "The like has been successfully registered";
+        public static final String TECHNICAL_PROBLEM_CREATE_LIKE= "There was a problem trying to create the Like"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_LIKE="There was a unexpected problem trying to create the Like"; 
+       
+        public static final String TECHNICAL_PROBLEM_REGISTRE_LIKE= "The like has been successfully registered";
     }
     public static class CreateUserUsecaseImpl {
         private CreateUserUsecaseImpl () {
             super ();
         }
+        public static final String TECHNICAL_PROBLEM_CREATE_USER= "There was a problem trying to create the User"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_CREATE_USER="There was a unexpected problem trying to create the User"; 
+        
+        public static final String TECHNICAL_PROBLEM_CREATE_INVALIDUSERNAME= "The username entered is offensive";
+        
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATENAME = "The name cannot be empty";
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATELASTNAME = "The second name cannot be empty";
         public static final String TECHNICAL_PROBLEM_CREATE_VALIDATEMAIL = "It is not formatted properly when creating an email";
@@ -498,5 +509,21 @@ public class Messages {
         public static final String TECHNICAL_PROBLEM_VALIDATION_BIRTHDAY = "In the birthday validation it has been found that you are a minor";
         public static final String TECHNICAL_PROBLEM_VALIDATION_MAIL = "Invalid email";
         
+    }
+    public static class DeleteLikeUsecaseImpl {
+        private DeleteLikeUsecaseImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_DELETE_LIKE= "There was a problem trying to delete the Like"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_DELETE_LIKE ="There was a unexpected problem trying to delete the like";
+       
+    }
+    public static class FindAllArtworkCommandImpl {
+        private FindAllArtworkCommandImpl () {
+            super ();
+        }
+        public static final String TECHNICAL_PROBLEM_FIND_ARTWORK= "There was a problem trying to find the artworks"; 
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_FIND_ARTWORK ="There was a unexpected problem trying to find the artworks";
+       
     }
 }

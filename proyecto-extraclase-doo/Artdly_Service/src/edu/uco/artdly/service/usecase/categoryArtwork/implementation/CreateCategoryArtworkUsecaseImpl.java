@@ -40,7 +40,7 @@ public class CreateCategoryArtworkUsecaseImpl implements CreateCategoryArtworkUs
     private final ArtworkDTO findArtwork(final UUID id){
         final ArtworkDTO artwork = findArtworkById.execute(id);
 
-        if(artwork.notExist()){ //TODO create message
+        if(artwork.notExist()){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateCategoryArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDARTWORK);
         }
 
@@ -50,7 +50,7 @@ public class CreateCategoryArtworkUsecaseImpl implements CreateCategoryArtworkUs
     private final CategoryDTO findCategory(final UUID id){
         final CategoryDTO category = findCategoryById.execute(id);
 
-        if(category.notExist()){ //TODO create message
+        if(category.notExist()){ 
             throw UsecaseCustomException.CreateUserException(Messages.CreateCategoryArtworkUsecaseImpl.TECHNICAL_PROBLEM_CREATE_FINDCATEOGRY);
         }
 

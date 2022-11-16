@@ -23,10 +23,10 @@ public class DeleteLikeCommandImpl implements DeleteLikeCommand {
             factory.cancelTransaction();
             throw exception;
         } catch(ArtdlyCustomException exception) {
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.wrapException(Messages.DeleteLikeCommandImpl.TECHNICAL_PROBLEM_CREATE_DELETELIKE, exception);
         } catch(final Exception exception){
-            factory.cancelTransaction(); //TODO: create message
+            factory.cancelTransaction(); 
             throw UsecaseCustomException.CreateBusinessException(Messages.DeleteLikeCommandImpl.TECHNICAL_UNEXPECTED_PROBLEM_CREATE_DELETELIKE, exception);
         }        
     }
