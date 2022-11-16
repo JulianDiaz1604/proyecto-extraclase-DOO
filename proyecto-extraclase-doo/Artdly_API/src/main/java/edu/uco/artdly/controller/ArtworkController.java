@@ -84,28 +84,22 @@ public class ArtworkController {
 	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 		String message;
 		try {
-		   try {
-			  Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
-		   } catch (Exception e) {
-			  throw new RuntimeException(Messages.ArtworkController.TECHNICAL_PROBLEM_FAIL_ARTWORK);
-		   }
-		   files.add(file.getOriginalFilename());
+			Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+		    files.add(file.getOriginalFilename());
   
-		   message = "Successfully uploaded!";
-		   return ResponseEntity.status(HttpStatus.OK).body(message);
-		} catch (Exception e) {
-		   message = "Failed to upload!";
-		   return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+		    message = "Successfully uploaded!";
+		    return ResponseEntity.status(HttpStatus.OK).body(message);
+		}catch (ArtdlyCustomException e) {
+			throw new RuntimeException(Messages.ArtworkController.TECHNICAL_PROBLEM_FAIL_ARTWORK);
+		}catch (Exception e) {
+		    message = "Failed to upload!";
+		    return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
-	}
-
-	public void saveFile(MultipartFile file){
-
 	}
 	
 	@GetMapping("/findall")
 	public ResponseEntity<Response<ArtworkDTO>>	findAllArtworks(){
-		Response<ArtworkDTO> response = new Response<>();
+		Response<Boolean> response = new Response<>(); //Cambiar por artworkDTO
 		HttpStatus httpStatus = HttpStatus.OK;
 		try {
 			List<ArtworkDTO> artworks = findAllArtwork.execute();
