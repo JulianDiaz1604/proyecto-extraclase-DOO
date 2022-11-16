@@ -262,22 +262,22 @@ public class Messages {
         
         public static final String TECHNICAL_PROBLEM_FILLLIKEUSERDTO_LIKE = "There was a unexpected problem trying to fillLikeUserDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_FILlARTWORKDTO_LIKE = "There was a unexpected problem trying to fillArtworkDTO the like";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKDTO_LIKE = "There was a unexpected problem trying to fillArtworkDTO the like";
         
         public static final String TECHNICAL_PROBLEM_FILLFILEDTO_LIKE ="There was a problem trying to fillFileDTO the like";
         public static final String TECHNICAL_PROBLEM_FILLFILETYPEDTO_LIKE ="There was a problem trying to fillFileTypeDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_lIKE = "There was a problem trying to fillArtworkTypeDTO the like";
+        public static final String TECHNICAL_PROBLEM_FILLARTWORKTYPEDTO_LIKE = "There was a problem trying to fillArtworkTypeDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_lIKE = "There was a problem trying to fillUserDTO the like";
+        public static final String TECHNICAL_PROBLEM_FILLUSERDTO_LIKE = "There was a problem trying to fillUserDTO the like";
         
-        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_lIKE = "There was a problem trying to prepareAndExecuteQuery the like";
+        public static final String TECHNICAL_PROBLEM_PREPAREANDEXECUTEQUERY_LIKE = "There was a problem trying to prepareAndExecuteQuery the like";
         
-        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_lIKE = "There was a problem trying to setParametersValues the like";
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_lIKE = "There was a unexpected problem trying to setParametersValues the like";
+        public static final String TECHNICAL_PROBLEM_SETPARAMETERSVALUES_LIKE = "There was a problem trying to setParametersValues the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_SETPARAMETERSVALUES_LIKE = "There was a unexpected problem trying to setParametersValues the like";
         
-        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_lIKE = "There was a problem trying to executeQuery the like";
-        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_lIKE = "There was a unexpected problem trying to executeQuery the like";
+        public static final String TECHNICAL_PROBLEM_EXECUTEQUERY_LIKE = "There was a problem trying to executeQuery the like";
+        public static final String TECHNICAL_UNEXPECTED_PROBLEM_EXECUTEQUERY_LIKE = "There was a unexpected problem trying to executeQuery the like";
     }
     public static class UserPostgresqlDAO {
         private UserPostgresqlDAO () {

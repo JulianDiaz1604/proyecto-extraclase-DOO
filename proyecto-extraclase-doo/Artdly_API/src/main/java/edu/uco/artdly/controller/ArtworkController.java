@@ -83,23 +83,23 @@ public class ArtworkController {
 	@PostMapping("/savefile")
     public ResponseEntity<Response<String>> handleFileUpload(@RequestParam("file") MultipartFile file) {
         Response<String> response  = new Response<>();
-        HttpStatus httpestatus = HttpStatus.OK;
+        HttpStatus httpStatus = HttpStatus.OK;
            try {
               Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
                files.add(file.getOriginalFilename());
                response.addInfoMessage(Messages.ArtworkController.SUCCESS_SAVE_FILE);
            }catch (final ArtdlyCustomException exception) {
-               httpestatus = HttpStatus.BAD_REQUEST;
+				httpStatus = HttpStatus.BAD_REQUEST;
                 if(exception.isTechinalException()) {
                     response.addErrorMessage(Messages.ArtworkController.THECNICAL_PROBLEM_CREATE_FILE);
                 }else {
                     response.addErrorMessage(exception.getMessage());
                 }
            }catch (Exception exception) {
-               httpestatus = HttpStatus.INTERNAL_SERVER_ERROR;
+				httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
                response.addFatalMessage(Messages.ArtworkController.FATAL_PROBLEM_CREATE_FILE);
            }
-           return new ResponseEntity<>(response,httpestatus);
+           return new ResponseEntity<>(response,httpStatus);
 		}
 	
 	@GetMapping("/findall")
