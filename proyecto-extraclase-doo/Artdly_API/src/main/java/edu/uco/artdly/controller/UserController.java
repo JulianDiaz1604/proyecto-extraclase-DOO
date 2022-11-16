@@ -43,7 +43,7 @@ public class UserController {
 				final List<UserDTO> data = new ArrayList<>();
 				data.add(user);
 				response.setData(data);
-				response.addSuccessMessage(Messages.UserController.TECHNICAL_PROBLEM_CREATE_USER);
+				response.addSuccessMessage(Messages.UserController.SUCCESS_CREATE_USER);
 			}else {
 				 httpStatus = HttpStatus.BAD_REQUEST;
 				 response.setMessages(messages);
@@ -52,7 +52,7 @@ public class UserController {
 			httpStatus = HttpStatus.BAD_REQUEST;
 
 			if(exception.isTechinalException()) {
-				response.addErrorMessage(Messages.UserController.TECHNICAL_PROBLEM_CREATE_BUDGET);
+				response.addErrorMessage(Messages.UserController.TECHNICAL_PROBLEM_CREATE_USER);
 			}else {
 				response.addErrorMessage(exception.getMessage());
 			}

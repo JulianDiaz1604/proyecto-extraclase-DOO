@@ -110,10 +110,10 @@ public class ArtworkController {
 		try {
 			List<ArtworkDTO> artworks = findAllArtwork.execute();
 			response.setData(artworks);
-			response.addSuccessMessage(Messages.ArtworkTypeController.TECHNICAL_PROBLEM_FIND_ARTWORKTYPE);
+			response.addSuccessMessage(Messages.ArtworkController.SUCCESS_FIND_ARTWORK);
 		} catch (final Exception exception) {
 			httpStatus = HttpStatus.BAD_REQUEST;
-			response.addFatalMessage(Messages.ArtworkTypeController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
+			response.addFatalMessage(Messages.ArtworkController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
 			exception.printStackTrace();
 		}
 

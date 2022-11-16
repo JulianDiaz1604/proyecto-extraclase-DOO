@@ -29,7 +29,7 @@ public class CategoryController {
 		try {
 			List<CategoryDTO> categories = findAllCategoryCommand.execute();
 			response.setData(categories);
-			response.addSuccessMessage(Messages.CategoryController.TECHNICAL_PROBLEM_FIND_CATEGORY);
+			response.addSuccessMessage(Messages.CategoryController.SUCCESS_FIND_CATEGORY);
 		} catch (final Exception exception) {
 			httpStatus = HttpStatus.BAD_REQUEST;
 			response.addFatalMessage(Messages.CategoryController.TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR);
