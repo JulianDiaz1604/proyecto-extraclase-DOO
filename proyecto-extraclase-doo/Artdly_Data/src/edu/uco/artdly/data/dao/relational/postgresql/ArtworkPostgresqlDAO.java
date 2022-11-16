@@ -55,7 +55,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
         var parameters = new ArrayList<Object>();
         final var sqlBuilder = new StringBuilder();
 
-        createSelectAllFrom(sqlBuilder);
+        createSelectFrom(sqlBuilder);
         createOrderBy(sqlBuilder);
 
         return prepareAndExecuteQuery(sqlBuilder, parameters);
@@ -111,7 +111,7 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
         } catch (SQLException exception) {
             throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_PROBLEM_DELETE_ARTWORK, exception); 
         } catch (Exception exception) {
-            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_ARTWORK, exception);
+            throw DataCustomException.CreateTechnicalException(Messages.ArtworkPostgresqlDAO.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_ARTWORK, exception); //TODO
         }
 		
 	}
@@ -141,10 +141,6 @@ public class ArtworkPostgresqlDAO  extends DAORelational implements ArtworkDAO {
 		sqlBuilder.append("JOIN filetype fit ON fil.type_file_id = fit.id ");
 		sqlBuilder.append("JOIN artworktype aty ON art.artwork_type_id = aty.id ");
 		sqlBuilder.append("JOIN public.user usr ON art.user_id = usr.id ");
-	}
-
-	private final void createSelectAllFrom(final StringBuilder sqlBuilder){
-		sqlBuilder.append("SELECT * FROM artwork art ");
 	}
 
 	private final void createWhere(final StringBuilder sqBuilder, final ArtworkDTO artwork, final List<Object> parameters){

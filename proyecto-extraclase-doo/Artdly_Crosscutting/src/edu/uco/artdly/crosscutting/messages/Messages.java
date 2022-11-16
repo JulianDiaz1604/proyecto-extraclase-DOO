@@ -430,7 +430,7 @@ public class Messages {
         private CreateFileUsecaseImpl () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_FINDFILETYPE= "File type does no exist";
+        public static final String TECHNICAL_PROBLEM_CREATE_FINDFILETYPE= "This file type is not allowed yet";
     }
     public static class CreateLikeUsecaseImpl {
         private CreateLikeUsecaseImpl () {
@@ -463,7 +463,7 @@ public class Messages {
         private ArtworkController () {
             super ();
         }
-        public static final String TECHNICAL_PROBLEM_CREATE_ARTWORK = "The work was created correctly";
+        public static final String TECHNICAL_PROBLEM_CREATE_ARTWORK = "The artwork was created correctly";
         public static final String TECHNICAL_PROBLEM_CREATE_BUDGET = "An error occurred in creating the budget, please try again.......";
         public static final String TECHNICAL_UNEXPECTED_PROBLEM_FATALERROR  = "An unexpected error occurred while creating the work";     
         public static final String TECHNICAL_PROBLEM_FAIL_ARTWORK = "An error occurred trying to save the work on the server";
