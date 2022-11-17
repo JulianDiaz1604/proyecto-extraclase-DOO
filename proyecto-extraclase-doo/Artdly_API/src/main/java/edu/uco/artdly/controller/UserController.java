@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,7 @@ public class UserController {
 	public UserDTO mostrarUSer() {
 		return new UserDTO();
 	}
-
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/register")
 	public ResponseEntity<Response<UserDTO>> create(@RequestBody UserDTO user) {
 		Response<UserDTO> response = new Response<>();
@@ -38,7 +39,7 @@ public class UserController {
 		try {
 			Validator<UserDTO> validator = new CreateUserValidator();
 			List<Message> messages = validator.validate(user);
-			if(messages.isEmpty()) {
+			if(messages.isEmpty()) {	
 				createUserCommand.execute(user);
 				final List<UserDTO> data = new ArrayList<>();
 				data.add(user);
@@ -55,7 +56,7 @@ public class UserController {
 				response.addErrorMessage(Messages.UserController.TECHNICAL_PROBLEM_CREATE_USER);
 			}else {
 				response.addErrorMessage(exception.getMessage());
-			}
+			}	
 			exception.printStackTrace();
 		}catch(final Exception exception) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
